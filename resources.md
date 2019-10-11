@@ -8,14 +8,14 @@ layout: default
 
 # Community Analytics 
 
-## Models 
+### Models 
 
 * [ [Differentiating Pathways to Neighborhood Change](https://github.com/DS4PS/cpp-529-master/raw/master/articles/differentiating_pathways_to_neighborhood_change.pdf) ]  
 * [ [Data-Driven Approaches to Strengthening Neighborhoods](https://github.com/DS4PS/cpp-529-master/raw/master/articles/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]  
 * [ [Forecasting Gentrification](http://urbanspatialanalysis.com/portfolio/predicting-gentrification-using-longitudinal-census-data/) ] 
 
 
-## Methods 
+### Methods 
 
 * [ [Community Valuation Analysis](http://www.arcgis.com/apps/MapJournal/index.html?appid=11cc819544c347cab87fcb8a7c9846e2) ] 
 * [ [Urban Analytics: City Structure and Function](https://github.com/DS4PS/cpp-529-master/raw/master/articles/Singleton_Public_Lecture.pdf) ]  
@@ -23,7 +23,7 @@ layout: default
 * [ [Data Viz](https://www.makeovermonday.co.uk/week-11-2019/) ] [contest details](https://trimydata.com/2019/03/11/makeover-monday-week-11-2019-philadelphia-real-estate-transfers/)
 
 
-## Social Mobility 
+### Social Mobility 
 
 * [ [Inequality of Opportunity Project](https://opportunityinsights.org/) ] [data](https://opportunityinsights.org/course/) 
 * [ [Seattle Housing Experiment](https://www.vox.com/future-perfect/2019/8/4/20726427/raj-chetty-segregation-moving-opportunity-seattle-experiment) ] 
@@ -71,13 +71,13 @@ layout: default
 
 
 <style>
-h2 {
+h4 {
 font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; 
-  font-size: 28px; 
+  font-size: 22px; 
   font-style: normal; 
   font-variant: small-caps; 
   font-weight: 100;
-  line-height: 26.4px;
+  line-height: 21.4px;
 }
 h1 { 
   font-size: 36px;  
