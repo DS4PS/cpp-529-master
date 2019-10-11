@@ -44,13 +44,17 @@ header {
     background-color: black; 
     /* background-color: #f08d14;  #ffaf4d; */
     font-size: 1.7em;
-    color: white;
+    color: white !important;
+}
+
+.uk-navbar-nav>li>a {
+    color: white !important;
 }
 
 footer {
     background-color: black; 
     /* background-color: #f08d14;  #ffaf4d; #ff8c00; */
-    color: white; /* rgb(255,255,255); */
+    color: white !important; /* rgb(255,255,255); */
     margin-top: 0px;
 }
 
