@@ -20,7 +20,7 @@ layout: default
 * [ [Community Valuation Analysis](http://www.arcgis.com/apps/MapJournal/index.html?appid=11cc819544c347cab87fcb8a7c9846e2) ] 
 * [ [Urban Analytics: City Structure and Function](https://github.com/DS4PS/cpp-529-master/raw/master/articles/Singleton_Public_Lecture.pdf) ]  
 * [ [Urban Displacement](https://www.urbandisplacement.org/map/sf) ] 
-* [ [Data Viz](https://www.makeovermonday.co.uk/week-11-2019/) ] [contest details](https://trimydata.com/2019/03/11/makeover-monday-week-11-2019-philadelphia-real-estate-transfers/)
+* [ [Data Viz](https://www.makeovermonday.co.uk/week-11-2019/) ] { [contest details](https://trimydata.com/2019/03/11/makeover-monday-week-11-2019-philadelphia-real-estate-transfers/) }
 
 
 ### Social Mobility 
