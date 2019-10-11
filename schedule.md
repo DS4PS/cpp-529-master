@@ -24,31 +24,7 @@ Unit Metadata is comprised of:
 Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 -->
 
-<style> 
-body {
-   font-family: "Roboto", sans-serif;
-}
- 
-p.italic {
-  font-style: italic;
-  color: black !important;
-}
-td {
-  text-align: left;
-}
-td.i {
-  text-align: center;
-}
-iframe {
-  align: middle;
-}
-article {
-  padding-left:20%;
-}
-em {
-  color: black !important;
-}
-</style>
+
 
 
 
@@ -318,3 +294,35 @@ You can also check out Ben's [Ted Talk](https://www.youtube.com/watch?v=6xsvGYIx
 
 <br>
 <br>
+
+
+
+
+
+<style> 
+body {
+   font-family: "Roboto", sans-serif;
+}
+ 
+p.italic {
+  font-style: italic;
+  color: black !important;
+}
+td {
+  text-align: left;
+}
+td.i {
+  text-align: center;
+}
+iframe {
+  align: middle;
+}
+article {
+  padding-left:20%;
+}
+em {
+  color: black !important;
+}
+</style>
+
+
