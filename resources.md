@@ -21,6 +21,7 @@ layout: default
 
 ## Census Data 
 
+* [ [Guide to Census Data in R](https://rconsortium.github.io/censusguide/) ]  
 * [ [Tidy Census Package](https://walkerke.github.io/tidycensus/articles/basic-usage.html) ]
 * [ [Tidy Census Fanclub](https://juliasilge.com/blog/using-tidycensus/) ]
 * [ [Census API Package](https://cran.r-project.org/web/packages/censusapi/vignettes/getting-started.html) ]
