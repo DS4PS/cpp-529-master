@@ -51,6 +51,10 @@ header {
     color: white !important;
 }
 
+header .uk-logo {
+    color: white !important;
+}
+
 footer {
     background-color: black; 
     /* background-color: #f08d14;  #ffaf4d; #ff8c00; */
