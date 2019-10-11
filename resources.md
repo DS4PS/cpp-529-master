@@ -59,7 +59,7 @@ layout: default
 
 * [ [Choropleth Map Tutorial](https://www.census.gov/data/academy/courses/choroplethr.html) ]  
 * [ [Choropleths vs Cartograms](https://ds4ps.org/2019/07/02/cartograms.html) ] 
-* [ Dot Density Maps {[V1](https://tarakc02.github.io/dot-density/)} {[V2](https://www.andybeger.com/2018/05/11/us-2016-dot-density/)} ]  [ [racial dot density map](https://demographics.virginia.edu/DotMap/index.html)]
+* [ Dot Density Maps {[V1](https://tarakc02.github.io/dot-density/)} {[V2](https://www.andybeger.com/2018/05/11/us-2016-dot-density/)} {[racial dot density map](https://demographics.virginia.edu/DotMap/index.html)} ]
 
 ### Interactive Maps 
 
