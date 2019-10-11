@@ -81,6 +81,6 @@ font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 h1 { 
   font-size: 36px;  
-  color: maroon;
+  color: #F2AA4CFF;
 }
 </style>
