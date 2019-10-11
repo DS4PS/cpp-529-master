@@ -3,15 +3,15 @@ layout: index
 title: Syllabus
 
 index:
-    title: Foundations of Data Science Part I
-    image: data-science.png
+    title: Data Practicum - Community Analytics
+    image: community-science.png
     subtitle: This course introduces students to the field of data science and its applications in the public and nonprofit sectors. Modern performance management and evaluation processes require strong data literacy and the ability to combine and analyze data from a variety of sources to inform managerial processes. We offer a practical, tools-based approach that is designed to build strong foundations for people that want to work as analysts, data-driven managers, or data-driven journalists. We will cover data programming fundamentals, visualization, text analysis, automated reporting, and dynamic reporting using dashboards. The course is analytically rigorous, but no prior programming experience is assumed.
     
 info: 
  program_title: Program Evaluation and Data Analytics
  program_website: https://asuonline.asu.edu/online-degree-programs/graduate/program-evaluation-and-data-analytics-ms/
- course_title: Foundations of Data Science Part I
- course_number: CPP 526 
+ course_title: Data Practicum - Community Analytic
+ course_number: CPP 529 
  course_level: Graduate 
  course_website: 'https://canvas.asu.edu/courses/29528'
  course_start_end_dates: Aug 22 to Oct 11, 2019  

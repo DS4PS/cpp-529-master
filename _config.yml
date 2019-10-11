@@ -6,19 +6,19 @@
 
 # Site title and description
 title:              DS4PS
-description:        Intro. course in data-drive management
+description:        Community modeling course. 
 
 # Site subpath, e.g. /blog
 url :               "https://ds4ps.github.io"
-baseurl:            "/cpp-526-fall-2019"
-course_url:         "http://ds4ps.org/cpp-526-fall-2019/"
+baseurl:            "/cpp-529-master"
+course_url:         "http://ds4ps.org/cpp-529-master/"
 
 # Permalink URLs structure, for permalink style options see: https://jekyllrb.com/docs/permalinks/
 permalink:          /:title/
 
 
 # calendly app for virtual office hours
-calendly:  'https://calendly.com/lecy/15min'
+# calendly:  'https://calendly.com'
 
 # Header text on the left
 brand:
@@ -34,16 +34,16 @@ header:
   url: 
 - title: Course Schedule
   url: schedule/
-- title: Textbook
-  url: textbook/
+# - title: Textbook
+#  url: textbook/
 - title: Resources
   url: resources/
-- title: Yellowdig
-  url: https://canvas.asu.edu/courses/29528/assignments/656491
+# - title: Yellowdig
+#   url: https://canvas.asu.edu/courses/29528/assignments/656491
 # - title: Canvas
 #  url: https://canvas.asu.edu/courses/29528
 - title: Review Sessions
-  url: https://ds4ps.org/cpp-526-fall-2019/review-sessions/
+  url: review-sessions/
 - title: Get Help
   url: help/
 
@@ -57,8 +57,8 @@ author:
 github_info:
     username:          DS4PS # Github location of the course
     branch:            master
-    website-repo:      cpp-526-fall-2019
-    course-repo:       cpp-526-fall-2019
+    website-repo:      cpp-529-master
+    course-repo:       cpp-529-master
 
 # Author settings, displayed on post and doc pages if front matter references author name e.g. author: peter
 authors:
@@ -91,7 +91,7 @@ disqus:
     shortname:      1234
 
 # Google analytics code, get your code here https://www.google.com/analytics/
-google_analytics:   UA-123960540-3
+google_analytics:   UA-123960540-6
 
 # Google maps API key, get your key here: https://developers.google.com/maps/documentation/javascript/get-api-key
 google_maps_api_key:
