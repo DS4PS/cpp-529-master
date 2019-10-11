@@ -14,23 +14,23 @@ info:
  course_number: CPP 529 
  course_level: Graduate 
  course_website: 'https://canvas.asu.edu/courses/29528'
- course_start_end_dates: Aug 22 to Oct 11, 2019  
+ course_start_end_dates: Oct 16 to Dec 06, 2019  
  course_prerequisites:  
  class_meets_when:  Asynchronous  
- class_meets_where:  'https://asu.zoom.us/j/944016877'
+ class_meets_where:  'TBD'
  review_sessions_when: TBD 
  review_sessions_where: UCENT Policy Analytics Lab 4th Floor + Zoom
  discussion_board_url: 'https://ds4ps.org/cpp-526-fall-2019/help/'
 
 instructor:
--  name: Jesse Lecy, PhD
+-  name: Anthony Howell, PhD
    title: Professor
-   email: jdlecy@asu.edu
-   office_location: UCENT 517
-   website_url: www.lecy.info
-   github_url: 'https://github.com/lecy' 
+   email: Anthony.Howell@asu.edu
+   office_location: UCENT 407
+   website_url: www.tonyjhowell.com
+   github_url:  
    twitter_url: 
-   scholar_url: 'https://scholar.google.com/citations?user=Ir8H4wMAAAAJ&hl=en'
+   scholar_url: 'https://scholar.google.com/citations?hl=en&user=am1zI6cAAAAJ'
    linked_in_url:
    office_hours_time: Flexible
    office_hours_location:  Zoom or Office
