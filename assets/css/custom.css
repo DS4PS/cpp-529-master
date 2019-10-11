@@ -114,7 +114,7 @@ a{
 
  td#footer {
     padding-left:6em;
-    color: white; /* black; */
+    color: white !important; /* black; */
     align-items: center;
     align-self: center;
  }
