@@ -236,12 +236,6 @@ Please note: the course instructor may from time to time adjust assigned reading
 
 ## Couse Schedule
 
-### Unit 0: R Data Science Toolkit 
-- CH-01 Core R 
-- CH-02 R Studio
-- CH-03 Data-Driven Docs & RMD
-
-
 ### Unit 1: Functions and Vectors
 - CH-03, CH-04
 - Lab #1 
