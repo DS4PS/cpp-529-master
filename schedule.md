@@ -161,8 +161,6 @@ Once you have completed this section you will be able to
 
 Required:
 
-[LECTURE 01 - Measurement](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/p-01-measurement.pdf) 
-
 Schäffer, U. (2007). Management accounting & control scales handbook. Springer Science & Business Media. [ [2-page PDF](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/introduction-to-construct-measurement.pdf) ] 
 
 *Kimberlin, C. L., & Winterstein, A. G. (2008). Validity and reliability of measurement instruments used in research. American journal of health-system pharmacy, 65(23), 2276-2284.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/reliabillity-and-validity-of-measures.pdf) ]
@@ -268,7 +266,21 @@ Create a Yellowdig post with (1) your list of variables, (2) your interpretation
 
 
 
-*** { @unit = "Due Aug 26th", @title = "Discussion Topic: The Promise of Big and Open Data", @assignment, @foldout  }
+*** { @unit = "Due Aug 26th", @title = "Lecture on Measurement", @lecture, @foldout  }
+
+<br>
+<br>
+
+[LECTURE 01 - Measurement](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/p-01-measurement.pdf) 
+
+On your lab you will be practicing with index development using census data and the following app:
+
+[https://jdlecy.shinyapps.io/measurement-lab/#section-warmup](https://jdlecy.shinyapps.io/measurement-lab/#section-warmup) 
+
+
+<br>
+<br>
+
 
 
 
@@ -295,7 +307,43 @@ Create a Yellowdig post with (1) your list of variables, (2) your interpretation
 
 
 
-** Week 2 - Mapping Groups 
+** Week 2 - Neighborhood Types 
+
+
+*** { @unit = "", @title = "Neighborhood Types", @lecture, @foldout  }
+
+<br>
+<br>
+
+
+
+
+Neighborhood change is a complicated concept with a lot of loaded terminology. We might think about neighborhoods that are "revitalized", "gentrified", that are "stable", or that "decline".  We could spend an entire semester unpacking all of these constructs, but that is out of scope of the lab. Here we are more interested in how we might make sense of our data, and then once we have meaningful groups how we might use them to make predictions with the data. Can a city forecast how it's current neighborhoods are likely to change over the next decade, and can that help with urban planning processes? 
+
+Read the following articles:
+
+> Market Value Analysis: A Data-Based Approach to Understanding Urban Housing Markets. pp 49-59 [ [PDF](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]
+
+> Delmelle, E. C. (2017). Differentiating pathways of neighborhood change in 50 US metropolitan areas. Environment and planning A, 49(10), 2402-2424. [ [PDF](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]
+
+We are interesting in understanding neighborhood change. These data-driven approaches to the phenomenon use machine-learning algorithms to "discover" coherent communities within the city by grouping census tracks into groups that minimize within-group differences and maximize between-group differences. 
+
+You can explore one of these algorithms by looking at examples of how botanists might create "species" based upon characteristics of flowers:
+
+[Clustering Example](https://shiny.rstudio.com/gallery/kmeans-example.html)
+
+A data-driven approach to understanding neighborhood change requires use to (1) define "neighborhoods", or groups of census tracks in the data that are very similar, and (2) use those group characteristics at a point in time to predict how they "neighborhood" might change in the future. Both of the papers present variations on Step (1) above.
+
+Read the two papers, then answer the following questions:
+
+1. **How did each author identify coherent “neighborhoods” (or groups) in each model?**
+2. **Would these "neighborhoods" line up with neighborhoods that are defined on a city's zoning maps (Links to an external site.)?**
+3. **Did the two models use the same data to create the groups?**
+4. **How do the labels and descriptions of the groups differ in each model and why?**
+
+
+<br>
+<br>
 
 
 ** Week 3 - Intro to Census Data 
