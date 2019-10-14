@@ -117,6 +117,19 @@ Overview of expectations.
 
 Description of Project. 
 
+Select a city of your choice in the US (other than Phoenix since that's our test data). We will be modeling neighborhood change between 2000 and 2010. 
+
+* Week 1 - Theories of Neighborhood & Measurement Models  
+* Week 2 - Getting Census Data and Shapefiles into R 
+* Week 3 - Identifying Neighborhoods by Clustering Census Data 
+* Week 4 - Methods to Visualize Demographic Changes 
+* Week 5 - Examine Neighborhood Change in the Data 
+* Week 6 - Create a Change Model 
+* Week 7 - Package Results in a Dashboard 
+
+
+
+
 <br>
 <br>
 
