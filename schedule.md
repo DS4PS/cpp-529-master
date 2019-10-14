@@ -134,9 +134,17 @@ How to get help on labs
 
 
 
+
+
+
+
+
+
 ** Week 1 - Measurement & The Theory of Neighborhoods
 
-*** { @unit = "", @title = "Unit Overview", @foldout  }
+
+
+*** { @unit = "", @title = "Unit Overview", @reading, @foldout  }
 
 
 ## Description
@@ -266,7 +274,7 @@ Create a Yellowdig post with (1) your list of variables, (2) your interpretation
 
 
 
-*** { @unit = "Due Aug 26th", @title = "Lecture on Measurement", @lecture, @foldout  }
+*** { @unit = "", @title = "Measurement", @lecture, @foldout  }
 
 <br>
 <br>
@@ -284,7 +292,7 @@ On your lab you will be practicing with index development using census data and 
 
 
 
-*** { @unit = "Due Oct 22nd", @title = "Lab 01 - Measurement", @assignment, @foldout  }
+*** { @unit = "Due Oct 22nd", @title = "Lab 01", @assignment, @foldout  }
 
 <br>
 <br>
