@@ -28,11 +28,11 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 
-** Welcome
+** Course Overview
 
 
 
-*** { @unit = "", @title = "Course Overview: Community Analytics", @foldout }
+*** { @unit = "", @title = "Community Analytics", @foldout }
 
 
 ## A Theory of Neighborhoods
