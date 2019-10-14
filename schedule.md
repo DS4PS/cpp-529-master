@@ -338,7 +338,7 @@ On your lab you will be practicing with index development using census data and 
 
 
 
-*** { @unit = "Due Oct 22nd", @title = "Lab 01", @assignment, @foldout  }
+*** { @unit = "Due Oct 23nd", @title = "Lab 01", @assignment, @foldout  }
 
 <br>
 <br>
@@ -361,7 +361,40 @@ On your lab you will be practicing with index development using census data and 
 
 
 
-** Week 2 - Neighborhood Types 
+<br>
+
+-----------------------------------------------------------------------------
+
+<br>
+
+
+** Week 2 - Intro to Census Data 
+
+
+*** { @unit = "", @title = "Neighborhood Types", @lecture  }
+
+
+*** { @unit = "Due Oct 30nd", @title = "Lab 02", @assignment  }
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+-----------------------------------------------------------------------------
+
+<br>
+
+
+** Week 3 - Identifying Neighborhood Types
 
 
 *** { @unit = "", @title = "Neighborhood Types", @lecture, @foldout  }
@@ -400,7 +433,17 @@ Read the two papers, then answer the following questions:
 <br>
 
 
-** Week 3 - Intro to Census Data 
+
+
+
+
+
+<br>
+
+-----------------------------------------------------------------------------
+
+<br>
+
 
 
 ** Week 4 - Dot Density Plots 
