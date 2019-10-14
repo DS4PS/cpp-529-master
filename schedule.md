@@ -32,7 +32,7 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 
-*** { @unit = "", @title = "Community Analytics", @foldout }
+*** { @unit = "", @title = "Community Analytics", @lecture, @reading, @foldout }
 
 <br>
 <br>
