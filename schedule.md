@@ -183,6 +183,8 @@ We are less interested in
 
 *A new study by the Harvard economists Raj Chetty and Nathaniel Hendren, when read in combination with an important study they wrote with Lawrence Katz, makes the most compelling case to date that good neighborhoods nurture success... These two new studies are the most powerful demonstration yet that neighborhoods — their schools, community, neighbors, local amenities, economic opportunities and social norms — are a critical factor shaping your children’s outcomes. It’s an intuitive idea, although the earlier evidence for it had been surprisingly thin. As Sean Reardon, a professor of education and sociology at Stanford, said of the study, “I think it will change some of the discussion around how where children grows up matters.”*
 
+But we will use some of the tools developed in psychometrics to begin developing a construct a
+
 ## Learning Objectives
 
 Once you have completed this section you will be able to 
@@ -200,100 +202,90 @@ Grigsby, W., Baratz, M., Galster, G., & Maclennan, D. (1987). The dynamic of nei
 
 Background Chapters:
 
-**You will start simple and get practice with these tools on labs. Skim these, then return for reference as you get stuck or want to deepend your knowledge.**
-
-[Learning to Learn R](http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html)
-
-[Core R](http://ds4ps.org/dp4ss-textbook/ch-010-core-r.html)
-
-[R Studio](http://ds4ps.org/dp4ss-textbook/ch-020-rstudio.html)
-
-[Data-Driven Docs](http://ds4ps.org/dp4ss-textbook/ch-030-data-driven-docs.html)
-
-[Markdown](http://ds4ps.org/dp4ss-textbook/ch-031-markdown.html)
-
 
 
 
 ## Lab 
 
-Lab-01 covers the following topics:
+Experts have developed myriad ways to define neighborhood quality. For example: 
 
-* R Markdown (template provided)
-* Vectors
-  - numeric 
-  - character 
-  - factor 
-  - logical 
+*Inspired by the UN’s influential Human Development Index for nations, their American Human Development Index develops measures of well-being for America’s 435 congressional districts (plus Washington, D.C.). This allows us to see how patterns of uneven and unequal socio-economic well-being exist not just between but within many of America’s largest metros. The overall index is based on three key dimensions of well-being:*
 
-**Functions**
+* *A long and healthy life, as measured by life expectancy at birth.* 
+* *Access to knowledge, based on school enrollment for people ages 3 to 24 (weighted one third) and educational degree attainment for those 25 and older (weighted two-thirds).* 
+* *Standard of living, based on median earnings for full- and part-time workers 16 and older.* 
 
-```r
-names()                 # variable names
-head()                  # preview dataset
-$ operator              # reference a vector inside a dataset
-length()                # vector dimensions
-dim(), nrow(), ncol()   # dataset dimensions
-sum(), summary()        # summarize numeric vectors
-table()                 # summarize factors / character vectors
-```
+*The overall American Human Development Index is graded on a one to ten scale, with ten being the highest score.*  [ [cite](https://www.citylab.com/life/2015/04/the-geography-of-well-being/391188/) ] 
 
-**Data**:
+Or consider a study looking at how low-levels of neighborhood quality or specific deficiencies might impact residents:
 
-Syracuse tax parcels: [ [documentation](https://ds4ps.org/Data-Science-Class/DATA/syr_parcels.html) ]
+*We use data on intergenerational social mobility by neighborhood to examine how social and physical environments beyond concentrated
+poverty predict children’s long-term well-being. First, we examine neighborhoods that are harsh on children’s development: those characterized by high levels of violence, incarceration, and lead exposure....Our explanatory variables are constructed from the Community Survey of the PHDCN, which interviewed a representative sample of Chicago residents about their neighborhood social environments in 1995 and 2002 (combined N of ∼12,000); violent crime rates per 100,000 population from 1995 to 2000, derived from offenses reported by citizens to the police; incarceration rates per population from 1995 to 2000, derived from prison admission data; and lead exposure among children from 1995 to 1997, derived from more than 150,000 blood-level tests conducted by Chicago’s health department.* 
 
-```r
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
-dat <- read.csv( URL, stringsAsFactors=FALSE )
-head( dat )
-```
+*Manduca, R., & Sampson, R. J. (2019). Punishing and toxic neighborhood environments independently predict the intergenerational social mobility of black and white children. Proceedings of the National Academy of Sciences, 116(16), 7772-7777.* [ [pdf]() ]
 
-**Downtown Syracuse**
+These are examples of how different experts and scholars have attempted to operationalize quantitative measures of neighborhood quality in order to better understand how neighborhoods impact the lives of the residents that live there. This sort of measurement is not always straight-forward. When data is sparse or research is poorly-implemented you will often see neighborhood quality measured using some simple proxy variable, such as the poverty rate. The sorts of proxies can be overly-simplistic and as a result not always useful or informative. 
 
-![](https://github.com/DS4PS/dp4ss-textbook/blob/master/figures/downtown-syr.png?raw=true)
+A better way to approach the task, from a measurement theory perspective, is to think about a neighborhood in the same way that psychologists think about human behavior. Can we measure the personality of a neighborhood the same way that [psychologists measure personality types](https://www.headstuff.org/topical/science/myers-briggs-big-five/)? By identifying the most salient dimensions of a personality and developing reliable instruments to precisely measure them. 
 
-**All 42,000 Parcels**
+**Part One**
 
-![](https://github.com/DS4PS/dp4ss-textbook/blob/master/figures/syracus-parcels.png?raw=true)
+Select a case study, report on the instrument that was developed to measure a latent construct. 
+
+* What is the construct? Describe it in a paragraph. 
+* What instrument has been developed to measure it? 
+  - Briefly describe the instrument 
+  - How many questions does it have? 
+  - Is it self-administered or are items recorded by an observer? 
+  - How is the index calculated? 
+  - What is the scale for the index (for example, scores can range from 4 to 8). 
+* Is the instrument **reliable**? Identify an academic study that reports a **Cronbach's alpha** score for the instrument. Are instruments with that alpha considered reliable instruments? 
+* Is the instrument **valid**? Is it measuring a meaningful construct? Report whether you are able to find research that reports evidence of predictive validity. If you know that someone scored a high on the index, would that tell you something about how that individual would perform in some specific context? For example, high IQ predicts better performance on specific analytical tasks. 
+
+**Part Two**
+
+Now you get a chance to develop your own index. Your task is to create a reliable index of Community Well-Being. A community is healthy if we expect citizens to achieve a good quality of life and high economic stability while living there.
+
+The app for Part I can be found here:
+
+https://jdlecy.shinyapps.io/measurement-lab/#section-warmup
+
+Use the Census Data on the “Index Design” tab to complete this part of the assignment. You must select 5 variables from a list of 30 candidate variables to create your index. 
+
+The reliability of an index is measured by calculating a Cronbach’s Alpha score, a statistic that varies from 0 (data that is all noise) to 1 (an index that measures the outcome very precisely). By convention, an index must have a Cronbach’s Alpha measure above 0.6 to be considered reliable, and above 0.8 it is considered highly-reliable. All of the survey questions on a well-designed index produce highly-correlated responses since they are meant to measure the same construct. The higher the correlations, the higher the Cronbach’s Alpha score.
+
+Your index must have a Cronbach’s Alpha score of at least 0.6. The Cronbach’s Alpha score is calculated for you based upon the variables you have selected. You have also been provided with a warm-up exercise for practice.
+
+You can approach the task by constructing and index where a high score on the scale would indicate well-being. Alternatively, you can identify items that measure the absence of well-being (the high and low ends of the scale can easily be reversed). Either way, you should seek to create a reliable index.
+
+STEP 1:
+
+Select the five variables you would like to use for your Community Well-Being Index. The selected variables must generate a Cronbach's Alpha of AT LEAST a 0.6 in order to be reliable. Report which variables you have selected, and the alpha you have achieved.
+
+STEP 2:
+
+Take a screen shot of the correlation structure and alpha score for these variables. Include the screenshot in your report.
+
+STEP 3:
+
+Describe the latent construct that you believe you are measuring. Do you think your variables are a good measure of community well-being, or are they measuring a specific dimension of strength or something else completely?
+
+For example, IQ and creativity are both dimensions of intelligence. They are typically measured using very different types of tests (indices). When creating a new index it is helpful to be clear about what you believe the measure represents.
+
+WHAT TO SUBMIT
+
+Record your findings in the same document as Part II of the assignment. Submit via Canvas.
+Create a Yellowdig post with (1) your list of variables, (2) your interpretation of what the index measures, and (3) a screen shot of your correlation matrix and Cronbach’s Alpha score.
+
 
 
 
 
 *** { @unit = "Due Aug 26th", @title = "Discussion Topic: The Promise of Big and Open Data", @assignment, @foldout  }
 
-## The Promise of Big, Open Data
-
-
-The world is simultaneously generating more data than it has ever before, as well as pushing for policies for making government data more accessible and democratic. These trends and movements is an important enabling aspect of data science, becuse it provides opportunity for real insights that can change our understanding of systems and allow us to hold institutions accountable.
-
-So ignoring potential problems with big and open data for now, read about two interesting cases where big and open data have offered deep insights into city planning and human nature. 
-
-"[A Data Analyst's Blog](https://www.npr.org/sections/alltechconsidered/2014/11/28/367046864/a-data-analysts-blog-is-transforming-how-new-yorkers-see-their-city
-) Is Transforming How New Yorkers See Their City", NPR, Nov 2018.
-
-[How a blog saved OK Cupid](https://fivethirtyeight.com/features/christian-rudder-dataclysm-okcupid/), FiveThirtyEight Blog, Nov 2014.
-
-
-<br> 
-
-**ASSIGNMENT:** 
-
-> For your discussion topic this week, find one data-driven blog post from Ben Wellington's [I Quant NY](http://iquantny.tumblr.com/) and/or OK Cupid's [OK Trends](https://theblog.okcupid.com/tagged/data) where you discovered something cool that you did not know, and share it with the group. In your post highlight what is interesting about the example, and what data made it possible.
-
-**Please post your reflection as a new pin on [YellowDig](https://canvas.asu.edu/courses/29528/assignments/656491).**
-
-<br>
-
-You can also check out Ben's [Ted Talk](https://www.youtube.com/watch?v=6xsvGYIxJok), or this short interview. 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZTdPpoUp25w?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<br>
-
 
 
 *** { @unit = "Due Aug 29th", @title = "Lab 01", @assignment, @foldout  }
-
 
 <br>
 <br>
