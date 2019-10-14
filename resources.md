@@ -31,6 +31,12 @@ layout: default
 * [ [Social Networks and Social Mobility](https://github.com/DS4PS/cpp-529-master/raw/master/articles/Social-Networks.pdf) ]  
 
 
+<br>
+
+-----------
+
+<br>
+
 
 
 # Geographic Analysis in R
@@ -64,14 +70,27 @@ layout: default
 * [ [Choropleths vs Cartograms](https://ds4ps.org/2019/07/02/cartograms.html) ] 
 * [ Dot Density Maps {[V1](https://tarakc02.github.io/dot-density/)} {[V2](https://www.andybeger.com/2018/05/11/us-2016-dot-density/)} {[racial dot density map](https://demographics.virginia.edu/DotMap/index.html)} ]
 
+
 ### Interactive Maps 
 
 * [ [Leaflet R]() ] 
 * [ [Example Dynamic Map for Nonprofits](https://www.impactview.org/#/) ]  
 
 
+### Geocoding in R
+
+* [ [What is Geocoding? Addresses to Coordinates](https://cengel.github.io/rspatial/5_Geocoding.nb.html) ] 
+* [ [ggmap Package](https://github.com/dkahle/ggmap/blob/master/README.md) ]  {[geocoding instructions](https://lucidmanager.org/geocoding-with-ggmap/)}  
+* [ [Free Census Geocoding Tool]() ]  
+* [ [Reverse Geocoding: Coordinates to Addresses](https://towardsdatascience.com/reverse-geocoding-in-r-f7fe4b908355) ]
+
+
 
 </div>
+
+-----
+
+
 <br><br><br>
 
 
