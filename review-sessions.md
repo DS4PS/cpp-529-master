@@ -6,33 +6,23 @@ layout: default
   
 <br><br>
 
+
 # Review Sessions
 
-Please note that there will **NOT** be review sessions on the following days. Feel free to schedule virtual office hours those weeks if are need help (see link below). 
-
-* **Wednesday, Sept 4th**
-* **Monday, Sept 30th**
-
+Please note that there will **NOT** be live review sessions for this class.  Instead, feel free to schedule virtual office hours to discuss any questions you may have about the class.  When relevant, the instructor will post additional instructional videos addressing any common problems that students seem to be having. 
 
 <br>
 
 
-### TIMES: 
+### Virtual Office Hour Times: 
 
 ---
 
-Mon 12pm - 1pm:  523 Program Eval  
-Mon  1pm - 2pm:  526 Data Science  
+Tuesday 2pm - 3pm:  529 Data Practicum
 
 ---
 
-Tues 5pm - 6pm:  523 Program Eval  
-Tues 6pm - 7pm:  526 Data Science   
-
----
-
-Wed  5pm - 6pm:  526 Data Science  
-Wed  6pm - 7pm:  523 Program Eval  
+Thursday 2pm - 3pm:  529 Data Practicum
 
 ---
 
@@ -45,15 +35,15 @@ Wed  6pm - 7pm:  523 Program Eval
 
 You can attend the session in-person if you are on campus, or virtually:
 
-**In-Person**: Policy Analytics Lab: 4th Floor of UCENT (take a left off the elevators)
-**Virtually**: Zoom session: [https://asu.zoom.us/j/944016877](https://asu.zoom.us/j/944016877 )     
+**In-Person**: Available upon request
+**Virtually**: Zoom session: [https://asu.zoom.us/j/162760097](https://asu.zoom.us/j/162760097)     
 
 Or if you need to schedule office hours:
 
 **Virtual Office Hours**: 
-
+https://calendly.com/tonyjames-1/15min
 <!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/lecy/15min?hide_event_type_details=1" style="min-width:320px;height:630px;"></div>
+<div class="calendly-inline-widget" data-url="https://calendly.com/tonyjames-1/15min?hide_event_type_details=1" style="min-width:320px;height:630px;"></div>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
 <!-- Calendly inline widget end -->
 
