@@ -35,6 +35,7 @@ layout: default
 
 # Geographic Analysis in R
 
+* [ [Intro to GIS in R: **sp** and **sf** Packages](https://www.jessesadler.com/post/gis-with-r-intro/) ]
 * [ [Maps!](https://andrewbtran.github.io/NICAR/2019/mapping/02_case_study_slides.html#/) ] 
 * [ [Mapping Workshop](https://github.com/andrewbtran/NICAR-2019-mapping) ]   
 * [ [Manny Gimond's Free Text on GIS](https://mgimond.github.io/Spatial/mapping-data-in-r.html) ]  
@@ -42,7 +43,8 @@ layout: default
 
 ### Shapefiles
 
-* [ [tigris](https://rpubs.com/walkerke/tigris01) ]
+* [ [tigris](https://rpubs.com/walkerke/tigris01) ] 
+* [ [**sp** Gallery of Map Viz Options](https://edzer.github.io/sp/) ] 
 * [ [GeoJSON File Formats](https://blog.exploratory.io/creating-geojson-out-of-shapefile-in-r-40bc0005857d) ] 
  
 
