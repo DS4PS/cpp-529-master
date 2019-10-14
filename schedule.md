@@ -28,6 +28,7 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 
+
 ** Course Overview
 
 
@@ -87,15 +88,21 @@ Both articles share a model where they use census data and clustering techniques
 <br>
 
 
-<br>
-<br>
 
 
 ## Census Data
 
+<br>
+<br>
 
 
-## GIS
+## GIS Tools in R
+
+<br>
+<br>
+
+
+
 
 
 
@@ -112,6 +119,7 @@ Description of Project.
 
 <br>
 <br>
+
 
 
 
@@ -137,6 +145,11 @@ How to get help on labs
 
 
 
+<br>
+
+-----------------------------------------------------------------------------
+
+<br>
 
 
 
@@ -167,15 +180,13 @@ Once you have completed this section you will be able to
 
 ## Assigned Reading
 
-Required:
+REQUIRED:
 
 Schäffer, U. (2007). Management accounting & control scales handbook. Springer Science & Business Media. [ [2-page PDF](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/introduction-to-construct-measurement.pdf) ] 
 
-*Kimberlin, C. L., & Winterstein, A. G. (2008). Validity and reliability of measurement instruments used in research. American journal of health-system pharmacy, 65(23), 2276-2284.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/reliabillity-and-validity-of-measures.pdf) ]
-
 *Pitkin, B. (2001). Theories of neighborhood change: Implications for community development policy and practice. UCLA Advanced Policy Institute, 28.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/neighborhood-change-theories/theories-of-neighborhood-change.pdf) ]
 
-For reference:
+FOR REFERENCE:
 
 **Measurement**
 
@@ -223,7 +234,28 @@ A better way to approach the task, from a measurement theory perspective, is to 
 
 **Part One**
 
-Select a case study, report on the instrument that was developed to measure a latent construct. 
+Select one of the following instruments to review:
+
+- [SF-36 Measure of Health](https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1c-health-care-evaluation-health-care-assessment/measures-health-status) [ [questions](https://www.brandeis.edu/roybal/docs/SF-36_website_PDF.pdf) ] [ [benchmarks pp 3135-3136](https://www.dropbox.com/s/318rw6obrc3gne4/SF-36-Health-Survey-Update.pdf?dl=1) ] 
+- [Oxford Happiness Index](http://content.time.com/time/magazine/article/0,9171,1015832,00.html) [ [questions & benchmarks](http://www.blake-group.com/sites/default/files/assessments/Oxford_Happiness_Questionnaire.pdf) ] [ [reliability](http://www.louisianaparadox.com/wp-content/uploads/2011/01/Hills-Argyle-2002.pdf) ] 
+- [Grit (Duckworth index)](http://freakonomics.com/podcast/grit/) [ [questions](https://angeladuckworth.com/grit-scale/) ] [ [benchmarks & reliability](https://www.dropbox.com/s/0y545gn2withb5e/DuckworthPetersonMatthewsKelly_2007_PerseveranceandPassion.pdf?dl=0) ] 
+- [The Big Five (personality index)](https://www.psychologytoday.com/us/blog/give-and-take/201309/goodbye-mbti-the-fad-won-t-die) [ [questions & benchmarks](https://openpsychometrics.org/tests/IPIP-BFFM/) ] [ [scoring](https://ipip.ori.org/new_ipip-50-item-scale.htm) ] 
+
+Answer the following questions about your instrument. Use Google or Google Scholar (for academic references) to find information about your instrument as needed.
+
+1. What is the latent construct that your instrument measures? Provide a precise definition of the construct.
+1. Explain the instrument that has been developed to measure the construct. How many items does it use? How are responses reported (e.g yes/no, Likert scale, or otherwise).
+1. Report a Cronbach's alpha score of your instrument (or another reliability measure) that has been published in a legitimate academic outlet. Report the article citation and include the article with your submission.
+1. Is this instrument appropriate for high-stakes performance reviews? For example, if your health improves you receive a discount on your insurance premiums. Or phrased another way, can someone manipulate their responses to get a high score? The LSAT is an example where someone can NOT game their responses to score higher. On surveys, however, people tend to over-estimate their height and under-report their income.
+1. OPTIONAL: Complete the survey and calculate your score on the index. How do you know if your score is high or low (i.e. what is the average response from the general population)? Where does this index benchmark come from?
+
+The following chapter is available as a reference:
+
+*Kimberlin, C. L., & Winterstein, A. G. (2008). Validity and reliability of measurement instruments used in research. American journal of health-system pharmacy, 65(23), 2276-2284.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/reliabillity-and-validity-of-measures.pdf) ]
+
+
+-----
+
 
 * What is the construct? Describe it in a paragraph. 
 * What instrument has been developed to measure it? 
@@ -234,6 +266,20 @@ Select a case study, report on the instrument that was developed to measure a la
   - What is the scale for the index (for example, scores can range from 4 to 8). 
 * Is the instrument **reliable**? Identify an academic study that reports a **Cronbach's alpha** score for the instrument. Are instruments with that alpha considered reliable instruments? 
 * Is the instrument **valid**? Is it measuring a meaningful construct? Report whether you are able to find research that reports evidence of predictive validity. If you know that someone scored a high on the index, would that tell you something about how that individual would perform in some specific context? For example, high IQ predicts better performance on specific analytical tasks. 
+
+
+
+<br>
+
+-----------------------------------------------------------------------------
+
+<br>
+
+
+
+
+
+
 
 **Part Two**
 
