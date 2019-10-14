@@ -1,6 +1,6 @@
 ---
 layout: lab
-title: Lab 03 - Feature Selection 
+title: Lab 01 - Measurement
 image: microscope.png
 image-width: 150px
 ---
