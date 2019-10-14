@@ -28,26 +28,27 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 
-** Welcome
+** Course Overview
 
 
 
-*** { @unit = "", @title = "Course Overview: Community Analytics", @foldout }
+*** { @unit = "", @title = "Community Analytics", @foldout }
+
+<br>
+<br>
 
 
-## A Theory of Neighborhoods
+## Neighborhoods Matter
 
 *Hundreds of studies have demonstrated that the odds of economic success vary across neighborhoods. The far more difficult question is whether that’s because neighborhoods nurture success (or failure), or whether they just attract those who would succeed (or fail) anyway.*
 
-**Neighborhoods Matter** 
-
-Urban policy scholars have long made the case for the primacy of place. 
+Urban policy scholars have long made the case for the primacy of place:
 
 *Ellen, I. G., & Turner, M. A. (1997). Does neighborhood matter? Assessing recent evidence. Housing Policy Debate, 8(4), 833-866.* [ [pdf]() ]
 
-Economists have come to the conclusion that neighborhoods matter more than they expected. See Justin Wolfers: Why the New Research on Mobility Matters: An Economist's View; The New York Times, May 4, 2015. [ [link](https://www.nytimes.com/2015/05/05/upshot/why-the-new-research-on-mobility-matters-an-economists-view.html) ] [ [pdf]() ]
+Economists have more recently come to the conclusion that neighborhoods matter more than they expected. For example, see *Justin Wolfers: Why the New Research on Mobility Matters: An Economist's View; The New York Times, May 4, 2015.* [ [link](https://www.nytimes.com/2015/05/05/upshot/why-the-new-research-on-mobility-matters-an-economists-view.html) ] [ [pdf]() ]
 
-And there is growing evidence that neighborhoods can be used as a *treatment* of sorts to aid social mobility, i.e. that programs which help low-income families move to stable and thriving neighborhoods have significant long-term impact on the mobility of the kids. See the Moving to Opportunity Study [Part 1](https://opportunityinsights.org/paper/newmto/) and [Part 2](https://www.citylab.com/equity/2019/08/affordable-housing-assistance-voucher-seattle-neighborhoods/595423/).
+There is growing evidence that neighborhoods can be used as a *treatment* to aid in social mobility, i.e. that programs which help low-income families move to stable and thriving neighborhoods have significant long-term impact on the mobility of the kids. See the Moving to Opportunity Study { [Part 1](https://opportunityinsights.org/paper/newmto/) } and { [Part 2](https://www.citylab.com/equity/2019/08/affordable-housing-assistance-voucher-seattle-neighborhoods/595423/) }.
 
 **The Quality of Neighborhoods Varies Significantly**
 
@@ -59,15 +60,7 @@ The Geography of Well-Being, CITYLAB, Richard Florida, APR 23, 2015 [ [link](htt
 
 Neighborhoods don't start out bad. They typically begin as vibrant middle-class developments that pass through various life-cycles over time. Why do some neighborhoods remain stable and thriving, and others experience drastic decline and stagnation? Theories of neighborhod change have been developed to answer that question. 
 
-*Pitkin, B. (2001). Theories of neighborhood change: Implications for community development policy and practice. UCLA Advanced Policy Institute, 28.* [ [pdf]() ]
-
-For reference: 
-
-*Temkin, K., & Rohe, W. (1996). Neighborhood change and urban policy. Journal of planning education and research, 15(3), 159-170.* [ [pdf]() ]
-
-*Grigsby, W., Baratz, M., Galster, G., & Maclennan, D. (1987). The dynamic of neighborhood change and decline. Progress in Planning, 28, 1.* [ [pdf]() ]
-
-*Schwirian, K. P. (1983). Models of neighborhood change. Annual review of Sociology, 9(1), 83-102.* [ [pdf]() ]
+*Pitkin, B. (2001). Theories of neighborhood change: Implications for community development policy and practice. UCLA Advanced Policy Institute, 28.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/neighborhood-change-theories/theories-of-neighborhood-change.pdf) ]
 
 **Data-Driven Models of Neighborhood Change**
 
@@ -75,11 +68,11 @@ The early theoretical work has been augmented by data-driven models that help [p
 
 In this class we will specifically draw upon approaches described in:
 
-*Firschein, J. (2015). Putting data to work: data-driven approaches to strengthening neighborhoods. IFC Bulletins chapters, 38.* _**Market Value Analysis: A Data-Based Approach to Understanding Urban Housing Markets, pp 41-60.**_ [ [pdf]() ]
+*Firschein, J. (2015). Putting data to work: data-driven approaches to strengthening neighborhoods. IFC Bulletins chapters, 38.* _**Market Value Analysis: A Data-Based Approach to Understanding Urban Housing Markets, pp 41-60.**_ [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/data-driven-models/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]
 
 And recent academic work that uses census data and machine learning to identify patterns in community development: 
 
-*Delmelle, E. C. (2017). Differentiating pathways of neighborhood change in 50 US metropolitan areas. Environment and planning A, 49(10), 2402-2424.* [ [pdf]() ]
+*Delmelle, E. C. (2017). Differentiating pathways of neighborhood change in 50 US metropolitan areas. Environment and planning A, 49(10), 2402-2424.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/data-driven-models/differentiating_pathways_to_neighborhood_change.pdf) ]
 
 Both articles share a model where they use census data and clustering techniques to classify neighborhoods by type, then examine how each type is likely to change over time. 
 
@@ -93,7 +86,6 @@ Both articles share a model where they use census data and clustering techniques
 <br>
 <br>
 
-<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
 <br>
 <br>
@@ -102,34 +94,8 @@ Both articles share a model where they use census data and clustering techniques
 ## Census Data
 
 
-In this course we cover the foundations of data programming with the R language. In order to create robust and dynamic analysis we need to use a couple of tools that were built to leverage the power of R and create compelling narratives. R Studio helps you manage projects by organizing files, scripts, packages and output. Markdown is a simple formatting convention that allows you to create publication-quality documents. And R Markdown is a specific version of Markdown that allows you to combine text and code to create data-driven documents. 
-
-[CH-01 Core R](http://ds4ps.org/dp4ss-textbook/ch-010-core-r.html)
-
-[CH-02 R Studio](http://ds4ps.org/dp4ss-textbook/ch-020-rstudio.html)
-
-[Data-Driven Docs](http://ds4ps.org/dp4ss-textbook/ch-030-data-driven-docs.html)
-
-[A Markdown Guide](http://ds4ps.org/dp4ss-textbook/ch-031-markdown.html)
-
-<br>
-
-![](https://github.com/DS4PS/dp4ss-textbook/blob/master/figures/r-tools-overview.png?raw=true)
-
-<br>
-<br>
-
 
 ## GIS
-
-[Getting Started with R Markdown](https://rmarkdown.rstudio.com/lesson-1.html)
-
-You will have plenty of practice with these tools this semester. You will submit your labs as knitted R Markdown (RMD) files.
-
-[![](https://github.com/DS4PS/ds4ps.github.io/blob/master/gifs/NewCodeChunk/NewCodeChunk_media/NewCodeChunk.gif?raw=true)](../gifs/NewCodeChunk/NewCodeChunk.html)
-
-<br>
-<br>
 
 
 
@@ -179,9 +145,9 @@ This section introduces the field of measurement theory in psychology and social
 
 *Many variables studied by psychologists are straightforward and simple to measure. These include sex, age, height, weight, and birth order. You can often tell whether someone is male or female just by looking. You can ask people how old they are and be reasonably sure that they know and will tell you. Although people might not know or want to tell you how much they weigh, you can have them step onto a bathroom scale. Other variables studied by psychologists—perhaps the majority—are not so straightforward or simple to measure. We cannot accurately assess people’s level of intelligence by looking at them, and we certainly cannot put their self-esteem on a bathroom scale. These kinds of variables are called **constructs** (pronounced CON-structs) and include personality traits (e.g., extraversion), emotional states (e.g., fear), attitudes (e.g., toward taxes), and abilities (e.g., athleticism).* [ [Understanding Psychological Measurement](https://opentextbc.ca/researchmethods/chapter/understanding-psychological-measurement/) ]
 
-We are less interested in 
+We are less interested in psychological measures as in constructs of neighborhood quality. 
 
-*A new study by the Harvard economists Raj Chetty and Nathaniel Hendren, when read in combination with an important study they wrote with Lawrence Katz, makes the most compelling case to date that good neighborhoods nurture success... These two new studies are the most powerful demonstration yet that neighborhoods — their schools, community, neighbors, local amenities, economic opportunities and social norms — are a critical factor shaping your children’s outcomes. It’s an intuitive idea, although the earlier evidence for it had been surprisingly thin. As Sean Reardon, a professor of education and sociology at Stanford, said of the study, “I think it will change some of the discussion around how where children grows up matters.”*
+*A new study by the Harvard economists Raj Chetty and Nathaniel Hendren, when read in combination with an important study they wrote with Lawrence Katz, makes the most compelling case to date that good neighborhoods nurture success... they are the most powerful demonstration yet that neighborhoods — their schools, community, neighbors, local amenities, economic opportunities and social norms — are a critical factor shaping your children’s outcomes. It’s an intuitive idea, although the earlier evidence for it had been surprisingly thin.*
 
 But we will use some of the tools developed in psychometrics to begin developing a construct a
 
@@ -195,12 +161,31 @@ Once you have completed this section you will be able to
 
 Required:
 
-Schäffer, U. (2007). Management accounting & control scales handbook. Springer Science & Business Media. [ [2-page PDF]() ] 
+Schäffer, U. (2007). Management accounting & control scales handbook. Springer Science & Business Media. [ [2-page PDF](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/introduction-to-construct-measurement.pdf) ] 
+
+*Kimberlin, C. L., & Winterstein, A. G. (2008). Validity and reliability of measurement instruments used in research. American journal of health-system pharmacy, 65(23), 2276-2284.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/reliabillity-and-validity-of-measures.pdf) ]
+
+*Pitkin, B. (2001). Theories of neighborhood change: Implications for community development policy and practice. UCLA Advanced Policy Institute, 28.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/neighborhood-change-theories/theories-of-neighborhood-change.pdf) ]
+
+For reference:
+
+**Measurement**
+
+*Measurement Theory and Practice, from: Smith, F. (2002). Research methods in pharmacy practice. Pharmaceutical Press.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/measurement-theory-and-practice.pdf) ]
+
+*Schäffer, U. (2007). Management accounting & control scales handbook. Springer Science & Business Media.* [ [full text](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/Management-Accounting-and-Control-Scales-Handbook.pdf) ]
+
+*MacKenzie, S. B., Podsakoff, P. M., & Podsakoff, N. P. (2011). Construct measurement and validation procedures in MIS and behavioral research: Integrating new and existing techniques. MIS quarterly, 35(2), 293-334.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/construct-measurement-and-validation-in-behavioral-research.pdf) ]
+
+**Theories of Neighborhood Change**
+
+*Temkin, K., & Rohe, W. (1996). Neighborhood change and urban policy. Journal of planning education and research, 15(3), 159-170.* [ [pdf]() ]
+
+*Grigsby, W., Baratz, M., Galster, G., & Maclennan, D. (1987). The dynamic of neighborhood change and decline. Progress in Planning, 28, 1.* [ [pdf]() ]
+
+*Schwirian, K. P. (1983). Models of neighborhood change. Annual review of Sociology, 9(1), 83-102.* [ [pdf]() ]
 
 
-Grigsby, W., Baratz, M., Galster, G., & Maclennan, D. (1987). The dynamic of neighborhood change and decline. Progress in Planning, 28, 1.
-
-Background Chapters:
 
 
 
@@ -222,7 +207,7 @@ Or consider a study looking at how low-levels of neighborhood quality or specifi
 *We use data on intergenerational social mobility by neighborhood to examine how social and physical environments beyond concentrated
 poverty predict children’s long-term well-being. First, we examine neighborhoods that are harsh on children’s development: those characterized by high levels of violence, incarceration, and lead exposure....Our explanatory variables are constructed from the Community Survey of the PHDCN, which interviewed a representative sample of Chicago residents about their neighborhood social environments in 1995 and 2002 (combined N of ∼12,000); violent crime rates per 100,000 population from 1995 to 2000, derived from offenses reported by citizens to the police; incarceration rates per population from 1995 to 2000, derived from prison admission data; and lead exposure among children from 1995 to 1997, derived from more than 150,000 blood-level tests conducted by Chicago’s health department.* 
 
-*Manduca, R., & Sampson, R. J. (2019). Punishing and toxic neighborhood environments independently predict the intergenerational social mobility of black and white children. Proceedings of the National Academy of Sciences, 116(16), 7772-7777.* [ [pdf]() ]
+*Manduca, R., & Sampson, R. J. (2019). Punishing and toxic neighborhood environments independently predict the intergenerational social mobility of black and white children. Proceedings of the National Academy of Sciences, 116(16), 7772-7777.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/social-mobility/toxic-neighborhoods-and-social-mobility.pdf) ]
 
 These are examples of how different experts and scholars have attempted to operationalize quantitative measures of neighborhood quality in order to better understand how neighborhoods impact the lives of the residents that live there. This sort of measurement is not always straight-forward. When data is sparse or research is poorly-implemented you will often see neighborhood quality measured using some simple proxy variable, such as the poverty rate. The sorts of proxies can be overly-simplistic and as a result not always useful or informative. 
 
@@ -248,7 +233,7 @@ Now you get a chance to develop your own index. Your task is to create a reliabl
 
 The app for Part I can be found here:
 
-https://jdlecy.shinyapps.io/measurement-lab/#section-warmup
+[https://jdlecy.shinyapps.io/measurement-lab/#section-warmup](https://jdlecy.shinyapps.io/measurement-lab/#section-warmup) 
 
 Use the Census Data on the “Index Design” tab to complete this part of the assignment. You must select 5 variables from a list of 30 candidate variables to create your index. 
 
@@ -285,18 +270,18 @@ Create a Yellowdig post with (1) your list of variables, (2) your interpretation
 
 
 
-*** { @unit = "Due Aug 29th", @title = "Lab 01", @assignment, @foldout  }
+*** { @unit = "Due Oct 22nd", @title = "Lab 01 - Measurement", @assignment, @foldout  }
 
 <br>
 <br>
 
-## Lab-01 - Practice with Vectors
+## Lab-01 - Measurement
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/labs/lab-01-instructions.html">LAB-01 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-01-instructions/">LAB-01 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/750552">SUBMIT LAB-01</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
 <br>
 <br>
