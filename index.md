@@ -3,24 +3,24 @@ layout: index
 title: Syllabus
 
 index:
-    title: Data Practicum Community Analytics
+    title: Data Practicum in Community Analytics
     image: community-science.png
-    subtitle: This course introduces students to the field of data science and its applications in the public and nonprofit sectors. Modern performance management and evaluation processes require strong data literacy and the ability to combine and analyze data from a variety of sources to inform managerial processes. We offer a practical, tools-based approach that is designed to build strong foundations for people that want to work as analysts, data-driven managers, or data-driven journalists. We will cover data programming fundamentals, visualization, text analysis, automated reporting, and dynamic reporting using dashboards. The course is analytically rigorous, but no prior programming experience is assumed.
+    subtitle: This course uses current topics and debates in urban policy and economic development to demonstrate the usefulness of data-driven approaches to public policy. Students will be introduced to contemporary theories of community revitalization and neighborhood change, then given tools for operationalizing the theories using Census data, GIS and spatial packages in R, machine learning tools, and regression analysis in order to identify important structural components of neighborhood change in large metro areas. The models presented can help city managers and urban policy-makers better target programs and resources appropriate for neighborhoods that are vulnerable to decline, and those that are likely to experience rapid gentrification. Students will replicate results from lectures using Census data from a major metro area of their choosing.  
     
 info: 
  program_title: Program Evaluation and Data Analytics
  program_website: https://asuonline.asu.edu/online-degree-programs/graduate/program-evaluation-and-data-analytics-ms/
- course_title: Data Practicum - Community Analytic
+ course_title: Data Practicum - Community Analytics
  course_number: CPP 529 
  course_level: Graduate 
- course_website: 'https://canvas.asu.edu/courses/29528'
+ course_website: 'https://canvas.asu.edu/courses/37047'
  course_start_end_dates: Oct 16 to Dec 06, 2019  
  course_prerequisites:  
  class_meets_when:  Asynchronous  
- class_meets_where:  'TBD'
- review_sessions_when: TBD 
- review_sessions_where: UCENT Policy Analytics Lab 4th Floor + Zoom
- discussion_board_url: 'https://ds4ps.org/cpp-526-fall-2019/help/'
+ class_meets_where:  'https://asu.zoom.us/j/162760097'
+ review_sessions_when: 'Virtual Office Hours Tues/Thurs 2-3pm AZ'
+ review_sessions_where: 'https://github.com/DS4PS/cpp-529-master/issues/1'
+ discussion_board_url: 'https://ds4ps.org/cpp-529-master/help/'
 
 instructor:
 -  name: Anthony Howell, PhD
@@ -34,35 +34,8 @@ instructor:
    linked_in_url:
    office_hours_time: Flexible
    office_hours_location:  Zoom or Office
-   office_hours_app_url:  'https://calendly.com/lecy/15min'
+   office_hours_app_url:  'https://calendly.com/tonyjames-1/15min'
    
-
-textbooks:
-- title: R Cookbook. Proven recipes
-  authors: Paul Teetor
-  edition: 2015
-  link: http://www.bagualu.net/wordpress/wp-content/uploads/2015/10/R_Cookbook.pdf
-  required: Not Required
-- title: R for Data Science
-  authors: Wickham, H., & Grolemund, G.
-  edition: Free Online
-  link: http://r4ds.had.co.nz/
-  required: Not Required
-- title: The Art of Data Science
-  authors: Peng, R. D., & Matsui, E.
-  edition: Free Online
-  link: https://leanpub.com/artofdatascience
-  required: Not Required
-- title: Modern Dive, Intro to Stats and Data Sciences via R
-  authors: Chester Ismay & Albert Y. Kim
-  edition: Free Online
-  link: https://moderndive.com/4-tidy.html
-  required: Not Required  
-- title: Big Book of Dashboards
-  authors: Smith, Smith, and Johnson
-  edition: 2017
-  link: https://www.amazon.com/Big-Book-Dashboards-Visualizing-Real-World/dp/1119282713/
-  required: Not Required 
   
 --- 
 
