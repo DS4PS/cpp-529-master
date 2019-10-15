@@ -30,10 +30,19 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 ** Course Overview
+*** { @unit = "", @title = "Community Analytics",  @lecture, @foldout }
+
+<br>
+<br>
+
+
+## Video Lectures
+
+(https://www.dropbox.com/sh/vtl4hk6st2263kp/AACsfPzi1geeO462CPmCvxVqa?dl=0) ] [ [Instructor Introduction]() ]
 
 
 
-*** { @unit = "", @title = "Community Analytics", @lecture, @reading, @foldout }
+*** { @unit = "", @title = "Community Analytics",  @reading, @foldout }
 
 <br>
 <br>
@@ -82,42 +91,12 @@ Both articles share a model where they use census data and clustering techniques
 
 
 
-## Community Analytics
-
-<br>
-<br>
 
 
 
 
-## Census Data
+*** { @unit = "", @title = "Weekly Topics",  @foldout }
 
-<br>
-<br>
-
-
-## GIS Tools in R
-
-<br>
-<br>
-
-
-
-
-
-
-
-*** { @unit = "", @title = "Assignments",  @foldout }
-
-
-<br>
-<br>
-
-Overview of expectations. 
-
-Description of Project. 
-
-Select a city of your choice in the US (other than Phoenix since that's our test data). We will be modeling neighborhood change between 2000 and 2010. 
 
 * Week 1 - Theories of Neighborhood & Measurement Models  
 * Week 2 - Getting Census Data and Shapefiles into R 
