@@ -142,7 +142,6 @@ Select a city of your choice in the US (other than Phoenix since that's our test
 
 <br>
 <br>
-How to contact Professor Howell
 How to get help on labs 
 
 * Instructions for creating new questions
