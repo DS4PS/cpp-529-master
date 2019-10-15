@@ -31,13 +31,13 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 ** Course Overview
 
-*** { @unit = "", @title = "Community Analytics",  @lecture, @foldout }
+*** { @unit = "", @title = "Video Lectures",  @lecture, @foldout }
 
 <br>
 <br>
 
 
-## Video Lectures
+## Instructor Introduction
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JStm6L476kc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
