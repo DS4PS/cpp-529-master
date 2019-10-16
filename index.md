@@ -18,8 +18,8 @@ info:
  course_prerequisites:  
  class_meets_when:  Asynchronous  
  class_meets_where:  'https://asu.zoom.us/j/162760097'
- review_sessions_when: 'Virtual Office Hours Tues/Thurs 2-3pm AZ'
- review_sessions_where: 'https://github.com/DS4PS/cpp-529-master/issues/1'
+ review_sessions_when: 'Tues/Thurs 2-3pm AZ'
+ review_sessions_where: 'Virtual Office Hours Only'
  discussion_board_url: 'https://ds4ps.org/cpp-529-master/help/'
 
 instructor:
