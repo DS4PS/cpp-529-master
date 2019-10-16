@@ -208,7 +208,7 @@ FOR REFERENCE:
 <br>
 <br>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=819" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=1342" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 *** { @unit = "", @title = "Measurement", @lecture, @foldout  }
 
@@ -234,6 +234,10 @@ On your lab you will be practicing with index development using census data and 
 
 <br>
 <br>
+
+## Brief Video Instruction
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xKV8QPtH52w?start=8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Lab-01 - Measurement
 
