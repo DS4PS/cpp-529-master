@@ -44,6 +44,10 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 *** { @unit = "", @title = "Syllabus and Course Structure",  @lecture, @foldout }
 
+<br>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l1LMI1mMwe4?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 *** { @unit = "", @title = "Community Analytics",  @reading, @foldout }
 
