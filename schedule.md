@@ -124,7 +124,9 @@ Both articles share a model where they use census data and clustering techniques
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
+<br> 
+-------------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 1 - Measurement & The Theory of Neighborhoods
 
