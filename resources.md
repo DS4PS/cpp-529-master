@@ -48,7 +48,8 @@ layout: default
 
 ### Shapefiles
 
-* [ [tigris](https://rpubs.com/walkerke/tigris01) ] 
+* [ [tigris](https://rpubs.com/walkerke/tigris01) ] {[webinar slides](https://walkerke.github.io/tigris-webinar/#1)} {[video](https://www.youtube.com/watch?v=lZuVxVONK9g&__s=hpmyiy9wyzwapfzug5q9)} {[files](https://github.com/walkerke/tigris-webinar/blob/master/R/examples.R)}
+* [ [**sf** Simple Features file standards](https://r-spatial.github.io/sf/) ] {[cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/sf.pdf)}  
 * [ [**sp** Gallery of Map Viz Options](https://edzer.github.io/sp/) ] 
 * [ [GeoJSON File Formats](https://blog.exploratory.io/creating-geojson-out-of-shapefile-in-r-40bc0005857d) ] 
  
