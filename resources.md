@@ -9,7 +9,7 @@ layout: default
 # Community Analytics 
 
 
-### Social Mobility 
+### Studies on Social Mobility 
 
 * [ [Inequality of Opportunity Project](https://opportunityinsights.org/) ] [data](https://opportunityinsights.org/course/) 
 * [ [Big Findings on Opportunity and Mobility We All Should Know](https://www.brookings.edu/blog/social-mobility-memos/2018/01/11/raj-chetty-in-14-charts-big-findings-on-opportunity-and-mobility-we-should-know/) ]
