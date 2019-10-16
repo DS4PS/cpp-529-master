@@ -7,7 +7,7 @@ image-width: 150px
 
 
 
-<a class="uk-button uk-button-default" href="https://canvas.asu.edu">Submit Lab 01</a>
+<a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/37047/assignments/840368">Submit Lab 01</a>
 
 
 ## Overview
