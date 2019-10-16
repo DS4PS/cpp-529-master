@@ -175,19 +175,21 @@ Grades for the course are largely based on weekly labs. Assigned work is accompa
 
 Please post lab questions on the [Get Help](https://ds4ps.org/cpp-529-master/help/) page on this site, schedule individual office hours using the Calendly link provided above, and email the instructor directly instead of using the Canvas system. 
 
+If you have reviewed all of the material for the week and a theoretical or analytical concept is not clear, you are welcome to [request a code-through](https://github.com/DS4PS/cpp-529-master/issues/1). These are appropriate for clarification about ideas or the process of approaching a problem. Coding questions about problems with specific functions or datasets should be posted on the regular discussion board. 
+
 Students should be aware that the course instructor will attempt to respond to any course-related email as quickly as possible. Students are asked to allow between 24 and 48 hours for replies to direct instructor emails, generally, as a reasonable time to reply to questions or other issues posed in an email. Additionally, the general timeline for instructor grading or other feedback on assignments, either writer work or online discussion work, is between 5 and 10 work days.
 
 ## G.  Student Conduct: Expectation of Professional Behavior:
 
 Respectful conversations and tolerance of others&#39; opinions will be strictly enforced. Any inappropriate language, threatening, harassing, or otherwise inappropriate behavior during discussion could result in the student(s) being administratively dropped from the course with no refund, per ASU policy [USI 201-10](http://www.asu.edu/aad/manuals/usi). Students are required to adhere to the behavior standards listed in the [Arizona Board of Regents Policy Manual Chapter V—Campus and Student Affairs](http://azregents.asu.edu/rrc/Policy%20Manual/5-308-Student%20Code%20of%20Conduct.pdf) .
 
-# H.  Academic Integrity and Honesty
+## H.  Academic Integrity and Honesty
 
 ASU expects the highest standards of academic integrity. Violations of academic integrity include but are not limited to cheating, plagiarism, fabrication, etc. or facilitating any of these activities. This course relies heavily on writing and original critical thought. Any student who is suspected of not producing his or her own original work will be reported to the College of Public Programs for investigation. **Plagiarism will not be tolerated**. **Any student who plagiarizes or otherwise fabricates his or her work will receive no credit for that assignment. It will be recorded as zero points—and the student will risk a failing grade for the course.** For more information, refer to [http://provost.asu.edu/academicintegrity](http://provost.asu.edu/academicintegrity).
 
 
 
-# I.  Student Learning Environment: Accommodations
+## I.  Student Learning Environment: Accommodations
 
 **Disability Accommodations:**  Students should be fully aware that the Arizona State University, the MA in EMHS program, and all program course instructors are committed to providing reasonable accommodation and access to programs and services to persons with disabilities. Students with disabilities who wish to seek academic accommodations must contact the ASU Disability Resources Center directly.  Information on the Center&#39;s procedures, resources and how to contact its staff can be found here: [https://eoss.asu.edu/drc/](https://eoss.asu.edu/drc/).  The Disability Resources Center is responsible for reviewing any student&#39;s requests; once that review has taken place, the Center will provide the student with appropriate information on academic accommodations which in turn will be provided to the course instructor.
 
@@ -223,6 +225,13 @@ Please note: the course instructor may from time to time adjust assigned reading
 
 
 
+
+<br>
+
+-------
+
+
+<br>
 <br>
 <br>
 
