@@ -11,14 +11,14 @@ layout: default
 
 Please note that **there will NOT be live review sessions for this class**.  
 
-Instead, feel free to schedule virtual office hours to discuss any questions you may have about the class. You can check for availability on the calendar below, or email me to schedule a meeting at other times. 
+**OFFICE HOURS:** Instead, feel free to schedule virtual office hours to discuss any questions you may have about the class. You can check for availability on the calendar below, or email me to schedule a meeting at other times. 
 
 * **Tuesdays 2pm - 3pm** 
 * **Thursdays 2pm - 3pm** 
 
-Similar to other CPP courses, the fastest way to get questions answered about lectures and labs is to post sometime on the [**Course Discussion Boards**](https://ds4ps.org/cpp-529-master/help/). You are encouraged to review the rules on asking questions in a way that makes your issue reproducible, and follows professional norms on platforms like StackOverflow. 
+**DISCUSSION BOARDS**: Similar to other CPP courses, the fastest way to get questions answered about lectures and labs is to post sometime on the [**course discussion boards**](https://ds4ps.org/cpp-529-master/help/). You are encouraged to review the rules on asking questions in a way that makes your issue reproducible, and follows professional norms on platforms like StackOverflow. 
 
-When relevant, the instructor will post additional instructional videos addressing any common problems that students seem to be having. You can [**request a code-through**](https://github.com/DS4PS/cpp-529-master/issues/1) if you have reviewed available material and would like clarification on core concepts or analytical approaches. 
+**CODE-THROUGHS**: When relevant, the instructor will post additional instructional videos addressing any common problems that students seem to be having. You can [**request a code-through**](https://github.com/DS4PS/cpp-529-master/issues/1) if you have reviewed available material and would like clarification on core concepts or analytical approaches. 
 
 <br>
 
