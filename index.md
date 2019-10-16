@@ -189,6 +189,18 @@ ASU expects the highest standards of academic integrity. Violations of academic 
 
 
 
+### Copyright
+
+Students must refrain from uploading to any course shell, discussion board, or website used by the instructor or other course forum, material that is not the student’s original work, unless the students first comply with all applicable copyright laws; faculty members reserve the right to delete materials on grounds of suspected copyright infringement.
+
+**All course content, including lectures, are copyrighted materials. Students may not share outside the class, upload, sell, or distribute course content.**
+
+Prohibition of Commercial Note Taking Services:
+
+In accordance with ACD 304-06 Commercial Note Taking Services, written permission must be secured from the official instructor of the class in order to sell the instructor's oral communication in the form of notes.  Notes must have the notetaker's name as well as the instructor's name, the course number, and the date.
+
+
+
 ## I.  Student Learning Environment: Accommodations
 
 **Disability Accommodations:**  Students should be fully aware that the Arizona State University, the MA in EMHS program, and all program course instructors are committed to providing reasonable accommodation and access to programs and services to persons with disabilities. Students with disabilities who wish to seek academic accommodations must contact the ASU Disability Resources Center directly.  Information on the Center&#39;s procedures, resources and how to contact its staff can be found here: [https://eoss.asu.edu/drc/](https://eoss.asu.edu/drc/).  The Disability Resources Center is responsible for reviewing any student&#39;s requests; once that review has taken place, the Center will provide the student with appropriate information on academic accommodations which in turn will be provided to the course instructor.
@@ -197,7 +209,17 @@ ASU expects the highest standards of academic integrity. Violations of academic 
 
 **Military Accommodations:** A student who is a member of the National Guard, Reserve, or other branch of the armed forces and is unable to complete classes because of military activation may request complete or partial unrestricted administrative withdrawals or incompletes depending on the timing of the activation. For more information see ASU policy [USI 201-18](http://www.asu.edu/aad/manuals/usi).
 
-# IV. Course Schedule and Unit-specific Learning Objectives
+
+
+## J. Workload Expectations 
+
+The Arizona Board of Regents, the governing board for ASU, NAU, and the U of A, has a policy for how much time students should invest in their courses: “A minimum of 45 hours of work by each student is required for each unit of credit.” Therefore, in a 3-credit course, students should expect to invest 45 hours in class meetings (or the online equivalent), as well as 90 hours doing homework and assignments—a total of 135 hours in any given session (A, B, or C).  This translates to 9 hours per week for classes that meet over a 15 week-semester.  For 7.5-week classes, the workload doubles to 18 hours per week engaging in online activities, reading, doing other homework, completing assignments or assessments, and studying.  As you register for courses, keep this 135-hour standard in mind because during some semesters your work and/or family commitments may prevent you from taking a full load of classes.
+
+
+
+
+
+# IV. Course Schedule and Unit-Specific Learning Objectives
 
 ## A. Schedule: Overview of Readings and Assignments
 
