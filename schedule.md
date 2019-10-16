@@ -146,12 +146,16 @@ We are less interested in psychological measures as in constructs of neighborhoo
 
 *A new study by the Harvard economists Raj Chetty and Nathaniel Hendren, when read in combination with an important study they wrote with Lawrence Katz, makes the most compelling case to date that good neighborhoods nurture success... they are the most powerful demonstration yet that neighborhoods — their schools, community, neighbors, local amenities, economic opportunities and social norms — are a critical factor shaping your children’s outcomes. It’s an intuitive idea, although the earlier evidence for it had been surprisingly thin.*
 
-But we will use some of the tools developed in psychometrics to begin developing a construct a
+But we will use some of the tools developed in psychometrics to help us develop a reliable measure of neighborhood quality. 
 
 ## Learning Objectives
 
-Once you have completed this section you will be able to 
+Once you have completed this section you will be able to:
+
 * Define a construct 
+* Operationalize measurement reliability 
+* List theories of neighborhood change 
+* Begin to develop reliable measures of neighborhood quality 
 
 ## Assigned Reading
 
@@ -163,7 +167,7 @@ Schäffer, U. (2007). Management accounting & control scales handbook. Springer 
 
 FOR REFERENCE:
 
-**Measurement**
+**Measurement Theory**
 
 *Measurement Theory and Practice, from: Smith, F. (2002). Research methods in pharmacy practice. Pharmaceutical Press.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/measurement-theory-and-practice.pdf) ]
 
@@ -171,7 +175,7 @@ FOR REFERENCE:
 
 *MacKenzie, S. B., Podsakoff, P. M., & Podsakoff, N. P. (2011). Construct measurement and validation procedures in MIS and behavioral research: Integrating new and existing techniques. MIS quarterly, 35(2), 293-334.* [ [pdf](https://github.com/DS4PS/cpp-529-master/raw/master/articles/measurement/construct-measurement-and-validation-in-behavioral-research.pdf) ]
 
-**Theories of Neighborhood Change**
+**More Background on Theories of Neighborhood Change**
 
 *Temkin, K., & Rohe, W. (1996). Neighborhood change and urban policy. Journal of planning education and research, 15(3), 159-170.* [ [pdf]() ]
 
@@ -249,7 +253,9 @@ On your lab you will be practicing with index development using census data and 
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 2 - Intro to Census Data 
 
@@ -287,7 +293,9 @@ On your lab you will be practicing with index development using census data and 
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 3 - Identifying Neighborhood Types
 
@@ -328,7 +336,7 @@ Read the two papers, then answer the following questions:
 
 
 
-*** { @unit = "Due Oct 30th", @title = "Lab 03", @assignment  }
+*** { @unit = "Due Nov 6th", @title = "Lab 03", @assignment  }
 
 <br>
 <br>
@@ -352,14 +360,15 @@ Read the two papers, then answer the following questions:
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
-
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 4 - Dot Density Plots 
 
 *** { @unit = "", @title = "Unit Overview"  }
 
-*** { @unit = "", @title = "Lab 04", @assignment  }
+*** { @unit = "Due Nov 13th", @title = "Lab 04", @assignment  }
 
 <br>
 <br>
@@ -383,14 +392,15 @@ Read the two papers, then answer the following questions:
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
-
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 5 - Transitions  
 
 *** { @unit = "", @title = "Unit Overview"  }
 
-*** { @unit = "", @title = "Lab 05", @assignment  }
+*** { @unit = "Due Nov 20th", @title = "Lab 05", @assignment  }
 
 <br>
 <br>
@@ -414,16 +424,15 @@ Read the two papers, then answer the following questions:
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
-
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 6 - Models of Neighborhood Change 
 
 *** { @unit = "", @title = "Unit Overview"  }
 
-*** { @unit = "", @title = "Lab 06", @assignment  }
-
-*** { @unit = "", @title = "Explainer Assignment", @assignment  }
+*** { @unit = "Due Nov 27th", @title = "Lab 06", @assignment  }
 
 <br>
 <br>
@@ -443,18 +452,24 @@ Read the two papers, then answer the following questions:
 <br>
 
 
+*** { @unit = "Due Dec 2nd", @title = "Explainer Assignment", @assignment  }
 
 
 
 
-<br> ----------------------------------------------------------------------------- <br>
 
+
+
+
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
 
 ** Week 7 - Final Project 
 
 *** { @unit = "", @title = "Unit Overview"  }
 
-*** { @unit = "", @title = "DASHBOARD", @assignment  }
+*** { @unit = "Due Dec 6th", @title = "DASHBOARD", @assignment  }
 
 <br>
 <br>
