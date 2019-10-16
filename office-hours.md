@@ -54,4 +54,7 @@ Or if you need to schedule office hours:
 
 
 </div>
-  
+
+<style>
+  i{ color: black }
+</style>
