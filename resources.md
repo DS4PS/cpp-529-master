@@ -11,6 +11,7 @@ layout: default
 
 ### Studies on Social Mobility 
 
+* [ [How Neighborhoods Impact Residents](https://github.com/DS4PS/cpp-529-master/raw/master/articles/social-mobility/does-neighborhood-matter-assessing-recent-evidence.pdf) ]  
 * [ [Inequality of Opportunity Project](https://opportunityinsights.org/) ] [data](https://opportunityinsights.org/course/) 
 * [ [Big Findings on Opportunity and Mobility We All Should Know](https://www.brookings.edu/blog/social-mobility-memos/2018/01/11/raj-chetty-in-14-charts-big-findings-on-opportunity-and-mobility-we-should-know/) ]
 * [ [Seattle Housing Experiment](https://www.vox.com/future-perfect/2019/8/4/20726427/raj-chetty-segregation-moving-opportunity-seattle-experiment) ] 
