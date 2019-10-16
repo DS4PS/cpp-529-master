@@ -47,45 +47,47 @@ instructor:
 
 # I.  Course Description, Course Goal and Course Learning Objectives
 
-Data is an essential ingredient of any program evaluation or performance management system. Organizations that want to embrace an evidence-based approach to management need to develop processes for gathering data, linking multiple datasets, running analysis, and sharing results with stakeholders through reports, dashboards, or web applications. The ability to collect, organize and analyze data is a desirable skill set for professional knowledge workers, high-level management, and evaluators.
+This course is designed to apply knowledge and skills from CPP 526 Foundations in Data Science in order to extend data programming skills and practice building a research database as part of a project. Through the applied project we will linked two waves of Census data in order to analyze the process of neighborhood change, and practice implementing research questions using inductive and predictive tools. Your job will be to wrangle the data into the proper format for analysis, apply the prescribed analytical techniques, and generate a dashboard that helps the leaders of a city better understand demographic and economic factors driving neighborhood change. 
 
-The course introduces students to the R data programming language, an open source platform that has become an industry standard because of its flexibility and power. It was designed to allow people to quickly develop and share new statistical tools. It has evolved into a more general data analytics platform that can be used for analytics, customized visualizations, GIS applications, text analysis, building web applications, and much more. It has a large and active user community that has developed thousands of free custom programs.
+The course will introduce students to basic geographic information system (GIS) tools using some of the [spatial packages in R](https://cran.r-project.org/web/views/Spatial.html). We will cover the basics of shapefiles (points and polygons), map projections, visualization of spatial data, and linking maps to Census data. Students will learn how to communicate spatial patterns using choropleth maps, dot density plots, and heatmaps. 
 
-Typically only 10-20% of a project is spent analyzing data. The other 80-90% consists of merging data sources, cleaning data, defining new variables, and arranging data into the proper format. These steps require knowledge about data wrangling as well as general project management process. The Foundations of Data Science sequence teaches both the data programming fundamentals and well as project management skills to ensure that analysis is transparent, error-free and reproducible.
+We will review recent work that uses clustering analysis in order to identify distinctive neighborhood groups within cities, develop neighborhood topologies with the clusters, then use the neighborhood types and panel data to examine how each cluster might change over time. A regression model will help us predict which current census tracts are likely to experience the most change in future periods. 
 
-The Foundations of Data Science course sequence will cover the fundamentals of data programming – building unique datasets using APIs and custom tools, importing data from the cloud, linking multiple data sources, and wrangling processes to clean, transform, and reshape datasets. Advanced topics will be introduced such as writing functions, running simulations, writing packages for R, and de-bugging techniques. We will spend roughly a third of the units on graphing procedures and reporting packages.
+The main learning objectives for the course are:
 
-This course, Foundations of Data Science I, will cover the building blocks of data programming in R. We will learn about variables, operators, functions, dataset construction, group structure in data, visualization, and simulation. Students will also be introduced to markdown documents and automated reporting.
+- Engage policy debates around current models of neighborhood change 
+- Operationalize theory by developing a latent construct of neighborhood quality 
+- Create a reliable instrument to measure dimensions of neighborhood quality using available census data
+- Apply clustering techniques to group census tracts into neighborhood types 
+- Use spatial tools and regression models to examine how neighborhood types change over time 
 
-The six main learning objectives for the course are:
-
-- Mastery of functions as the building blocks of all R programs, including arguments and scope
-- Knowledge of variable types and data structures in R, including construction and manipulation of data sets
-- Use of logical statements to create and analyze groups within data
-- Ability to build custom visualizations through the base R graphics package
-- Creation of dynamic graphics and data dashboards using R shiny tools
 
 # Course Prerequisites:
 
-There are no prerequisites, and we do not assume any prior background in computer programming or statistics. Students should, however, have installed R and R Studio, and worked through a basic tutorial on R Studio.
+* [CPP 526 - Intro to Data Programming in R](https://ds4ps.org/cpp-526-fall-2019/) or a similar data programming course 
+* [CPP 523 - Multiple Regression Analysis](https://ds4ps.org/cpp-523-fall-2019/) is recommended but not required 
 
 # II. Assessment of Student Learning Performance & Proficiency: Keys to Student Success
 
 Assessment of student performance in this course is based on indications that the course learning objectives stated above have been achieved.  Several areas of measurement will be used to produce a final student performance rating.  These areas of performance assessment include the following:
 
-- The ability to build a custom dataset by important data from multiple sources, merging data, and reshaping, filtering or subsetting as necessary.
-- Translating from plain English business cases to logical statements in R using logical operators and analytical techniques applied to groups.
-- Communicating information by developing custom visualizations and graphics.
+- Ability to create a research database by combining, cleaning, and reshaping data from multiple sources. 
+- Ability to generate descriptive statistics and visualizations to understand relationships in the data. 
 - Using markdown documents to generate data-driven reports and data dashboards.
+- Developing custom visualizations and graphics.
+- Reporting results to a key stakeholder in a clear and informative manner. 
+- Running and interpreting analytical models like regressions. 
+
 
 Students will demonstrate competency in understanding, producing and communicating results of their analyses through the following assignments:
 
-- In-lecture assessment questions to ensure basic comprehension of key concepts and to help students and instructors track progress through the course.
 - Weekly labs that provide opportunities to consolidate and apply material from the lectures.
 - Discussion topics on broad data science trends. 
 - A final project that integrates several skills to create a data dashboard. 
 
-Assigned work, including the course final project, and the quality of active participation in the regular online discussion sessions that are a critical part of the course learning strategy are the tools the instructors will use to measure comprehension and skill; the student&#39;s course grade is a direct reflection of demonstrated performance. Students should take stated expectations seriously regarding preparation, conduct, and academic honesty in order to receive a grade reflective of outstanding performance.  Students should be aware that merely completing assigned work in no way guarantees an outstanding grade in the course. To receive an outstanding course grade (using the grading scheme described below and the performance assessment approach noted above) all assigned work should completed on time with careful attention to assignment details.
+Assigned work, including the course final project, and the quality of active participation in the regular online discussion sessions that are a critical part of the course learning strategy are the tools the instructors will use to measure comprehension and skill; the student's course grade is a direct reflection of demonstrated performance. 
+
+Students should take stated expectations seriously regarding preparation, conduct, and academic honesty in order to receive a grade reflective of outstanding performance.  Students should be aware that merely completing assigned work in no way guarantees an outstanding grade in the course. To receive an outstanding course grade (using the grading scheme described below and the performance assessment approach noted above) all assigned work should completed on time with careful attention to assignment details.
 
 # III. Course Structure and Operations; Performance Expectations
 
@@ -93,13 +95,13 @@ Assigned work, including the course final project, and the quality of active par
 
 Mastering advanced analytical techniques and data programming is like learning a language. You start by mastering basic vocabulary that is specific to statistics and data science. Through your coursework you will become conversant in the domains of regression analysis, research design, and data science. Progress might be slow at first as you work to master core concepts, integrate the building blocks into a coherent mental model of real-world problems, learn to translate technical results into clear narratives for non-technical audiences, and become comfortable with data programming skills. Over time you will find that your thought processes change as you approach problem-solving in a more structured and evidence-based manner, you apply counter-factual reasoning to performance problems, and you start reading the news and viewing scientific evidence differently. You begin to think and speak like a program evaluator.
 
-By the end of this degree you will be conversant in statistics, research design, and data programming. Fluency takes time and will be developed through professional experience. It requires you to practice these skills to develop muscle memory. You can do this through participating in evaluations on the job and gaining experience building and cleaning data sets from scratch. Understand, though, that this degree focuses on building foundations for your career. Don&#39;t be nervous if it feels like it&#39;s impossible to master all of the material in this program – it is impossible to learn everything in this field in a year.
+By the end of this degree you will be conversant in statistics, research design, and data programming. Fluency takes time and will be developed through professional experience. It requires you to practice these skills to develop muscle memory. You can do this through participating in evaluations on the job and gaining experience building and cleaning data sets from scratch. Understand, though, that this degree focuses on building foundations for your career. Don't be nervous if it feels like it's impossible to master all of the material in this program – it is impossible to learn everything in this field in a year.
 
 Similar to immersion in a language, the best way to learn the material is to be consistent in doing course work each day. The more frequently you revisit concepts and practice data programming the more you will absorb. The curriculum has been designed around this approach. Lectures are split into small units, and each unit includes questions to test your understanding of the material. Weekly labs allow you to spend some time applying the material to a specific problem. The final exam at the end of the semester is designed to help you make connections between concepts and consolidate knowledge. You will be much better off spending a small amount of time each day on the material instead of trying to cram everything into a couple of days a week.
 
 Online discussion boards are design for students to engage with the material together. The purpose of online discussion sessions is threefold: (1) the online discussion sessions allow students to interact with their peers and share ideas and interpretations of the assigned material, (2) such peer-to-peer discussion online helps build professional relationships with potential future colleagues in the field, and (3) the discussions permit the instructor to assess student engagement with the assigned material.
 
-The online discussions are explicitly intended to meet the objectives stated above.  They are not intended as another form of &quot;lecture&quot; where the instructor provides commentary and students simply react to that.  Rather, the discussions are a chance for peer-to-peer interaction and proactive engagement by each individual student.
+The online discussions are explicitly intended to meet the objectives stated above.  The discussions are a chance for peer-to-peer interaction and proactive engagement by each individual student.
 
 
 
@@ -107,27 +109,23 @@ The online discussions are explicitly intended to meet the objectives stated abo
 
 ## B. Assigned Reading Materials
 
-We will use a custom textbook for this course available at the link above. 
-
-* [Course Textbook](https://ds4ps.org/cpp-526-fall-2019/textbook/)
+There are no required textbooks for class. All assigned readings and reference texts for labs will be available on the course website.
 
 The following texts are recommended as good reference material for topics covered in this course:
 
-* Wickham, H., &amp; Grolemund, G. (2016). _R for Data Science._ O&#39;Reilly Press_. (free online)_  
-* Teetor, P. (2011). _R Cookbook: Proven recipes for data analysis, statistics, and graphics_. &quot; O&#39;Reilly Media, Inc.&quot;.  
-* Sanchez, G. (2013). _Handling and processing strings in R._ Berkeley: Trowchez Editions. _(free online)_  
-* Peng, R. D., &amp; Matsui, E. (2015). _The Art of Data Science._ _A Guide for Anyone Who Works with Data._ Skybrude Consulting, 200, 162.  
+* Glaeser, E. L. (2012). *Triumph of the City: How Our Greatest Invention Makes Us Richer, Smarter, Greener, Healthier, and Happier.* Penguin. 
+* Sampson, R. J. (2012). *Great American city: Chicago and the enduring neighborhood effect.* University of Chicago Press. 
 
 
 
-In addition to the required textbooks, the instructor will supplement the assigned unit readings with various journal articles, policy reports, or other related material.  These will be made available in the course shell in Blackboard.
+In addition to the required textbooks, the instructor will supplement the assigned unit readings with various journal articles, policy reports, or other related material.  These will be made available in the course shell.
 
 ## C. Course Grading System for Assigned Work, including Final Project:
 
 Letter grades comport with a traditional set of intervals:
 
 ------------|--------
-100 – 99%   |  A+  
+100 – 99%   |  A+ (at instructor's discretion)
 98 – 94%    |  A  
 93 – 90%    |  A - 
 89 – 87%    |  B+  
@@ -137,13 +135,13 @@ Below 80%   |  C, D, F
 
 The assigned work for the term comes in the form of four elements, described below:
 
-- **Weekly Labs (50%):**  Each week you will receive a short lab that will help you synthesize the lectures from the week though exercises that involve data, analysis, and important formulas from the lectures. These labs contain exercises that are similar in form or difficulty to what will be presented on the final exam. **They are graded pass / fail** by the instructors based upon an assessment of whether you have sincerely attempted the lab and answered over half of the questions correctly. This is designed to hold you accountable for the material, but not create anxiety about perfection.
+- **Weekly Labs (50%):**  Each week you will receive a short lab that will help you synthesize the lectures from the week though exercises that involve data, analysis, and important formulas from the lectures. These labs contain exercises that are similar in form or difficulty to what will be presented on the final exam. **They are graded pass / fail by the instructors based upon an assessment of whether you have sincerely attempted the lab and answered over half of the questions correctly.** This is designed to hold you accountable for the material, but not create anxiety about perfection.
 
-- **Final Dashboard Project (30%):**  This course will close with a final project that requires you to analyze some data and present your results as a data dashboard. It is designed to give you practice integrating material the we have covered throughout the course.
+- **Final Dashboard Project (30%):**  This course will close with a final project that requires you to present analysis on neighborhood change using a major metro area of your choice (other than Phoenix). You will package your results as a data dashboard in order to empower members of the City Council to better understand economic and demographic trends impacting the communities they govern. The assignment offers an opportunity practice integrating material the we have covered throughout the session and in previous courses.
 
-- **Explainer Assignment (10%):**  You are invited to pick one topic from the class that you want to learn more about, or that you think might provide value to your classmates. Create a short tutorial to make your topic accessible to your peers. It can be a blog post, a video, a GIF, or a tutorial that explains an important concept from data programming, presents a helpful framework, illustrates a useful R tool or approach to data programming, or introduces classmates to a new package or function. 
+- **Explainer Assignment (10%):**  You are invited to pick one topic from the class that you want to learn more about, or that you think might provide value to your classmates. Create a short tutorial to make your topic accessible to your peers. It can be a blog post, a video, a GIF, or a tutorial that explains an important concept from data programming, presents a helpful framework, illustrates a useful R tool or approach to data programming, or introduces classmates to a new package or function.
 
-- **Discussion Topics (10%):**  YellowDig discussion topics are used to introduce you to the data science ecosystem. Since this course focuses on the skill of learning data programming we cannot cover go in-depth into exciting resources and developments in the broad field of data science. The weekly discussion topics are a chance to explore some resources or reflect on a specific theme or article. We will use YellowDig discussion boards for this assignment. You earn points through your activities on the board. You need to earn at least 100 points by posting topics and interacting with peers in order to earn full credit. The points are allocated as follows:
+- **Discussion Topics (10%):**  YellowDig discussion topics provide an opportunity to discuss some of the substantive and topical themes on community change and economic development. The labs each week will focus on the technical tools and analytical frameworks needed to operationalize data-driven approaches to urban policy. The weekly discussion topics are a chance to explore theories and debates around neighborhood change. You earn points through your activities on the board. You need to earn at least 100 points by posting topics and interacting with peers in order to earn full credit. The points are allocated as follows:
 
   - 5 points for a new pin with at least 50 words.
   - 2 points for a comment made to another pin.
@@ -175,7 +173,7 @@ Grades for the course are largely based on weekly labs. Assigned work is accompa
 
 **Course content** is hosted on this website. Lecture files, assignments and other course communications will be transmitted via this site and/or through the class email list. **All assignment submissions** will be made through the [Canvas shell](https://canvas.asu.edu). 
 
-Please post lab questions on the [Get Help](https://ds4ps.github.io/cpp-526-fall-2019/help/) page on this site, schedule individual office hours using the Calendly link provided above, and email the instructor directly instead of using the Canvas system. 
+Please post lab questions on the [Get Help](https://ds4ps.org/cpp-529-master/help/) page on this site, schedule individual office hours using the Calendly link provided above, and email the instructor directly instead of using the Canvas system. 
 
 Students should be aware that the course instructor will attempt to respond to any course-related email as quickly as possible. Students are asked to allow between 24 and 48 hours for replies to direct instructor emails, generally, as a reasonable time to reply to questions or other issues posed in an email. Additionally, the general timeline for instructor grading or other feedback on assignments, either writer work or online discussion work, is between 5 and 10 work days.
 
@@ -205,31 +203,24 @@ As students are all aware, ASU Online courses are typically offered on a seven a
 
 Please note: the course instructor may from time to time adjust assigned readings or adjust the due dates for assignment. The basic course content approach and learning objectives will not change, but slight modifications are possible if circumstances warrant an adjustment.
 
-[Schedule](https://ds4ps.org/cpp-526-fall-2019/schedule/)
+[Schedule](https://ds4ps.org/cpp-529-master/schedule/)
 
 ## Couse Schedule
 
-### Unit 1: Functions and Vectors
-- CH-03, CH-04
-- Lab #1 
+### Unit 1: MEASUREMENT & THE THEORY OF NEIGHBORHOODS
 
-### Unit 2: Operators and Descriptives
-- Lab #2 
+### Unit 2: INTRO TO CENSUS DATA & GIS TOOLS IN R
 
-### Unit 3: Visualization
-- Lab #3
+### Unit 3: IDENTIFYING NEIGHBORHOOD TYPES
 
-### Unit 4: Dynamic Visualization
-- Lab #4 
+### Unit 4: DOT DENSITY PLOTS
 
-### Unit 5: Data Wrangling
-- Lab #5
+### Unit 5: DEMOGRAPHIC CHANGE 
 
-### Unit 6: Data IO and Joins
-- Lab #6
+### Unit 6: PREDICTIVE MODELS OF NEIGHBORHOOD CHANGE
 
-### Unit 7: Dashboards
-- Start Final Project
+### Unit 7: WORK ON YOUR DATA DASHBOARD
+
 
 
 <br>
