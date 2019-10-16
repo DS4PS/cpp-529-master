@@ -3,7 +3,7 @@ layout: schedule
 title: Schedule
 
 canvas: 
-  assignment_url: 'https://canvas.asu.edu/courses/29528/assignments'
+  assignment_url: 'https://canvas.asu.edu/courses/37047/assignments'
   
 ---
  
@@ -38,9 +38,23 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JStm6L476kc?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-*** { @unit = "", @title = "Course Importance",  @lecture, @foldout }
+<br>
+<br>
+
+
+
+*** { @unit = "", @title = "Course Motivation",  @lecture, @foldout }
+
+<br>
+<br>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-DZsZqyU4Bk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+<br>
+
+
+
 
 *** { @unit = "", @title = "Syllabus and Course Structure",  @lecture, @foldout }
 
@@ -49,11 +63,17 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/l1LMI1mMwe4?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+<br>
+<br>
+
+
+
+
+
 *** { @unit = "", @title = "Community Analytics",  @reading, @foldout }
 
 <br>
 <br>
-
 
 ## Neighborhoods Matter
 
@@ -95,48 +115,6 @@ Both articles share a model where they use census data and clustering techniques
 
 ![](assets/img/strong-transitional-distressed-hoods.png) 
 
-
-
-
-
-
-
-
-*** { @unit = "", @title = "Weekly Topics",  @foldout }
-
-
-* Week 1 - Theories of Neighborhood & Measurement Models  
-* Week 2 - Getting Census Data and Shapefiles into R 
-* Week 3 - Identifying Neighborhoods by Clustering Census Data 
-* Week 4 - Methods to Visualize Demographic Changes 
-* Week 5 - Examine Neighborhood Change in the Data 
-* Week 6 - Create a Change Model 
-* Week 7 - Package Results in a Dashboard 
-
-
-
-
-<br>
-<br>
-
-
-
-
-
-*** { @unit = "", @title = "Getting Help",  @foldout   }
-
-
-<br>
-<br>
-How to get help on labs 
-
-* Instructions for creating new questions
-* Posting reproducible examples 
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xDDKYBWD7N8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 <br>
 <br>
 
@@ -146,21 +124,17 @@ How to get help on labs
 
 
 
-
-<br>
-
------------------------------------------------------------------------------
-
-<br>
-
-
+<br> ----------------------------------------------------------------------------- <br>
 
 ** Week 1 - Measurement & The Theory of Neighborhoods
 
 
 
+
 *** { @unit = "", @title = "Unit Overview", @reading, @foldout  }
 
+<br>
+<br>
 
 ## Description
 
@@ -205,6 +179,12 @@ FOR REFERENCE:
 
 *Schwirian, K. P. (1983). Models of neighborhood change. Annual review of Sociology, 9(1), 83-102.* [ [pdf]() ]
 
+<br>
+<br>
+
+
+
+
 
 
 *** { @unit = "", @title = "Geography and Economic Success", @lecture, @foldout  }
@@ -213,6 +193,14 @@ FOR REFERENCE:
 <br>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=2000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+<br>
+
+
+
+
+
 
 *** { @unit = "", @title = "Measurement", @lecture, @foldout  }
 
@@ -261,49 +249,55 @@ On your lab you will be practicing with index development using census data and 
 
 
 
-<br>
-
------------------------------------------------------------------------------
-
-<br>
-
+<br> ----------------------------------------------------------------------------- <br>
 
 ** Week 2 - Intro to Census Data 
+
+*** { @unit = "", @title = "Unit Overview"  }
 
 
 *** { @unit = "", @title = "Neighborhood Types", @lecture  }
 
 
-*** { @unit = "Due Oct 30nd", @title = "Lab 02", @assignment  }
-
-
-
-
-
-
-
-
-
-
-
+*** { @unit = "Due Oct 30th", @title = "Lab 02", @assignment  }
 
 <br>
-
------------------------------------------------------------------------------
-
 <br>
 
+## Brief Video Instruction
+
+
+## Lab Instructions
+
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-02-instructions/">LAB-02 Instructions</a>
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+<br> ----------------------------------------------------------------------------- <br>
 
 ** Week 3 - Identifying Neighborhood Types
 
+*** { @unit = "", @title = "Unit Overview"  }
 
-*** { @unit = "", @title = "Neighborhood Types", @lecture, @foldout  }
+*** { @unit = "", @title = "Neighborhood Types", @lecture  }
+
 
 <br>
 <br>
-
-
-
 
 Neighborhood change is a complicated concept with a lot of loaded terminology. We might think about neighborhoods that are "revitalized", "gentrified", that are "stable", or that "decline".  We could spend an entire semester unpacking all of these constructs, but that is out of scope of the lab. Here we are more interested in how we might make sense of our data, and then once we have meaningful groups how we might use them to make predictions with the data. Can a city forecast how it's current neighborhoods are likely to change over the next decade, and can that help with urban planning processes? 
 
@@ -334,28 +328,155 @@ Read the two papers, then answer the following questions:
 
 
 
-
-
-
+*** { @unit = "Due Oct 30th", @title = "Lab 03", @assignment  }
 
 <br>
-
------------------------------------------------------------------------------
-
 <br>
 
+## Brief Video Instruction
+
+
+## Lab Instructions
+
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-03-instructions/">LAB-03 Instructions</a>
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
+
+
+
+
+
+
+<br> ----------------------------------------------------------------------------- <br>
 
 
 ** Week 4 - Dot Density Plots 
 
+*** { @unit = "", @title = "Unit Overview"  }
+
+*** { @unit = "", @title = "Lab 04", @assignment  }
+
+<br>
+<br>
+
+## Brief Video Instruction
+
+
+## Lab Instructions
+
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-04-instructions/">LAB-04 Instructions</a>
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
+
+
+
+
+
+
+<br> ----------------------------------------------------------------------------- <br>
+
 
 ** Week 5 - Transitions  
+
+*** { @unit = "", @title = "Unit Overview"  }
+
+*** { @unit = "", @title = "Lab 05", @assignment  }
+
+<br>
+<br>
+
+## Brief Video Instruction
+
+
+## Lab Instructions
+
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-05-instructions/">LAB-05 Instructions</a>
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
+
+
+
+
+
+
+<br> ----------------------------------------------------------------------------- <br>
 
 
 ** Week 6 - Models of Neighborhood Change 
 
+*** { @unit = "", @title = "Unit Overview"  }
+
+*** { @unit = "", @title = "Lab 06", @assignment  }
+
+*** { @unit = "", @title = "Explainer Assignment", @assignment  }
+
+<br>
+<br>
+
+## Brief Video Instruction
+
+
+## Lab Instructions
+
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-06-instructions/">LAB-06 Instructions</a>
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
+
+
+
+
+
+
+<br> ----------------------------------------------------------------------------- <br>
+
 
 ** Week 7 - Final Project 
+
+*** { @unit = "", @title = "Unit Overview"  }
+
+*** { @unit = "", @title = "DASHBOARD", @assignment  }
+
+<br>
+<br>
+
+
+## Instructions
+
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/final-project-instructions/">Instructions</a>
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
+
+
+
+
+
+
+
 
 
 
