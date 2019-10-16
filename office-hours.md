@@ -27,8 +27,8 @@ When relevant, the instructor will post additional instructional videos addressi
 
 You can attend office-hours in-person if you are on campus, or virtually:
 
-* **In-Person**: UCENT 407, please request in advance to ensure I am on campus  
-* **Virtually**: Zoom session: [https://asu.zoom.us/j/162760097](https://asu.zoom.us/j/162760097)      
+* **In-Person**: UCENT 407, *please request in advance to ensure I am on campus*  
+* **Virtually**: Zoom session @ [https://asu.zoom.us/j/162760097](https://asu.zoom.us/j/162760097)      
 
 Or if you need to schedule office hours:
 
