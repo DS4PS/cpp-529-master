@@ -31,19 +31,19 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 ** Course Overview
 
-*** { @unit = "", @title = "Video Lectures",  @lecture, @foldout }
+*** { @unit = "", @title = "Instructor Introduction",  @lecture, @foldout }
 
 <br>
 <br>
-
-
-## Instructor Introduction
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JStm6L476kc?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Course Importance
+*** { @unit = "", @title = "Course Importance",  @lecture, @foldout }
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-DZsZqyU4Bk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+*** { @unit = "", @title = "Syllabus and Course Structure",  @lecture, @foldout }
+
 
 *** { @unit = "", @title = "Community Analytics",  @reading, @foldout }
 
@@ -203,15 +203,21 @@ FOR REFERENCE:
 
 
 
+*** { @unit = "", @title = "Geography and Economic Success", @lecture, @foldout  }
 
+<br>
+<br>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=819" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 *** { @unit = "", @title = "Measurement", @lecture, @foldout  }
 
 <br>
 <br>
 
-[LECTURE 01 - Measurement](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/p-01-measurement.pdf) 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ra5rMqr00Ew?start=192" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[LECTURE Notes - Measurement](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/p-01-measurement.pdf) 
 
 On your lab you will be practicing with index development using census data and the following app:
 
