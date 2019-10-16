@@ -39,9 +39,11 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 ## Instructor Introduction
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JStm6L476kc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JStm6L476kc?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+## Course Importance
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-DZsZqyU4Bk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 *** { @unit = "", @title = "Community Analytics",  @reading, @foldout }
 
