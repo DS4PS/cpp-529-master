@@ -9,6 +9,8 @@ layout: default
 
 # Contact Your Professor
 
+------------------------
+
 Please note that **there will be NO LIVE REVIEW sessions for this class**.  
 
 **OFFICE HOURS:** Instead, feel free to schedule virtual office hours to discuss any questions you may have about the class. You can check for availability on the calendar below, or email me to schedule a meeting at other times. 
