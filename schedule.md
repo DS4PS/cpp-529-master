@@ -203,6 +203,7 @@ FOR REFERENCE:
 
 <br>
 <br>
+(Note: Audio begins at the 10 second mark.)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=2000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
