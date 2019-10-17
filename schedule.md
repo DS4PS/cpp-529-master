@@ -3,7 +3,7 @@ layout: schedule
 title: Schedule
 
 canvas: 
-  assignment_url: 'https://canvas.asu.edu/courses/37047/assignments'
+  assignment_url: 'https://canvas.asu.edu/courses/37703/assignments'
   
 ---
  
