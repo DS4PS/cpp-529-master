@@ -13,7 +13,7 @@ info:
  course_title: Data Practicum - Community Analytics
  course_number: CPP 529 
  course_level: Graduate 
- course_website: 'https://canvas.asu.edu/courses/37047'
+ course_website: 'https://canvas.asu.edu/courses/37703'
  course_start_end_dates: Oct 16 to Dec 06, 2019  
  course_prerequisites:  
  class_meets_when:  Asynchronous  
