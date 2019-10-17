@@ -42,6 +42,7 @@ layout: default
 
 # Geographic Analysis in R
 
+* [ [Short Maps in R Tutorial](http://rpubs.com/jdlecy/201086) ] {[files](https://github.com/lecy/maps-in-R)} 
 * [ [Intro to GIS in R: **sp** and **sf** Packages](https://www.jessesadler.com/post/gis-with-r-intro/) ]
 * [ [Maps!](https://andrewbtran.github.io/NICAR/2019/mapping/02_case_study_slides.html#/) ] {[Mapping Workshop](https://github.com/andrewbtran/NICAR-2019-mapping)}  
 * [ [Manny Gimond's Free Text on GIS](https://mgimond.github.io/Spatial/mapping-data-in-r.html) ]  
