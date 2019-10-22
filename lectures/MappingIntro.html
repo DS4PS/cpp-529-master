@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Prof. Anthony Howell" />
+  <title>INTRO TO CENSUS DATA AND MAPPING</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="MappingIntro_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="MappingIntro_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">INTRO TO CENSUS DATA AND MAPPING</h1>
+  <h1 class="subtitle">Data Practicum Community Analytics</h1>
+    <h2 class="author">Prof. Anthony Howell</h2>
+</section>
+
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<ul>
+<li>Working with US Census Data</li>
+<li>Introduction to Mapping</li>
+<li>Creating Maps in R (Part 1)
+<ul>
+<li>w/ <code>tigris</code> &amp; <code>getcensus</code></li>
+</ul></li>
+<li>Creating Maps in R (Part 2)
+<ul>
+<li>w/ <code>tidycensus</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="working-with-us-census-data" class="slide level2">
+<h2>Working with US Census Data</h2>
+<ul>
+<li><p>Data scientists using R often run into two problems:</p>
+<ul>
+<li><p>Understanding what data the Census Bureau publishes.</p></li>
+<li><p>Understanding what R packages on CRAN are available to help with their project.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="intro-to-census-data" class="slide level2">
+<h2>Intro to Census Data</h2>
+<ul>
+<li><p>The U.S. Census Bureau is the premier source of data about US people, places and economy.</p></li>
+<li><p>This makes the Bureau a natural source of information for data analysts.</p></li>
+<li>The Census Bureau publishes two types of data:
+<ul>
+<li>demographic and geographic</li>
+</ul></li>
+</ul>
+</section>
+<section id="demographic-data" class="slide level2">
+<h2>Demographic Data</h2>
+<ul>
+<li><p>The Census Bureau conducts over 100 Censuses, Surveys and Programs.</p></li>
+<li><p>You can view the full list of programs <a href="https://www.census.gov/programs-surveys/surveys-programs.html">here</a>.</p></li>
+<li><p>Top 5 most popular(by API requests):</p>
+<ol type="1">
+<li>American Community Survey</li>
+<li>Decennial Census of Population and Housing</li>
+<li>Population Estimates Program</li>
+<li>Survey of Business Owners</li>
+<li>International Data Base</li>
+</ol></li>
+</ul>
+</section>
+<section id="american-community-survey-acs." class="slide level2">
+<h2>American Community Survey (ACS).</h2>
+<ul>
+<li>Info on ancestry, education, income, language, migration, disability, employment, housing</li>
+<li>Used to allocate government funding, track shifting demographics, plan for emergencies, and learn about local communities.</li>
+<li>Sent to approximately 295,000 addresses monthly (or 3.5 million per year)</li>
+<li>largest household survey that the Census Bureau administers</li>
+</ul>
+</section>
+<section id="year-acs-estimates" class="slide level2">
+<h2>1, 3, 5 year ACS estimates</h2>
+<iframe src="https://www.census.gov/programs-surveys/acs/guidance/estimates.html" style="width:700px; height: 500px" scrolling="yes" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0">
+</iframe>
+</section>
+<section id="geographic-data" class="slide level2">
+<h2>Geographic Data</h2>
+<p>The Census Bureau’s geographic hierarchy!</p>
+<p><img src="figures/Image7.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="figures/Image12.png" width="30%" style="display: block; margin: auto;" /></p>
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+</style>
+</section>
+<section id="what-is-a-census-tract" class="slide level2">
+<h2>What is a Census Tract?</h2>
+<div class="col2">
+<p><img src="figures/Image8.png" width="40%" style="display: block; margin: auto;" /></p>
+<p><img src="figures/Image9.png" width="100%" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p>Designed to be relatively homogeneous, e.g. population characteristics, economic status, living conditions</p></li>
+<li><p>Average about 4,000 inhabitants</p></li>
+</ul>
+</div>
+</section>
+<section id="phoenix-census-tracts" class="slide level2">
+<h2>Phoenix Census Tracts</h2>
+<p><img src="figures/Image11.jpg" width="100%" style="display: block; margin: auto;" /></p>
+</section>
+<section id="introduction-to-mapping" class="slide level2">
+<h2>Introduction to Mapping</h2>
+<ul>
+<li><p>Every house, every tree, every city has its own unique latitude and longitude coordinates.</p></li>
+<li><p>There are two underlying important pieces of information for spatial data:</p>
+<ul>
+<li>Coordinates of the object (Lat/Long)</li>
+<li>How the Lat/Long relate to a physical location on Earth
+<ul>
+<li>Also known as coordinate reference system or <strong>CRS</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="crs" class="slide level2">
+<h2>CRS</h2>
+<p><img src="figures/projection_tween.gif" width="30%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Geographic
+<ul>
+<li>Uses three-dimensional model of the earth to define specific locations on the surface of the grid</li>
+<li>longitude (East/West) and latitude (North/South)</li>
+</ul></li>
+<li>Projected
+<ul>
+<li>A translation of the three-dimensional grid onto a two-dimensional plane</li>
+</ul></li>
+</ul>
+</section>
+<section id="crs-1" class="slide level2">
+<h2>CRS</h2>
+<p><img data-src="figures/Image18.png" /></p>
+</section>
+<section id="types-of-spatial-data" class="slide level2">
+<h2>Types of Spatial Data</h2>
+<ul>
+<li>Raster
+<ul>
+<li>Are values within a grid system</li>
+<li>Example: Satellite imagery</li>
+</ul></li>
+<li>Vector
+<ul>
+<li>Based on points that can be connected to form lines and polygons</li>
+<li>Located with in a coordinate reference system</li>
+<li>Example: Road map</li>
+</ul></li>
+</ul>
+</section>
+<section id="raster" class="slide level2">
+<h2>Raster</h2>
+<ul>
+<li>Discrete (Land Cover/use maps)
+<ul>
+<li>Discrete values represent classes, i.e. 1=water; 2=forest <img src="figures/Image17.png" width="50%" style="display: block; margin: auto;" /></li>
+</ul></li>
+<li>Continuous (Satellite Imagery)
+<ul>
+<li>Grid cells with gradual changing</li>
+</ul></li>
+</ul>
+<p><img src="figures/Image16.png" width="50%" style="display: block; margin: auto;" /></p>
+</section>
+<section id="vector" class="slide level2">
+<h2>Vector</h2>
+<p><img src="figures/Image14.png" width="100%" style="display: block; margin: auto;" /></p>
+</section>
+<section id="vector-cont." class="slide level2">
+<h2>Vector (Cont.)</h2>
+<p><img src="figures/Image13.png" width="100%" style="display: block; margin: auto;" /></p>
+</section>
+<section id="shape-files-for-vector" class="slide level2">
+<h2>Shape files for Vector</h2>
+<p>Though we refer to a shape file in the singular, it’s actually a collection of at least three basic files:</p>
+<ul>
+<li>.shp - lists shape and vertices</li>
+<li>.shx - has index with offsets</li>
+<li>.dbf - relationship file between geometry and attributes (data)</li>
+</ul>
+<p>All files must be present in the directory and named the same (except for the file extension) to import correctly.</p>
+<aside class="notes">
+R can handle importing different kinds of file formats for spatial data, including KML and geojson. We’ll focus on shape files, which was created by ESRI in the ’90s.
+</aside>
+</section>
+<section id="mapping" class="slide level2">
+<h2>Mapping</h2>
+<ul>
+<li><p>Use vector data and shapefiles to create choropleth maps</p></li>
+<li><p>Household Income by Census Tract <img src="figures/Image15.png" width="100%" style="display: block; margin: auto;" /></p></li>
+</ul>
+</section>
+<section id="creating-maps-in-r" class="slide level2">
+<h2>Creating Maps in R</h2>
+<ul>
+<li>Download map shapefiles and census data
+<ul>
+<li>via online downloads (Old School – and it sucks!)</li>
+<li>via API w/ <code>tigris</code> for maps &amp; <code>getcensus</code> for census data</li>
+<li>via API w/<code>tidycensus</code> for maps and census data (WINNER!)</li>
+</ul></li>
+</ul>
+</section>
+<section id="old-school-mapping-approach" class="slide level2">
+<h2>Old School Mapping Approach</h2>
+<p><img data-src="figures/Image6.png" /></p>
+</section>
+<section id="old-school-mapping-approach-1" class="slide level2">
+<h2>Old School Mapping Approach</h2>
+<ol type="1">
+<li><strong>Download data and transform data</strong>
+<ul>
+<li>Excel</li>
+</ul></li>
+<li><strong>Find and download shapefiles</strong>
+<ul>
+<li>Census TIGER</li>
+</ul></li>
+<li><strong>Import maps and join with data and style</strong>
+<ul>
+<li>ArcGIS or QGIS</li>
+</ul></li>
+<li><strong>Export and tweak for style further</strong>
+<ul>
+<li>Tableau, CartoDB, Illustrator</li>
+</ul></li>
+</ol>
+</section>
+<section id="download-data" class="slide level2">
+<h2>Download Data</h2>
+<p><img data-src="figures/Image4.png" /></p>
+</section>
+<section id="find-and-download-shapefiles" class="slide level2">
+<h2>Find and Download Shapefiles</h2>
+<p>Download a shape file of state boundaries from the <a href="https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html">Census</a>. <img data-src="figures/Image3.png" /></p>
+</section>
+<section id="find-downloaded-data-on-computer" class="slide level2">
+<h2>Find downloaded data on computer</h2>
+<p>Point R (or other spatial software) to correct filepath find File Paths, folders, etc.</p>
+<p><img data-src="figures/Image5.png" /></p>
+<ul>
+<li>Time consuming and difficult (esp. for beginners) to even read-in the shapefile and census data to spatial software</li>
+</ul>
+</section>
+<section id="new-approach-downloading-shape-files-directly-into-r" class="slide level2">
+<h2>New Approach! Downloading shape files directly into R</h2>
+<p>Using the <a href="https://github.com/walkerke/tigris"><strong>tigris</strong></a> package, which lets us download <a href="https://www.census.gov/geo/maps-data/data/tiger-line.html">Census shapefiles</a> directly into R without having to unzip and point to directories, etc.</p>
+<p>Simply call any of these functions (with the proper location variables):</p>
+<ul>
+<li><code>tracts()</code></li>
+<li><code>counties()</code></li>
+<li><code>school_districts()</code></li>
+<li><code>roads()</code></li>
+</ul>
+<aside class="notes">
+<p>Here’s a pretty <a href="https://walkerke.github.io/tigris-webinar/">thorough introduction</a> from the package creator, Kyle Walker.</p>
+Shape files can be downloaded simply by referring to them as a function such as
+</aside>
+</section>
+<section id="downloading-census-data-into-r-via-api" class="slide level2">
+<h2>Downloading Census data into R via API</h2>
+<p>Instead of downloading data from the horrible-to-navigate Census <a href="https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">FactFinder</a> or pleasant-to-navigate <a href="https://censusreporter.org/">CensusReporter.org</a> we can pull the code with the <a href="https://hrecht.github.io/censusapi/articles/getting-started.html"><strong>censusapi</strong> package</a> from Hannah Recht, of Bloomberg.</p>
+</section>
+<section id="load-the-censusapi-library" class="slide level2">
+<h2>Load the censusapi library</h2>
+<p>First, sign up for a <a href="https://api.census.gov/data/key_signup.html">census key</a>.</p>
+<p>Second, replace <code>YOURKEYHERE</code> with your Census API key.</p>
+<pre><code># Add key to .Renviron
+Sys.setenv(CENSUS_KEY=&quot;YOURKEYHERE&quot;) 
+# Check to see that the expected key is output in your R console
+Sys.getenv(&quot;CENSUS_KEY&quot;)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(censusapi)</a></code></pre></div>
+</section>
+<section id="look-up-census-tables" class="slide level2">
+<h2>Look up Census tables</h2>
+<p>Check out the dozens of data sets you can access.</p>
+<pre><code>apis &lt;- listCensusApis()
+View(apis)</code></pre>
+<p><img data-src="figures/Image1.png" /></p>
+</section>
+<section id="downloading-census-data" class="slide level2">
+<h2>Downloading Census data</h2>
+<p>We’ll focus on using the <code>getCensus()</code> function from the package. It makes an API call and returns a data frame of results.</p>
+<p>These are the arguments you’ll need to pass it:</p>
+<ul>
+<li><code>name</code> - the name of the Census data set, like “acs5” or “timeseries/bds/firms”</li>
+<li><code>vintage</code> - the year of the data set</li>
+<li><code>vars</code> - one or more variables to access</li>
+<li><code>region</code> - the geography level of data, like county or tracts or state</li>
+</ul>
+<aside class="notes">
+<p>We won’t get too deep into the usage of <strong>censusapi</strong>, though I recommend the <a href="https://hrecht.github.io/censusapi/articles/getting-started.html">excellent documentation</a> later.</p>
+Also, using listCensusMetadata will take a very long time to load, so you can skip this step for now.
+</aside>
+</section>
+<section id="get-census-metadata" class="slide level2">
+<h2>Get Census metadata</h2>
+<p>You can use <code>listCensusMetadata()</code> to see what tables might be available from the ACS Census survey.</p>
+<pre><code>acs_vars &lt;- listCensusMetadata(name=&quot;acs/acs5&quot;, type=&quot;variables&quot;, vintage=2016)
+View(acs_vars)</code></pre>
+<p><strong>Slow Process! Please don’t run this right now.</strong></p>
+</section>
+<section id="search-for-data-variable-names" class="slide level2">
+<h2>Search for data variable names</h2>
+<p>In the search finder window, type variable of interest, i.e. <code>median household income</code></p>
+<p><img data-src="figures/Image2.png" /></p>
+<aside class="notes">
+<p>It takes quite a few minutes to download the list of this data set (23,000 rows!) but once you get it, you can explore it to see what sort of data you might like to download. You can also refer to the Census for <a href="https://www.census.gov/programs-surveys/acs/guidance/which-data-tool/table-ids-explained.html">some guidance</a>.</p>
+We’ll pull median income: <em>B21004_001E</em>
+</aside>
+</section>
+<section id="census-variables-names" class="slide level2">
+<h2>Census variables names</h2>
+<ul>
+<li><strong>B21004_001E</strong>, <strong>B19013_001M</strong>, etc.
+<ul>
+<li>This is reference to a Census table of information.</li>
+<li>For example, <a href="https://www.socialexplorer.com/data/ACS2016_5yr/metadata/?ds=ACS16_5yr&amp;var=A14009"><strong>A14009</strong></a> is Average Household Income by Race for that polygon of data in that row</li>
+<li>When you export data from the Census, the variables get translated to this sort of format</li>
+<li>You’ll have to remember when you download it or <a href="https://www.census.gov/programs-surveys/acs/guidance/which-data-tool/table-ids-explained.html">look it up</a>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="downloading-median-income" class="slide level2">
+<h2>Downloading median income</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">az_income &lt;-<span class="st"> </span><span class="kw">getCensus</span>(<span class="dt">name =</span> <span class="st">&quot;acs/acs5&quot;</span>, <span class="dt">vintage =</span> <span class="dv">2016</span>, </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;B19013_001E&quot;</span>, <span class="st">&quot;B19013_001M&quot;</span>), </a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">region =</span> <span class="st">&quot;county:*&quot;</span>, <span class="dt">regionin =</span> <span class="st">&quot;state:04&quot;</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">head</span>(az_income)</a></code></pre></div>
+<pre><code>##   state county                     NAME B19013_001E B19013_001M
+## 1    04    001   Apache County, Arizona       32460        1381
+## 2    04    003  Cochise County, Arizona       45383        1470
+## 3    04    005 Coconino County, Arizona       51106        1578
+## 4    04    007     Gila County, Arizona       40593        1420
+## 5    04    009   Graham County, Arizona       47422        3914
+## 6    04    011 Greenlee County, Arizona       51813        5787</code></pre>
+<aside class="notes">
+Alright, time to join it to our <strong>az</strong> spatial data frame and map it.
+</aside>
+</section>
+<section id="data-exploration" class="slide level2">
+<h2>Data Exploration</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">## Data Wrangling</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">az_income <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">rename</span>(<span class="dt">MHI_est =</span> B19013_001E ,</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="dt">MHI_moe =</span> B19013_001M)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">mutate</span>(<span class="dt">se =</span> MHI_moe<span class="op">/</span><span class="fl">1.645</span>,</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="dt">cv =</span> (se<span class="op">/</span>MHI_est)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#CV is the coefficient of variation</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">  </span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="co">##Plot</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw">ggplot</span>( <span class="kw">aes</span>(<span class="dt">x =</span> MHI_est,</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="dt">y =</span> <span class="kw">reorder</span>(NAME, MHI_est))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="kw">geom_errorbarh</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> MHI_est <span class="op">-</span><span class="st"> </span>MHI_moe,</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="dt">xmax =</span> MHI_est <span class="op">+</span><span class="st"> </span>MHI_moe )) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Median Household Income by County:&quot;</span>,</a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="dt">subtitle =</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="kw">paste0</span>(<span class="st">&quot;Arizona US Census/ACS5 2016&quot;</span>),</a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="dt">x =</span> <span class="st">&quot;Median Household Income&quot;</span>, <span class="dt">y=</span><span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="kw">scale_x_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>dollar) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="kw">theme</span>(<span class="dt">panel.grid.minor.x =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="dt">panel.grid.major.x =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
+</section>
+<section id="data-exploration-1" class="slide level2">
+<h2>Data Exploration</h2>
+<p><img src="MappingIntro_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
+</section>
+<section id="downloading-arizona-shapefile" class="slide level2">
+<h2>Downloading Arizona Shapefile</h2>
+<p>First, let’s make sure the shape files download as <strong>sf</strong> files (because it can also handle <strong>sp</strong> versions, as well)</p>
+<p>If <strong>cb</strong> is set to TRUE, it downloads a generalized (1:500k) counties file. Default is FALSE (the most detailed TIGER file).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(tigris)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">options</span>(<span class="dt">tigris_use_cache =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">tigris_class =</span> <span class="st">&quot;sf&quot;</span>)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">az &lt;-<span class="st"> </span><span class="kw">counties</span>(<span class="st">&quot;AZ&quot;</span>, <span class="dt">cb=</span>T)</a></code></pre></div>
+</section>
+<section id="what-the-az-object-looks-like" class="slide level2">
+<h2>What the az object looks like</h2>
+<pre><code>View(az)</code></pre>
+<p><img data-src="figures/azview.png" /></p>
+</section>
+<section id="what-are-the-variables" class="slide level2">
+<h2>What are the variables</h2>
+<ul>
+<li><strong>STATEFP</strong> is the state fips code.
+<ul>
+<li>That stands for the Federal Information Processing Standard. It’s a standardized way to identify states, counties, census tracts, etc.</li>
+</ul></li>
+<li><strong>GEOID</strong> is also part of the fips code.
+<ul>
+<li>In this instance it’s only two digits wide.</li>
+<li>The more specific you get into the Census boundaries, the longer the number gets.</li>
+</ul></li>
+<li><strong>geometry</strong>
+<ul>
+<li>This is the Coordinate Reference System (CRS) data</li>
+</ul></li>
+</ul>
+</section>
+<section id="mapping-arizona" class="slide level2">
+<h2>Mapping Arizona</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">ggplot</span>(az) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&#39;transparent&#39;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Arizona counties&quot;</span>)</a></code></pre></div>
+<p><img src="MappingIntro_files/figure-revealjs/tigris_map-1.png" width="40%" /></p>
+</section>
+<section id="notes-on-some-code" class="slide level2">
+<h2>Notes on some code</h2>
+<pre><code>  theme_void() +
+  theme(panel.grid.major = element_line(colour = &#39;transparent&#39;)) +</code></pre>
+<ul>
+<li><strong>theme_void()</strong> is a special function that gets rid of grids and gray space for maps</li>
+<li><strong>theme()</strong> is how you can alter specific styles of the visualization</li>
+<li><strong>theme_void()</strong> is a collection of individual <strong>theme()</strong> modifications</li>
+</ul>
+<p>Time to join the map data and median income data</p>
+</section>
+<section id="join-income-data-az_income-and-spatial-az-map-data" class="slide level2">
+<h2>Join Income Data (<strong>az_income</strong>) and Spatial (<strong>az</strong>) Map Data</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">head</span>(az_income,<span class="dv">1</span>) <span class="co"># county variable name</span></a></code></pre></div>
+<pre><code>  state county                   NAME B19013_001E B19013_001M
+1    04    001 Apache County, Arizona       32460        1381</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">az[[<span class="dv">2</span>]] <span class="co"># CountryFP variable name</span></a></code></pre></div>
+<pre><code> [1] &quot;015&quot; &quot;005&quot; &quot;009&quot; &quot;013&quot; &quot;027&quot; &quot;001&quot; &quot;025&quot; &quot;021&quot; &quot;011&quot; &quot;023&quot; &quot;003&quot;
+[12] &quot;017&quot; &quot;019&quot; &quot;012&quot; &quot;007&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">az4ever &lt;-<span class="st"> </span><span class="kw">left_join</span>(az, az_income, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;COUNTYFP&quot;</span>=<span class="st">&quot;county&quot;</span>))</a></code></pre></div>
+</section>
+<section id="did-it-work" class="slide level2">
+<h2>Did it work?</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">names</span>(az4ever)</a></code></pre></div>
+<pre><code>##  [1] &quot;STATEFP&quot;     &quot;COUNTYFP&quot;    &quot;COUNTYNS&quot;    &quot;AFFGEOID&quot;    &quot;GEOID&quot;      
+##  [6] &quot;NAME.x&quot;      &quot;LSAD&quot;        &quot;ALAND&quot;       &quot;AWATER&quot;      &quot;state&quot;      
+## [11] &quot;NAME.y&quot;      &quot;B19013_001E&quot; &quot;B19013_001M&quot; &quot;geometry&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">head</span>(az4ever, <span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## Simple feature collection with 1 feature and 13 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -114.7548 ymin: 34.20963 xmax: -112.5293 ymax: 37.00075
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+##   STATEFP COUNTYFP COUNTYNS       AFFGEOID GEOID NAME.x LSAD       ALAND
+## 1      04      015 00025445 0500000US04015 04015 Mohave   06 34475503964
+##      AWATER state                 NAME.y B19013_001E B19013_001M
+## 1 387344307    04 Mohave County, Arizona       39856        1002
+##                         geometry
+## 1 MULTIPOLYGON (((-114.7532 3...</code></pre>
+</section>
+<section id="arizona-median-income" class="slide level2">
+<h2>Arizona median income</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">ggplot</span>(az4ever) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>B19013_001E), <span class="dt">color=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&#39;transparent&#39;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_fill_distiller</span>(<span class="dt">palette=</span><span class="st">&quot;Oranges&quot;</span>, <span class="dt">direction=</span><span class="dv">1</span>, <span class="dt">name=</span><span class="st">&quot;Median income&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;2016 Median income in Arizona counties&quot;</span>, <span class="dt">caption=</span><span class="st">&quot;Source: US Census/ACS5 2016&quot;</span>)</a></code></pre></div>
+<p><img src="MappingIntro_files/figure-revealjs/unnamed-chunk-16-1.png" width="40%" /></p>
+</section>
+<section id="download-census-data-and-shapefiles-together" class="slide level2">
+<h2>Download Census data and shapefiles together</h2>
+<p>Newest package for Census data: <a href="(https://walkerke.github.io/tidycensus/index.html)"><strong>tidycensus</strong></a></p>
+<p>With <strong>tidycensus</strong>, you can download the shape files with the data you want already attached. No joins necessary.</p>
+<p>Let’s get right into mapping. We’ll calculate unemployment percents by Census tract in Maricopa County. It’ll involve wrangling some data. But querying the data with <code>get_acs()</code> will be easy and so will getting the shape file by simply passing it <code>geometry=T</code>.</p>
+<aside class="notes">
+<p>The most recent package dealing with Census data is <a href="https://walkerke.github.io/tidycensus/index.html"><strong>tidycensus</strong></a> and it brings together what we’ve done above– the data and the geography. It’s also created by Kyle Walker.</p>
+<p>You can use it to pull data only like with <strong>censusapi</strong> or you can use it to pull shape files only, like with <strong>tigris</strong>.</p>
+<p>But with tidycensus you bring both at the same time.</p>
+<p>I won’t get into the particulars of looking up geography types and Census variables.</p>
+</aside>
+</section>
+<section id="load-up-tidycensus" class="slide level2">
+<h2>Load up tidycensus</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
+<p>Pass it your Census key.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">census_api_key</span>(<span class="st">&quot;YOUR API KEY GOES HERE&quot;</span>)</a></code></pre></div>
+</section>
+<section id="search-for-variables" class="slide level2">
+<h2>Search for variables</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">VarSearch &lt;-<span class="st"> </span><span class="kw">load_variables</span>( <span class="dv">2017</span>, <span class="st">&quot;acs5&quot;</span>, <span class="dt">cache=</span><span class="ot">TRUE</span> )</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="co"># convert all letters to upper case</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">VarSearch<span class="op">$</span>label &lt;-<span class="st"> </span><span class="kw">toupper</span>(VarSearch<span class="op">$</span>label)</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">unemployment &lt;-<span class="st">  </span>VarSearch <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9"><span class="st">  </span></a>
+<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">contains.unemployment =</span> <span class="kw">grepl</span>( <span class="st">&quot;UNEMPLOYED&quot;</span>, label ) ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="st">  </span><span class="co">#Create new variable with Mutate that has UNEMPLOYED in title using grepl</span></a>
+<a class="sourceLine" id="cb24-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb24-13" data-line-number="13"><span class="st">  </span><span class="kw">filter</span>( contains.unemployment )</a>
+<a class="sourceLine" id="cb24-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb24-15" data-line-number="15"><span class="kw">head</span>(unemployment, <span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   name    label                     concept               contains.unemplo…
+##   &lt;chr&gt;   &lt;chr&gt;                     &lt;chr&gt;                 &lt;lgl&gt;            
+## 1 B12006… ESTIMATE!!TOTAL!!NEVER M… MARITAL STATUS BY SE… TRUE</code></pre>
+</section>
+<section id="search-for-variables-with-view" class="slide level2">
+<h2>Search for Variables with <code>View</code></h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">View</span>(VarSearch)</a></code></pre></div>
+<p><img src="figures/Image19.png" width="50%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Select <code>Filter</code> (top left). In <code>label</code> box, type <code>Hispanic</code></li>
+<li>We want the total non-hispanic population (<code>B03001_002</code>)</li>
+</ul>
+</section>
+<section id="getting-unmployment-figures" class="slide level2">
+<h2>Getting unmployment figures</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">jobs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">labor_force =</span> <span class="st">&quot;B23025_005E&quot;</span>, </a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">              <span class="dt">unemployed =</span> <span class="st">&quot;B23025_002E&quot;</span>)</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">arizona &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography=</span><span class="st">&quot;tract&quot;</span>, <span class="dt">year=</span><span class="dv">2017</span>, <span class="dt">survey=</span><span class="st">&quot;acs5&quot;</span>, </a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">                  <span class="dt">variables=</span> jobs, <span class="dt">county =</span> <span class="st">&quot;Maricopa&quot;</span>, </a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">                  <span class="dt">state=</span><span class="st">&quot;AZ&quot;</span>, <span class="dt">geometry=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">head</span>(arizona)</a></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 5 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -112.0654 ymin: 33.46573 xmax: -111.04 ymax: 34.03733
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+##         GEOID                                          NAME   variable
+## 1 04013010101 Census Tract 101.01, Maricopa County, Arizona B23025_002
+## 2 04013010101 Census Tract 101.01, Maricopa County, Arizona B23025_005
+## 3 04013010102 Census Tract 101.02, Maricopa County, Arizona B23025_002
+## 4 04013010102 Census Tract 101.02, Maricopa County, Arizona B23025_005
+## 5 04013030401 Census Tract 304.01, Maricopa County, Arizona B23025_002
+## 6 04013030401 Census Tract 304.01, Maricopa County, Arizona B23025_005
+##   estimate moe                       geometry
+## 1     1681 333 MULTIPOLYGON (((-111.7869 3...
+## 2       87  59 MULTIPOLYGON (((-111.7869 3...
+## 3     1767 431 MULTIPOLYGON (((-112.0654 3...
+## 4       54  47 MULTIPOLYGON (((-112.0654 3...
+## 5     1354 296 MULTIPOLYGON (((-111.9648 3...
+## 6       30  49 MULTIPOLYGON (((-111.9648 3...</code></pre>
+</section>
+<section id="transforming-the-data" class="slide level2">
+<h2>Transforming the data</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">arizona&lt;-arizona <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variable=</span><span class="kw">case_when</span>( </a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">    variable<span class="op">==</span><span class="st">&quot;B23025_005&quot;</span> <span class="op">~</span><span class="st"> &quot;Unemployed&quot;</span>,</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">    variable<span class="op">==</span><span class="st">&quot;B23025_002&quot;</span> <span class="op">~</span><span class="st"> &quot;Workforce&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>moe) <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb30-7" data-line-number="7"><span class="st">  </span><span class="kw">spread</span>(variable, estimate) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#Spread moves rows into columns</span></a>
+<a class="sourceLine" id="cb30-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent_unemployed=</span><span class="kw">round</span>(Unemployed<span class="op">/</span>Workforce<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)) </a></code></pre></div>
+<pre><code>head(arizona)</code></pre>
+<aside class="notes">
+<p>Time for some math. Can you follow what’s happening in the code based on what you’ve learned in previous chapters?</p>
+We can string the <strong>dplyr</strong> wrangling and <strong>ggplot2</strong> code together. Just watch and look out for the transition from <code>%&gt;%</code> to <code>+</code>.
+</aside>
+</section>
+<section id="mapping-the-data" class="slide level2">
+<h2>Mapping the data</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">ggplot</span>(arizona, <span class="kw">aes</span>(<span class="dt">fill=</span>percent_unemployed)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&#39;transparent&#39;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_fill_distiller</span>(<span class="dt">palette=</span><span class="st">&quot;Reds&quot;</span>, <span class="dt">direction=</span><span class="dv">1</span>, <span class="dt">name=</span><span class="st">&quot;Estimate&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Percent unemployed in Maricopa County&quot;</span>, <span class="dt">caption=</span><span class="st">&quot;Source: US Census/ACS5 2016&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-7" data-line-number="7"><span class="st">  </span><span class="ot">NULL</span></a></code></pre></div>
+<p><img src="MappingIntro_files/figure-revealjs/unnamed-chunk-21-1.png" width="50%" /></p>
+</section>
+<section id="faceting-maps-small-multiples" class="slide level2">
+<h2>Faceting maps (Small multiples)</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">racevars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">White =</span> <span class="st">&quot;B02001_002&quot;</span>, </a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">              <span class="dt">Black =</span> <span class="st">&quot;B02001_003&quot;</span>, </a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">              <span class="dt">Asian =</span> <span class="st">&quot;B02001_005&quot;</span>,</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">              <span class="dt">Hispanic =</span> <span class="st">&quot;B03003_003&quot;</span>)</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">maricopa &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>, <span class="dt">variables =</span> racevars, </a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">                  <span class="dt">state =</span> <span class="st">&quot;AZ&quot;</span>, <span class="dt">county =</span> <span class="st">&quot;Maricopa County&quot;</span>, <span class="dt">geometry =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">                  <span class="dt">summary_var =</span> <span class="st">&quot;B02001_001&quot;</span>, <span class="dt">year=</span><span class="dv">2017</span>, <span class="dt">survey =</span> <span class="st">&quot;acs5&quot;</span>) </a></code></pre></div>
+<aside class="notes">
+Another example: We’ll pull the population of non-Hispanic whites, non-Hispanic blacks, non-Hispanic Asians, and Hispanics by Census tract from the latest ACS Census. The function is <code>get_acs()</code> and we’ll also add the <code>summary_var</code> argument to get multi-group denominators.
+</aside>
+</section>
+<section id="faceting-maps-small-multiples-1" class="slide level2">
+<h2>Faceting maps (Small multiples)</h2>
+<pre><code>head(maricopa)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">head</span>(maricopa)</a></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -112.0654 ymin: 33.46573 xmax: -111.04 ymax: 34.03733
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+##         GEOID                                          NAME variable
+## 1 04013010101 Census Tract 101.01, Maricopa County, Arizona    White
+## 2 04013010101 Census Tract 101.01, Maricopa County, Arizona    Black
+## 3 04013010101 Census Tract 101.01, Maricopa County, Arizona    Asian
+## 4 04013010101 Census Tract 101.01, Maricopa County, Arizona Hispanic
+## 5 04013010102 Census Tract 101.02, Maricopa County, Arizona    White
+## 6 04013010102 Census Tract 101.02, Maricopa County, Arizona    Black
+##   estimate moe summary_est summary_moe                       geometry
+## 1     4814 513        4915         517 MULTIPOLYGON (((-111.7869 3...
+## 2        0  12        4915         517 MULTIPOLYGON (((-111.7869 3...
+## 3       19  33        4915         517 MULTIPOLYGON (((-111.7869 3...
+## 4       78 104        4915         517 MULTIPOLYGON (((-111.7869 3...
+## 5     4408 592        4602         602 MULTIPOLYGON (((-112.0654 3...
+## 6       25  38        4602         602 MULTIPOLYGON (((-112.0654 3...</code></pre>
+<aside class="notes">
+<p>This is a very tidy data frame.</p>
+And looks like we’ve have some grouping material.
+</aside>
+</section>
+<section id="transform-and-map-the-data" class="slide level2">
+<h2>Transform and map the data</h2>
+<p>Combine data wrangling and mapping into 1</p>
+<pre><code>library(viridis)
+maricopa %&gt;%
+  mutate(pct = 100 * (estimate / summary_est)) %&gt;%
+  ggplot(aes(fill = pct, color = pct)) +
+  facet_wrap(~variable) +
+  geom_sf() +
+  coord_sf(crs = 26915) + 
+  scale_fill_viridis(direction=-1) +
+  scale_color_viridis(direction=-1) +
+  theme_void() +
+  theme(panel.grid.major = element_line(colour = &#39;transparent&#39;)) +
+  labs(title=&quot;Racial geography of Maricopa County, Arizona&quot;, caption=&quot;Source: US Census 2010&quot;)</code></pre>
+</section>
+<section id="transform-and-map-the-data-1" class="slide level2">
+<h2>Transform and map the data</h2>
+<p><img src="MappingIntro_files/figure-revealjs/faceting-1.png" width="768" /></p>
+</section>
+<section id="from-here-easy-to-create-us-maps" class="slide level2">
+<h2>From here, easy to create US maps</h2>
+<p>Poverty = <code>B17001_002</code></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">county_pov &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>,</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">                      <span class="dt">variables =</span> <span class="st">&quot;B17001_002&quot;</span>,</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">                      <span class="dt">summary_var =</span> <span class="st">&quot;B17001_001&quot;</span>,</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">                      <span class="dt">year =</span> <span class="dv">2017</span>,</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">                      <span class="dt">survey =</span> <span class="st">&quot;acs5&quot;</span>,</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">                      <span class="dt">geometry =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">                      <span class="dt">shift_geo =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pctpov =</span> <span class="dv">100</span> <span class="op">*</span><span class="st"> </span>(estimate<span class="op">/</span>summary_est))</a>
+<a class="sourceLine" id="cb38-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb38-10" data-line-number="10"><span class="co">## Plot</span></a>
+<a class="sourceLine" id="cb38-11" data-line-number="11"><span class="kw">ggplot</span>(county_pov) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> pctpov), <span class="dt">color=</span><span class="ot">NA</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-13" data-line-number="13"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">datum=</span><span class="ot">NA</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Percent of population in poverty by county&quot;</span>,</a>
+<a class="sourceLine" id="cb38-15" data-line-number="15">       <span class="dt">subtitle =</span> <span class="st">&quot;Alaska and Hawaii are shifted and not to scale&quot;</span>,</a>
+<a class="sourceLine" id="cb38-16" data-line-number="16">       <span class="dt">caption =</span> <span class="st">&quot;Source: ACS 5-year, 2016&quot;</span>,</a>
+<a class="sourceLine" id="cb38-17" data-line-number="17">       <span class="dt">fill =</span> <span class="st">&quot;% in poverty&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-18" data-line-number="18"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">direction=</span><span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
+</section>
+<section id="us-county-poverty-map" class="slide level2">
+<h2>US County Poverty Map</h2>
+<p><img src="MappingIntro_files/figure-revealjs/alaska_hawii-1.png" width="768" /></p>
+</section>
+<section id="lab-2" class="slide level2">
+<h2>Lab 2</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="MappingIntro_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="MappingIntro_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
