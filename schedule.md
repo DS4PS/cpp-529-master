@@ -268,7 +268,7 @@ On your lab you will be practicing with index development using census data and 
 
 ** Week 2 - Intro to Census Data and Mapping
 
-*** { @unit = "", @title = "Unit Overview"  }
+*** { @unit = "", @title = "Unit Overview" ,@reading, @foldout }
 This unit will focus on covering two exciting data science topics: (1) Working with Census Data; and (2) Creating choropleth (i.e. color-coded) maps.  The U.S. Census Bureau is the premier source of data about US people, places and economy, making the Bureau a natural source of information for data analysts. 
 
 In general, data scientists using R often run into two problems related to this topic.  First, it can be extremely challenging to understand and find what are the actual data that the Census Bureau publishes.  Second, it can also be challenging to understand what packages in R can be used to efficiently analyze census data.  
@@ -286,10 +286,47 @@ REQUIRED:
 Florida, R. (2018). Where the House-Price-to-Income Ratio Is Most Out of Whack. [Citylab report](https://www.citylab.com/equity/2018/05/where-the-house-price-to-income-ratio-is-most-out-of-whack/561404/)
 
 
-*** { @unit = "", @title = "Introduction to Census Data", @lecture  }
+*** { @unit = "", @title = "Introduction to Census Data", @lecture, @foldout  }
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9722ZtZ1v1g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+
+*** { @unit = "", @title = "Introduction to Mapping", @lecture, @foldout }
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/peSI3dQ1Bbg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+*** { @unit = "", @title = "Mapping Census Data in R", @lecture, @foldout  }
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Jys5nZFRf28" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+*** { @unit = "", @title = "Mapping Census Data in R w/ TidyCensus", @lecture, @foldout  }
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qScoFj5ifTY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+*** { @unit = "Due Oct 30th", @title = "Lab 02", @assignment, @foldout  }
+
+<br>
+<br>
+
+## Brief Video Instruction
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CLMEqpf_3Xo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Lab Instructions
+
+Please download the Rmarkdown file (.RMD) below.  In steps 1-4, you can input your R code chunk in the areas that say ``#edit me``.  In Questions 1-3, you can simply answer the questions (i.e. you do not need to show or include any additional code needed to answer the questions).  
+
+Access Lab 2 here: [RMD](https://www.dropbox.com/s/s3ux5d0pyo34es6/Lab2.Rmd?dl=1) 
+
+Please submit both the .RMD file and .Html file.
+
+## Submit Solutions to Canvas:
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+<br>
+<br>
 
 
 
