@@ -304,6 +304,28 @@ Florida, R. (2018). Where the House-Price-to-Income Ratio Is Most Out of Whack. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qScoFj5ifTY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+*** { @unit = "Due Oct 30th", @title = "Discussion Assignment: How local governments ensure an accurate census", @assignment, @foldout  }
+
+<br>
+<br>
+Every 10 years, the U.S. Census Bureau conducts a census to determine the number of people living in the United States. 
+The data collected by the decennial census are used to determine the number of seats each state has in the U.S. House of Representatives as well as used to inform federal spending and other important federal and state functions.  
+The task of the census is simple to state yet difficult to execute: count everyone once (no undercount), only once (no overcount), and in the right place (no location errors).
+
+<br> 
+
+**ASSIGNMENT:** 
+
+> For your discussion topic this week, please read and provide general reflection based on the following  two articles [article 1](https://gcn.com/articles/2018/02/12/local-gov-correct-census-addresses.aspx) and [article 2](https://www.amacad.org/news/2020-census-unprecedented-challenges-their-implications).  Discuss also what are some of the challenges faced and new innovations adopted by federal and state governments to ensure an accurate census. 
+
+
+**Please post your reflection as a new pin on [YellowDig](https://canvas.asu.edu/courses/37703/assignments/842344).**
+
+<br>
+
+
+
 *** { @unit = "Due Oct 30th", @title = "Lab 02", @assignment, @foldout  }
 
 <br>
