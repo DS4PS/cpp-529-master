@@ -310,8 +310,7 @@ Florida, R. (2018). Where the House-Price-to-Income Ratio Is Most Out of Whack. 
 <br>
 <br>
 Every 10 years, the U.S. Census Bureau conducts a census to determine the number of people living in the United States. 
-The data collected by the decennial census are used to determine the number of seats each state has in the U.S. House of Representatives as well as used to inform federal spending and other important federal and state functions.  
-The task of the census is simple to state yet difficult to execute: count everyone once (no undercount), only once (no overcount), and in the right place (no location errors).
+The data collected by the decennial census are used to determine the number of seats each state has in the U.S. House of Representatives as well as used to inform federal spending and other important federal and state functions.  The task of the census is simple to state yet difficult to execute: count everyone once (no undercount), only once (no overcount), and in the right place (no location errors).
 
 <br> 
 
