@@ -1,0 +1,147 @@
+---
+title: "Lab 2 -  Intro to US Census and Mapping"
+author: Prof. Anthony Howell
+font-family: Gill Sans
+output:
+  html_document
+---
+# Overview
+In this lab you will practice working with the US census data searching for variables, loading them into R, performing basic calculations and data wrangling tasks, visualizing the data with figures and maps, and offer substantive feedback on the data analysis.  
+
+The topic for our analysis will be to compare the house-price-to-income ratio across US counties and over time.  The ratio tells the number of years it would take for the median income household  to buy the median household price.   Under healthy economic conditions, the rule of thumb is that a buyer can afford a house if its price is equivalent to a house-price-to-income ratio of 2.6. Read the [Citylab report](https://www.citylab.com/equity/2018/05/where-the-house-price-to-income-ratio-is-most-out-of-whack/561404/) report by Richard Florida for more background on the ratio and its importance and US county rankings. 
+
+
+For loading, manipulating, and plotting Census data in R, refer to Lecture 2 video and notes, and in particular, the part of lecture that introduces ```tidycensus```.  In that portion of lecture, the exact codes are already given for you.  All you need to do typically is to change variable name or year value, and re-run the code. 
+
+# Instructions
+### Step 1: Getting the Data
+
+- Use ```get_acs``` to download information on median household income and median household value for ACS 5-year estimate, 2013-2017 period
+
+- Call the dataset ```CenDF```
+
+- Notes: 
+    - Remember to load required packages: ```library(tidycensus)```, ```library(tidyverse)```, ```library(viridis)```
+
+    - Remember to use ```load_variables``` to view and search for variables.  In filter, search for `Median value` and use first row to get median household price variable name. 
+    - Remember to use ```census_api_key``` to access data
+    - Remember ```year=2017``` and ```survey="acs5"``` reports 5-year estimates for last five years of the entered date  (i.e. 2013-2017)
+    
+```{r, message=F, warning=F}
+#Edit me
+#Anser
+library(tidycensus)
+library(tidyverse)
+library(viridis)
+
+Var<-c("B19013_001","B25077_001")
+## c(Median household Income, Median Housing Value)
+  CenDF <- get_acs(geography = "county",
+                   variables = Var,
+                   year = 2017,
+                   survey = "acs5",
+                   geometry = TRUE,
+                   shift_geo = TRUE) 
+```
+
+
+### Step 2: Transforming the Data
+
+- Use ```spread``` to transform the dataset from long to wide and save the dataset back into `CenDF`
+
+- Use ```mutate``` to create the ratio of median household value divided by household median income, and call it `HHInc_HousePrice_Ratio`
+
+- Notes
+    - It will be helpful to relabel variable names from census name to a more easy to understand name, such as ``HHIncome`` and ``HouseValue``.  You can do this using ```mutate``` and ```case_when```. 
+    - It will also be helpful to remove ``MOE`` variable using ```select```
+    
+```{r, message=F, warning=F}
+#Edit me
+#Anser
+CenDF<-CenDF %>% 
+    mutate(variable=case_when( 
+      variable=="B19013_001" ~ "HHIncome",
+      variable=="B25077_001" ~ "HouseValue")) %>%
+    select(-moe) %>%  
+    spread(variable, estimate) %>%  #Spread moves rows into columns
+    mutate(HHInc_HousePrice_Ratio=round(HouseValue/HHIncome,2)) 
+```
+
+### Step 3: Data Exploration
+
+- Use ```order``` and ```rev(order)``` to explore which counties have the lowest and highest house-price-to-income ratio. 
+
+    - Example: ```CenDF[order(CenDF$HHInc_HousePrice_Ratio),]``` gives you 10 smallest values
+    - Example: ```CenDF[rev(order(CenDF$HHInc_HousePrice_Ratio)),]``` gives you 10 highest values
+    
+- Bonus: Use ```datatable``` function in the `DT` library to get interactive table that allows you to order columns
+    - ```datatable(CenDF)```
+    
+```{r, message=F, warning=F, eval=F}
+#Edit me
+#Anser
+CenDF[order(CenDF$HHInc_HousePrice_Ratio),]
+CenDF[rev(order(CenDF$HHInc_HousePrice_Ratio)),]
+```
+```{r, message=F, warning=F}
+#Bonus
+  library(DT)
+datatable(cbind('County Name' = CenDF[[2]],"Price-Income Ratio" = CenDF[[6]]))
+```
+
+
+### Step 4: Map the Data
+```{r, message=F, warning=F}
+#Edit me
+#Anser
+  ggplot(CenDF) +
+    geom_sf(aes(fill = HHInc_HousePrice_Ratio), color=NA) +
+    coord_sf(datum=NA) +
+    labs(title = "House-Price-to-Income Ratio",
+         caption = "Source: ACS 5-year, 2013-2017",
+         fill = "Price-Income Ratio") +
+    scale_fill_viridis(direction=-1)
+```
+
+
+
+# Questions
+
+### Question 1: Exploration.
+
+1a. In step 3 above, what is the county with the highest (and lowest) house-price-to-income ratio?  What is the average house-price-to-income ratio across all US counties over the time period?  
+
+    - Answer: 
+    
+    
+1b. Where is Maricopa County on the list? How many years of median income will it take to buy a home in Maricopa County? 
+
+    - Answer: 
+    
+1c. Where is Los Angeles on the list and how does its ranking compare to the list reported in the [Citylab report](https://www.citylab.com/equity/2018/05/where-the-house-price-to-income-ratio-is-most-out-of-whack/561404/) report by Richard Florida? 
+
+    - Answer: 
+    
+    
+### Question 2: Temporal  analysis. 
+
+1a. Go back to Step 1 above, and enter in 2012 as the year value, which refers to the 2008-2012 5-year ACS estimate.  The time period corresponds to the aftermath of the 2007/08 Great Financial Crisis. Repeat Steps 2-4, and re-answer Question 1 above for the 2008-2012 time period.  
+
+    - Answer: 
+    
+    
+2b. Compare and contrast the findings over the different time periods. Calculate the change in the housing value-to-income ratio from 2008-2012 to 2013-2017. What is the change? Did the average house-price-to-income ratio increase or decrease? Did the house-price-to-income ratio increase (or decrease) for Maricopa County and Los Angeles county?
+
+    - Answer: 
+    
+### Question 3: High-Resolution Analysis. 
+
+3a. Go back to Step 1 above and keep 2017 as the year value.  This time change geography value from ```county``` to ```tract.```  Also add ```state = "AZ"``` and  ```county = "Maricopa County"``` within the ```get_acs``` function. Repeat Steps 2-4. What are the summary statistics (min, max, median, mean, sd) for the house-price-to-income ratio in Maricopa county? 
+
+    - Answer: 
+    
+  
+3b. Compare and contrast the findings for the different levels of geography.   How does the minimum, maximum, and mean value for census tracts within Maricopa county compare to results found in Question 1 looking at county-level data? 
+
+
+    - Answer: 
