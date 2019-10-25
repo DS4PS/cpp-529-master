@@ -89,6 +89,16 @@ plot( phx_dorling )
 
 tm_shape( phx_dorling ) + 
   tm_polygons( size="POP", col="MHHI", n=7, style="quantile", palette="Spectral" ) 
+
+
+# WRITE TO FILE 
+
+library( geojsonio )
+
+phx_dorling <- spTransform( phx_dorling, CRS("+proj=longlat +datum=WGS84") )
+phx <- spTransform( phx, CRS("+proj=longlat +datum=WGS84") )
+geojson_write( phx_dorling, file="phx_dorling.geojson", geometry="polygon" )
+geojson_write( phx, file="phx.geojson", geometry="polygon" )
 ```
 
 
