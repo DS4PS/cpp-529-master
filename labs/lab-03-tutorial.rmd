@@ -238,7 +238,7 @@ We can see that lots of clusters have between 20 and 40 percent with college deg
 
 
 
-```{r, fig.height=10, fig.width=8}
+```{r, fig.height=10, fig.width=8, eval=F}
 df.pct <- sapply( d2, ntile, 100 )
 d3 <- as.data.frame( df.pct )
 d3$cluster <- as.factor( paste0("GROUP-",fit$classification) )
@@ -270,10 +270,76 @@ for( i in 1:8 )
 
 
 
-```{r, fig.width=10, fig.height=8}
-# dropping two tracts that cover the legend
-phx2 <- phx[ !(phx$GEOID %in% c("04013723308","04013723304")) , ]
+```{r, fig.height=10, fig.width=8, echo=F}
+df.pct <- sapply( d2, ntile, 100 )
+d3 <- as.data.frame( df.pct )
+d3$cluster <- as.factor( paste0("GROUP-",fit$classification) )
 
+stats <- 
+d3 %>% 
+  group_by( cluster ) %>% 
+  summarise_each( funs(mean) )
+
+t <- data.frame( t(stats), stringsAsFactors=F )
+names(t) <- paste0( "GROUP.", 1:8 )
+t <- t[-1,]
+
+for( i in 1:4 )
+{
+  z <- t[,i]
+  plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
+        type="n", xaxt="n", yaxt="n",
+        xlab="Percentile", ylab="",
+        main=paste("GROUP",i) )
+  abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+  segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
+  text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
+  points( z, 1:30, pch=19, col="firebrick", cex=1.5 )
+  axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+}
+```
+
+
+```{r, fig.width=10, fig.height=8, echo=F}
+tmap_mode("plot")
+tmap_style("cobalt")
+tm_shape( phx2, bbox=bb ) + 
+  tm_polygons( col="cluster", palette="Accent"  )
+```
+
+
+
+```{r, fig.height=10, fig.width=8, echo=F}
+df.pct <- sapply( d2, ntile, 100 )
+d3 <- as.data.frame( df.pct )
+d3$cluster <- as.factor( paste0("GROUP-",fit$classification) )
+
+stats <- 
+d3 %>% 
+  group_by( cluster ) %>% 
+  summarise_each( funs(mean) )
+
+t <- data.frame( t(stats), stringsAsFactors=F )
+names(t) <- paste0( "GROUP.", 1:8 )
+t <- t[-1,]
+
+for( i in 5:8 )
+{
+  z <- t[,i]
+  plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
+        type="n", xaxt="n", yaxt="n",
+        xlab="Percentile", ylab="",
+        main=paste("GROUP",i) )
+  abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+  segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
+  text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
+  points( z, 1:30, pch=19, col="firebrick", cex=1.5 )
+  axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+}
+```
+
+
+```{r, fig.width=10, fig.height=8, echo=F}
 tmap_mode("plot")
 tmap_style("cobalt")
 tm_shape( phx2, bbox=bb ) + 
