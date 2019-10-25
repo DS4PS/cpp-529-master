@@ -98,7 +98,7 @@ tm_shape( phx, bbox=bb ) +
 
 
 
-```{r, fig.width=12, fig.heigh=8}
+```{r, fig.width=10, fig.height=8}
 tmap_mode("view")
 tm_basemap( "HikeBike.HillShading"  ) +
   tm_shape( phx, bbox=bb ) + 
@@ -107,7 +107,7 @@ tm_basemap( "HikeBike.HillShading"  ) +
 
 
 
-```{r, fig.width=12, fig.heigh=8}
+```{r, fig.width=10, fig.height=8}
 tm_basemap( "Stamen.Watercolor" ) +
 tm_shape( phx, bbox=bb ) + 
   tm_polygons( col="MHHI", n=7, style="quantile", palette="RdYlBu" ) +
