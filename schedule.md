@@ -268,7 +268,13 @@ On your lab you will be practicing with index development using census data and 
 
 ** Week 2 - Intro to Census Data and Mapping
 
-*** { @unit = "", @title = "Unit Overview" ,@reading, @foldout }
+*** { @unit = "", @title = "Unit Overview", @reading, @foldout }
+
+<br>
+<br>
+
+## Description 
+
 This unit will focus on covering two exciting data science topics: (1) Working with Census Data; and (2) Creating choropleth (i.e. color-coded) maps.  The U.S. Census Bureau is the premier source of data about US people, places and economy, making the Bureau a natural source of information for data analysts. 
 
 In general, data scientists using R often run into two problems related to this topic.  First, it can be extremely challenging to understand and find what are the actual data that the Census Bureau publishes.  Second, it can also be challenging to understand what packages in R can be used to efficiently analyze census data.  
@@ -284,6 +290,10 @@ Note: Interactive imagery will be viewable only in the HTML file, but not PDF fi
 REQUIRED:
 
 Florida, R. (2018). Where the House-Price-to-Income Ratio Is Most Out of Whack. [Citylab report](https://www.citylab.com/equity/2018/05/where-the-house-price-to-income-ratio-is-most-out-of-whack/561404/)
+
+
+<br>
+<br>
 
 
 *** { @unit = "", @title = "Introduction to Census Data", @lecture, @foldout  }
