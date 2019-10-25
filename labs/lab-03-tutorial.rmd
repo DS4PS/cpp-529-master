@@ -174,6 +174,7 @@ For more details on cluster analysis visit the [**mclust** tutorial](https://cra
 
 ```{r}
 # library( mclust )
+set.seed( 1234 )
 fit <- Mclust( d3 )
 phx$cluster <- as.factor( fit$classification )
 summary( fit )
@@ -269,6 +270,14 @@ for( i in 1:8 )
 
 
 
+```{r, fig.width=10, fig.height=8, echo=F}
+tmap_mode("plot")
+tmap_style("cobalt")
+tm_shape( phx2, bbox=bb ) + 
+  tm_polygons( col="cluster", palette="Accent"  )
+```
+
+
 
 ```{r, fig.height=10, fig.width=8, echo=F}
 df.pct <- sapply( d2, ntile, 100 )
@@ -289,9 +298,13 @@ for( i in 1:4 )
   z <- t[,i]
   plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
         type="n", xaxt="n", yaxt="n",
-        xlab="Percentile", ylab="",
+        xlab="                                         Percentile", 
+        ylab="", col.lab="gray40",
         main=paste("GROUP",i) )
-  abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+  rect( xleft=0, ybottom=0, xright=20, ytop=31, col=gray(0.75,0.5), border="gray80" )
+  rect( xleft=40, ybottom=0, xright=60, ytop=31, col=gray(0.75,0.5), border="gray80" )
+  rect( xleft=80, ybottom=0, xright=100, ytop=31, col=gray(0.75,0.5), border="gray80" )
+  # abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray70" )
   segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
   text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
   points( z, 1:30, pch=19, col="firebrick", cex=1.5 )
@@ -328,8 +341,12 @@ for( i in 5:8 )
   z <- t[,i]
   plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
         type="n", xaxt="n", yaxt="n",
-        xlab="Percentile", ylab="",
+        xlab="                                         Percentile", 
+        ylab="", col.lab="gray40",
         main=paste("GROUP",i) )
+  rect( xleft=0, ybottom=0, xright=20, ytop=31, col=gray(0.75,0.5), border="gray80" )
+  rect( xleft=40, ybottom=0, xright=60, ytop=31, col=gray(0.75,0.5), border="gray80" )
+  rect( xleft=80, ybottom=0, xright=100, ytop=31, col=gray(0.75,0.5), border="gray80" )
   abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
   segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
   text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
