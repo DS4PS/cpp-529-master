@@ -256,7 +256,7 @@ On your lab you will be practicing with index development using census data and 
 <br>
 
 
-*** {  @title = "Lab 01 Solutions", @assignment, @foldout  }
+*** { @unit = "", @title = "Lab 01 Solutions", @assignment, @foldout  }
 
 Solutions to Lab 1 can be found here [(Lab 1 Solutions)](https://www.dropbox.com/s/ot5h10ucg9hm5m1/lab-02-solutions.docx?dl=1).
 
