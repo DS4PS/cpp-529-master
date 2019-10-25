@@ -1,1 +1,95 @@
+# Data
+
 Some useful files for lectures and labs. 
+
+## Load Shapefiles
+
+
+```r
+library( geojsonio )
+library( sp )
+
+github.url <- "https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/phx_dorling.geojson"
+phx <- geojson_read( x=github.url,  what="sp" )
+
+plot( phx )
+
+library( tmap ) 
+
+phx <- spTransform( phx, CRS("+init=epsg:3395") )
+
+bb <- st_bbox( c( xmin = -12519146, xmax = -12421368, 
+                  ymax = 3965924, ymin = 3899074 ), 
+               crs = st_crs("+init=epsg:3395"))
+
+tm_shape( phx_dorling, bbox=bb ) + 
+  tm_polygons( col="MHHI", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Dorling Cartogram", title.position=c("right","top") )
+
+tmap_mode("view")
+tm_basemap( "Stamen.Watercolor" ) +
+  tm_shape( phx_dorling, bbox=bb ) + 
+  tm_polygons( col="MHHI", n=7, style="quantile", palette="-inferno" ) 
+```
+
+![](../assets/img/phx-dorling.png) 
+
+
+
+## Create Shapefiles
+
+The code here shows how to create Dorling Cartograms for the Phoenix metro area and convert to GeoJSON files for upload to GitHub:
+
+```r
+library( tidycensus )
+library( dplyr )
+
+census_api_key("YOUR KEY GOES HERE")
+
+phx.pop <-
+get_acs( geography = "tract", variables = "B01003_001",
+         state = "AZ", county = "Maricopa", geometry = FALSE ) %>% 
+         select( GEOID, estimate ) %>%
+         rename( POP=estimate )
+
+phx.mhhi <- 
+  get_acs( geography = "tract", variables = "B19013_001",
+           state = "AZ", county = "Maricopa", geometry = FALSE ) %>% 
+  select( GEOID, estimate ) %>% 
+  rename( MHHI=estimate )
+
+
+
+library( tigris )
+
+phx <- tracts( state="AZ", county="Maricopa", cb=TRUE, year=2015 )
+phx <- merge( phx, phx.pop, by.x="GEOID", by.y="GEOID" )
+phx <- merge( phx, phx.mhhi, by.x="GEOID", by.y="GEOID" )
+
+
+
+# devtools::install_github( "sjewo/cartogram" )
+# install.packages( "tmap" )
+
+library( cartogram )  # spatial maps w/ tract size bias reduction
+library( tmap )       # thematic maps
+library( maptools )   # spatial object manipulation 
+library( sf )         # 'simple features' flavor of shapefiles
+
+# project map and remove empty tracts
+phx <- spTransform( phx, CRS("+init=epsg:3395"))
+phx <- phx[ phx$POP != 0 & (! is.na( phx$POP )) , ]
+
+# convert census tract polygons to dorling cartogram
+# no idea why k=0.03 works, but it does - default is k=5
+phx$pop.w <- phx$POP / 10000   # standardizes it to max of 1.5
+phx_dorling <- cartogram_dorling( x=phx, weight="pop.w", k=0.03 )
+
+plot( phx_dorling )
+
+tm_shape( phx_dorling ) + 
+  tm_polygons( size="POP", col="MHHI", n=7, style="quantile", palette="Spectral" ) 
+```
+
+
+
