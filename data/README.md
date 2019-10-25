@@ -93,3 +93,19 @@ tm_shape( phx_dorling ) +
 
 
 
+```r
+tmap_mode("plot")
+
+px1 <- tm_shape( phx_dorling, bbox=bb ) + 
+  tm_polygons( size="POP", col="MHHI", n=10, style="quantile", palette="Spectral" ) +
+  tm_legend( show=FALSE ) +
+  tm_layout( "Dorling Cartogram", title.position=c("right","top") )
+
+px2 <- tm_shape( phx, bbox=bb ) +
+  tm_bubbles( size="POP", col="MHHI", n=10, style="quantile", palette="Spectral" ) +
+  tm_legend( show=FALSE ) +
+  tm_layout( "tmap Bubbles", title.position=c("right","top") )
+
+tmap_arrange( px2, px1 )
+```
+
