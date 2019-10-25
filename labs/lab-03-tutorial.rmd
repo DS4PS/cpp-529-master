@@ -1,0 +1,395 @@
+---
+title: "Lab-03 Identifying Neighborhood Clusters"
+output:
+  html_document:
+    theme: readable
+    highlight: tango
+    toc: true
+    self_contained: false
+    number_sections: false
+    css: textbook.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=T, fig.width=10, fig.height=6, warning=F, message=F )
+```
+
+
+
+# Packages
+
+```{r}
+library( geojsonio )   # read shapefiles
+library( sp )          # work with shapefiles
+library( sf )          # work with shapefiles - simple features format
+library( mclust )      # cluster analysis 
+library( tmap )        # theme maps
+library( ggplot2 )     # graphing 
+library( ggthemes )
+library( dplyr )
+library( pander )
+```
+
+
+## Data Source
+
+This exercise uses Census data from the 2012 American Communities Survey made available through the [Diversity and Disparities Project](https://s4.ad.brown.edu/projects/diversity/Researcher/Bridging.htm).  
+
+**DATA DICTIONARY**
+
+
+```{r, echo=F}
+data.dictionary <- 
+structure(list(LABEL = c("tractid", "pnhwht12", "pnhblk12", "phisp12", 
+"pntv12", "pfb12", "polang12", "phs12", "pcol12", "punemp12", 
+"pflabf12", "pprof12", "pmanuf12", "pvet12", "psemp12", "hinc12", 
+"incpc12", "ppov12", "pown12", "pvac12", "pmulti12", "mrent12", 
+"mhmval12", "p30old12", "p10yrs12", "p18und12", "p60up12", "p75up12", 
+"pmar12", "pwds12", "pfhh12"), VARIABLE = c("GEOID", "Percent white, non-Hispanic", 
+"Percent black, non-Hispanic", "Percent Hispanic", "Percent Native American race", 
+"Percent foreign born", "Percent speaking other language at home, age 5 plus", 
+"Percent with high school degree or less", "Percent with 4-year college degree or more", 
+"Percent unemployed", "Percent female labor force participation", 
+"Percent professional employees", "Percent manufacturing employees", 
+"Percent veteran", "Percent self-employed", "Median HH income, total", 
+"Per capita income", "Percent in poverty, total", "Percent owner-occupied units", 
+"Percent vacant units", "Percent multi-family units", "Median rent", 
+"Median home value", "Percent structures more than 30 years old", 
+"Percent HH in neighborhood 10 years or less", "Percent 17 and under, total", 
+"Percent 60 and older, total", "Percent 75 and older, total", 
+"Percent currently married, not separated", "Percent widowed, divorced and separated", 
+"Percent female-headed families with children")), class = "data.frame", row.names = c(NA, 
+-31L))
+
+data.dictionary %>% pander()
+```
+
+
+# Load Phoenix Shapefile
+
+We are using a [Dorling Cartogram](https://github.com/sjewo/cartogram) representation of Census tracts to remove bias.
+
+The steps to create the cartogram are described [HERE](https://github.com/DS4PS/cpp-529-master/tree/master/data). 
+
+```{r}
+# dorling cartogram of Phoenix Census Tracts
+github.url <- "https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/phx_dorling.geojson"
+phx <- geojson_read( x=github.url,  what="sp" )
+plot( phx )
+```
+
+
+We can do better than that. Let's take a look at the [**tmap** package](http://127.0.0.1:30972/library/tmap/doc/tmap-getstarted.html) in R. 
+
+
+```{r, fig.width=10, fig.height=8}
+# library( tmap )
+
+phx <- spTransform( phx, CRS("+init=epsg:3395") )
+
+bb <- st_bbox( c( xmin = -12519146, xmax = -12421368, 
+                  ymax = 3965924, ymin = 3899074 ), 
+               crs = st_crs("+init=epsg:3395"))
+
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="MHHI", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "PHX Dorling Cartogram", title.position=c("right","top") )
+```
+
+
+
+```{r, fig.width=12, fig.heigh=8}
+tmap_mode("view")
+tm_basemap( "HikeBike.HillShading"  ) +
+  tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="phisp12", n=7, style="quantile", palette="-inferno" ) 
+```
+
+
+
+```{r, fig.width=12, fig.heigh=8}
+tm_basemap( "Stamen.Watercolor" ) +
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="MHHI", n=7, style="quantile", palette="RdYlBu" ) +
+  tm_legend( show=FALSE )
+```
+
+
+
+Check out some [useful guides](https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/) or launch the palette explorer for an easy way to find great color schemes for your data. 
+
+```{r, eval=F}
+tmaptools::palette_explorer()
+```
+
+
+
+
+
+
+
+
+
+
+## Census Variables
+
+
+This shapefile comes pre-loaded with the Census data from your first lab. 
+
+```{r}
+names( phx )
+```
+
+We are going to extract the data from the shapefile and save it as a separate data frame so we can use it for analysis independent of the shapefile. 
+
+```{r}
+d1 <- phx@data
+head( d1[,1:6] ) %>% pander()
+```
+
+
+
+## Prepare Data for Clustering
+
+We transform all of the variables to z scorse so they are on the same scale while clustering. This ensures that each census variable has equal weight. Z-scores typically range from about -3 to +3 with a mean of zero.
+
+```{r}
+keep.these <- c("pnhwht12", "pnhblk12", "phisp12", "pntv12", "pfb12", "polang12", 
+"phs12", "pcol12", "punemp12", "pflabf12", "pprof12", "pmanuf12", 
+"pvet12", "psemp12", "hinc12", "incpc12", "ppov12", "pown12", 
+"pvac12", "pmulti12", "mrent12", "mhmval12", "p30old12", "p10yrs12", 
+"p18und12", "p60up12", "p75up12", "pmar12", "pwds12", "pfhh12")
+
+d2 <- select( d1, keep.these )
+d3 <- apply( d2, 2, scale )
+
+head( d3[,1:6] ) %>% pander()
+```
+
+
+## Perform Cluster Analysis
+
+For more details on cluster analysis visit the [**mclust** tutorial](https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html).
+
+
+```{r}
+# library( mclust )
+fit <- Mclust( d3 )
+phx$cluster <- as.factor( fit$classification )
+summary( fit )
+```
+
+
+Some visuals of model fit statistics (doesn't work well with a lot of variables):
+
+```{r, eval=F}
+plot( fit, what = "classification" )
+```
+
+
+```{r, fig.width=10, fig.height=8}
+# dropping two tracts that cover the legend
+phx2 <- phx[ !(phx$GEOID %in% c("04013723308","04013723304")) , ]
+
+tmap_mode("plot")
+tmap_style("cobalt")
+tm_shape( phx2, bbox=bb ) + 
+  tm_polygons( col="cluster", palette="Accent"  )
+```
+
+
+# Identifying Neighborhood Clusters
+
+Ok, so we have a pretty map now, but what does it mean? Let's look at our clusters. 
+
+We can split our data up by the 8 distinct clusters and look at characteristics of each. 
+
+Let's start by looking at how one of our 30 census variables varies by group:
+
+```{r}
+# library( ggplot2 )
+# library( ggthemes )
+
+# table( d2$cluster )  # number of tracts in each group
+
+d2$cluster <- d2$cluster <- as.factor( paste0("GROUP-",fit$classification) )
+
+ggplot( d2, aes( x=phisp12 ) ) + 
+        geom_density( alpha = 0.5, fill="blue" ) + # xlim( -3, 3 ) +
+        xlab( "Percent Hispanic" ) + facet_wrap( ~ cluster, nrow=2 ) + theme_minimal()
+```
+
+
+
+We can see that some groups (neighborhood clusters) have a high proportion of Hispanic residents, while others have almost none. That is a good sign - it means the clustering appears to be meaningful in the sense that it identifies differences between the groups. 
+
+Let's look at one more. 
+
+```{r}
+ggplot( d2, aes( x=pcol12) ) +        
+  geom_density( alpha = 0.5, fill="blue" ) + # xlim( -3, 3 ) +
+  xlab( "Percent with a College Degree" ) + facet_wrap( ~ cluster, nrow=2 ) + theme_minimal()
+```
+
+
+
+
+We can see that lots of clusters have between 20 and 40 percent with college degrees. Group 1 has an extremely high proportion, and Group 7 has an extremely low proportion. 
+
+
+
+```{r, fig.height=10, fig.width=8}
+df.pct <- sapply( d2, ntile, 100 )
+d3 <- as.data.frame( df.pct )
+d3$cluster <- as.factor( paste0("GROUP-",fit$classification) )
+
+stats <- 
+d3 %>% 
+  group_by( cluster ) %>% 
+  summarise_each( funs(mean) )
+
+t <- data.frame( t(stats), stringsAsFactors=F )
+names(t) <- paste0( "GROUP.", 1:8 )
+t <- t[-1,]
+
+for( i in 1:8 )
+{
+  z <- t[,i]
+  plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
+        type="n", xaxt="n", yaxt="n",
+        xlab="Percentile", ylab="",
+        main=paste("GROUP",i) )
+  abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+  segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
+  text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
+  points( z, 1:30, pch=19, col="firebrick", cex=1.5 )
+  axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+}
+```
+
+
+
+
+```{r, fig.width=10, fig.height=8}
+# dropping two tracts that cover the legend
+phx2 <- phx[ !(phx$GEOID %in% c("04013723308","04013723304")) , ]
+
+tmap_mode("plot")
+tmap_style("cobalt")
+tm_shape( phx2, bbox=bb ) + 
+  tm_polygons( col="cluster", palette="Accent"  )
+```
+
+
+
+You are now ready to identify meaningful labels for your clusters. 
+
+
+For the YellowDig discussion this week propose labels for Groups 1-8 based upon these characteristics. A good label will be catchy and descriptive of the population within the neighborhood cluster. 
+
+
+
+
+<br>
+
+-------
+
+<br>
+
+
+
+# Submission Instructions
+
+After you have completed your lab submit via Canvas. Login to the ASU portal at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your RMD and your HTML files to the appropriate lab submission link. Or else use the link from the Schedule page. 
+
+Remember to name your files according to the convention: **Lab-##-LastName.xxx**
+
+
+<br>
+<br>
+
+
+
+
+
+**DATA DICTIONARY**
+
+
+This exercise uses Census data from the 2012 American Communities Survey made available through the [Diversity and Disparities Project](https://s4.ad.brown.edu/projects/diversity/Researcher/Bridging.htm).  
+
+
+
+```{r}
+dd.URL <- "https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/data-dictionary.csv"
+data.dictionary <- read.csv( dd.URL, stringsAsFactors=F ) 
+data.dictionary %>% pander()
+```
+
+
+
+
+### Helper Functions
+
+
+```{r, eval=F}
+pdf( "interpretting-clusters.pdf" )
+
+tmap_style("cobalt")
+tm_shape( phx2, bbox=bb ) + 
+  tm_polygons( col="cluster", palette="Accent"  )
+
+
+for( i in 1:8 )
+{
+z <- t[,i]
+plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
+      type="n", xaxt="n", yaxt="n",
+      xlab="Percentile", ylab="",
+      main=paste("GROUP",i) )
+abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
+text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.65, pos=2 )
+# points( q50, 1:30, pch="|", cex=0.8, col="gray" )
+points( z, 1:30, pch=19, col="firebrick", cex=1.5 )
+axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+}
+
+dev.off()
+```
+
+
+
+
+
+
+```{r, eval=F}
+d2 <- as.data.frame( d2 )
+d2$cluster <- as.factor( paste0("GROUP-",fit$classification) )
+
+pdf( "cluster-density-plots.pdf" )
+
+these <- names(d2)
+these <- these[ -length(these) ]
+
+for( i in these )
+{
+
+graph.label <- 
+  data.dictionary$VARIABLE[ data.dictionary$LABEL == i ] %>%
+  as.character()
+
+p <-
+ggplot( d2, aes( x=get(i) ) ) + 
+        geom_density( alpha = 0.5, fill="blue" ) + # xlim( -3, 3 ) +
+        xlab( graph.label ) + facet_wrap( ~ cluster, nrow=2 ) + theme_minimal()
+
+print( p )
+
+}
+
+dev.off()
+
+
+```
+
+
