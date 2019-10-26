@@ -371,6 +371,8 @@ You are now ready to identify meaningful labels for your clusters.
 For the YellowDig discussion this week propose labels for Groups 1-8 based upon these characteristics. A good label will be catchy and descriptive of the population within the neighborhood cluster. 
 
 
+<br>
+<br>
 
 
 <br>
@@ -388,11 +390,20 @@ After you have completed your lab submit via Canvas. Login to the ASU portal at 
 Remember to name your files according to the convention: **Lab-##-LastName.xxx**
 
 
+
+
+
+<br>
+
+-------
+
+<br>
+
+
+
+
 <br>
 <br>
-
-
-
 
 
 # Auxiliary Functions
@@ -467,7 +478,7 @@ view_cluster_data <- function( model.dat, group.ids, data.dictionary )
 
 
 
-par( mfrow=c(2,4) )
+par( mfrow=c(4,2) )
 
 view_cluster_data( model.dat=model.dat, 
                    group.ids=group.ids, 
