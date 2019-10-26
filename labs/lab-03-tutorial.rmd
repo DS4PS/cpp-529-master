@@ -395,7 +395,88 @@ Remember to name your files according to the convention: **Lab-##-LastName.xxx**
 
 
 
-**DATA DICTIONARY**
+# Auxiliary Functions
+
+
+### Create Census Var Levels by Clustering Groups
+
+Note these produce plots reporting percentiles for each census variable, not percents.
+
+```{r, fig.height=16}
+# list variables for clustering
+use.these <- c("pnhwht12", "pnhblk12", "phisp12", "pntv12", "pfb12", "polang12", 
+               "phs12", "pcol12", "punemp12", "pflabf12", "pprof12", "pmanuf12", 
+               "pvet12", "psemp12", "hinc12", "incpc12", "ppov12", "pown12", 
+               "pvac12", "pmulti12", "mrent12", "mhmval12", "p30old12", "p10yrs12", 
+               "p18und12", "p60up12", "p75up12", "pmar12", "pwds12", "pfhh12")
+
+
+df <- phx@data                                # extract data frame from spatial sp object
+model.dat <- select( df, use.these )          # select census variables for clustering
+model.dat.scaled <- apply( model.dat, 2, scale )     # transform raw measures into z scores
+
+# library( mclust )
+fit <- Mclust( model.dat.scaled )
+group.ids <- as.character( fit$classification )
+
+# data.dictionary must have "LABEL" for var name and "VARIABLE" for description
+
+view_cluster_data <- function( model.dat, group.ids, data.dictionary )
+{
+  num.groups <- length( unique( as.character( group.ids ) ) )
+  num.vars <- ncol( model.dat )
+  data.dictionary <- data.dictionary[ data.dictionary$LABEL %in% use.these , ]
+  
+  df.ntile <- sapply( model.dat, ntile, 100 )
+  df.ntile <- as.data.frame( df.ntile )
+  df.ntile$cluster <- as.factor( paste0("GROUP-", group.ids ) )
+  
+  stats <- 
+    df.ntile %>% 
+    group_by( cluster ) %>% 
+    summarise_each( funs(mean) )
+  
+  df.stats <- data.frame( t(stats), stringsAsFactors=F )
+  names(df.stats) <- paste0( "GROUP.", 1:num.groups )
+  df.stats <- df.stats[-1,]
+  
+  for( i in 1:num.groups )
+  {
+    z <- df.stats[,i]
+    
+    print({
+      
+      plot( rep(1,num.vars), 1:num.vars, bty="n", xlim=c(-75,100), 
+            type="n", xaxt="n", yaxt="n",
+            xlab="Percentile", 
+            ylab="", col.lab="gray40",
+            main=paste( "GROUP", i ) )
+      rect( xleft=0, ybottom=0, xright=20, ytop=(num.vars+1), col=gray(0.75,0.5), border="gray80" )
+      rect( xleft=40, ybottom=0, xright=60, ytop=(num.vars+1), col=gray(0.75,0.5), border="gray80" )
+      rect( xleft=80, ybottom=0, xright=100, ytop=(num.vars+1), col=gray(0.75,0.5), border="gray80" )
+      abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+      segments( y0=1:num.vars, x0=0, x1=100, col="gray70", lwd=2 )
+      text( -0.2, 1:num.vars, data.dictionary$VARIABLE, cex=0.85, pos=2 )
+      points( z, 1:num.vars, pch=19, col="firebrick", cex=1.5 )
+      axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+      
+    }) # end print
+  }   # end loop
+  
+}
+
+
+
+par( mfrow=c(2,4) )
+
+view_cluster_data( model.dat=model.dat, 
+                   group.ids=group.ids, 
+                   data.dictionary=data.dictionary )
+
+```
+
+
+### DATA DICTIONARY
 
 
 This exercise uses Census data from the 2012 American Communities Survey made available through the [Diversity and Disparities Project](https://s4.ad.brown.edu/projects/diversity/Researcher/Bridging.htm).  
@@ -411,7 +492,7 @@ data.dictionary %>% pander()
 
 
 
-### Helper Functions
+### Helper Plots
 
 
 ```{r, eval=F}
