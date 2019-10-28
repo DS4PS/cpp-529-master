@@ -454,7 +454,7 @@ Also, remember to name your files according to the convention: Lab-##-LastName.x
 
 ## Lab Instructions
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/LABS/lab-03-tutorial/">LAB-03 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-03-instructions/">LAB-03 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
