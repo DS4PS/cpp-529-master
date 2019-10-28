@@ -451,15 +451,18 @@ The purpose of Lab 3 is to show you how to apply model-based clustering to class
 
 ## Lab Instructions
 
-You may access Lab 3 by clicking the following two links: [HTML](https://www.dropbox.com/s/x3mqvsh0augvcyk/lab-03-tutorial.html?dl=1); [RMD](https://www.dropbox.com/s/ipdftz2nfci92hk/lab-03-tutorial.rmd?dl=1).  First view the HTML file to get a feel for the general code chunks and resulting outputs that we will create (Please note that some of the output images are left blank to make sure you create them on your own using the .RMD file).  Then download the .RMD file and execute each code chunk step-by-step to understand each stage of the process. 
+You may access Lab 3 instructions by clicking on the LAB-03 Instructions below.   First view the instructions and see some of the code chunks and output that you will create yourself.  Next, download the Rmardown file ([RMD](https://ds4ps.org/cpp-529-master/labs/lab-03-tutorial.rmd) and execute each code chunk step-by-step to understand each stage of the process.  
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/labs/lab-03-tutorial.html">LAB-01 Instructions</a>
+***Reminder:*** Include the four questions, along with your answers from the reading assignment (see above) at the beginning of your RMD file. 
+
+***Reminder:*** Name your files according to the convention: Lab-##-LastName.xxx
 
 
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/labs/lab-03-tutorial.html">LAB-03 Instructions</a>
 
-After you have completed Lab 3 you can submit it via Canvas using the link below.  Upload your RMD and your HTML files to the appropriate lab submission link.  Remember to include the four questions and answers from the reading assignment (see above) at the beginning of your RMD file. 
 
-Also, remember to name your files according to the convention: Lab-##-LastName.xxx
+After you have completed Lab 3 you can submit it via Canvas using the link below.  Upload your RMD and your HTML files to the appropriate lab submission link. 
+
 
 ## Submit Solutions to Canvas:
 
