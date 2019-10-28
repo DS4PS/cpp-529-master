@@ -448,14 +448,14 @@ Please copy these questions, along with your answers, at the beginning of your .
 
 The purpose of Lab 3 is to show you how to apply model-based clustering to classify Phoenix neighborhoods into meaningful groups.  Lab 3 is a code-through only and will not require you to modify any code as was the case in Lab 2.  
 
-After you have completed Lab 3 you can submit it via Canvas using the link below.  Upload your RMD and your HTML files to the appropriate lab submission link.  Remember to include the four questions and answers from the reading assignment (see above) at the beginning of your RMD file. 
-
-Also, remember to name your files according to the convention: Lab-##-LastName.xxx
 
 ## Lab Instructions
 
-You may access Lab 3 by clicking the following two links: [HTML](https://www.dropbox.com/s/x3mqvsh0augvcyk/lab-03-tutorial.html?dl=1); [RMD](https://www.dropbox.com/s/ipdftz2nfci92hk/lab-03-tutorial.rmd?dl=1).  First view the HTML file to get a feel for the general code chunks and resulting outputs that we will create.  Then download the .RMD file and execute each code chunk step-by-step to understand each stage of the process. 
+You may access Lab 3 by clicking the following two links: [HTML](https://www.dropbox.com/s/x3mqvsh0augvcyk/lab-03-tutorial.html?dl=1); [RMD](https://www.dropbox.com/s/ipdftz2nfci92hk/lab-03-tutorial.rmd?dl=1).  First view the HTML file to get a feel for the general code chunks and resulting outputs that we will create (Please note that some of the output images are left blank to make sure you create them on your own using the .RMD file).  Then download the .RMD file and execute each code chunk step-by-step to understand each stage of the process. 
 
+After you have completed Lab 3 you can submit it via Canvas using the link below.  Upload your RMD and your HTML files to the appropriate lab submission link.  Remember to include the four questions and answers from the reading assignment (see above) at the beginning of your RMD file. 
+
+Also, remember to name your files according to the convention: Lab-##-LastName.xxx
 
 ## Submit Solutions to Canvas:
 
