@@ -446,7 +446,7 @@ Please copy these questions, along with your answers, at the beginning of your .
 
 ## Overview
 
-Please click on the link below to go to Lab 3 instructions.  This lab is a code-through only and will not require you to modify any code like Lab 2.  The purpose here is to show you how to apply model-based clustering to classify Phoenix neighborhoods into meaninful groups.  
+Please click on the links below to see Lab 3.  This lab is a code-through only and will not require you to modify any code as was the case in Lab 2.  The purpose here is to show you how to apply model-based clustering to classify Phoenix neighborhoods into meaningful groups.  
 
 After you have completed your lab you can submit it via Canvas using the link below.  Upload your RMD and your HTML files to the appropriate lab submission link.  Remember to include the four questions and answers from the reading assignment (see above) at the beginning of your RMD file. 
 
@@ -454,8 +454,8 @@ Also, remember to name your files according to the convention: Lab-##-LastName.x
 
 ## Lab Instructions
 
+You may access Lab 3 by clicking the following two links: [HTML](https://www.dropbox.com/s/x3mqvsh0augvcyk/lab-03-tutorial.html?dl=1);[RMD](https://www.dropbox.com/s/ipdftz2nfci92hk/lab-03-tutorial.rmd?dl=1).  First view the HTML file to get a feel for the general code chunks and resulting outputs that we will create.  Then download the .RMD file and execute each code chunk step-by-step to understand each stage of the process. 
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-03-tutorial.html/">LAB-03 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
