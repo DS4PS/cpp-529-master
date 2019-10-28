@@ -379,7 +379,7 @@ Please submit both the .RMD file and .Html file.
 
 ** Week 3 - Identifying Neighborhood Types
 
-*** { @unit = "", @title = "Unit Overview"  }
+*** { @unit = "", @title = "Unit Overview", @foldout  }
 
 In this unit, we will be learning how to implement cluster analysis in R as a data reduction technique.  We will classify census tracts in the Pheonix area into group (or neighborhoods) that can be defined on the basis of certain characteristics.  Before we get into the application portion of this unit, it is important to first understand what is cluster analysis and what are some common methods and applications. 
 
@@ -392,7 +392,7 @@ The first video below introduces cluster analysis and a simple partitioning algo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-_oPRGATOBw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-*** { @unit = "", @title = "Neighborhood Types", @lecture  }
+*** { @unit = "", @title = "Neighborhood Types", @lecture, @foldout  }
 
 
 <br>
@@ -412,9 +412,24 @@ You can explore one of these algorithms by looking at examples of how botanists 
 
 [Clustering Example](https://shiny.rstudio.com/gallery/kmeans-example.html)
 
-A data-driven approach to understanding neighborhood change requires use to (1) define "neighborhoods", or groups of census tracks in the data that are very similar, and (2) use those group characteristics at a point in time to predict how they "neighborhood" might change in the future. Both of the papers present variations on Step (1) above.
+A data-driven approach to understanding neighborhood change requires use to (1) define "neighborhoods", or groups of census tracks in the data that are very similar, and (2) use those group characteristics at a point in time to predict how the "neighborhood" might change in the future. Both of the papers present variations on Step (1) above.
 
-Read the two papers, then answer the following questions:
+
+
+<br>
+<br>
+
+
+
+*** { @unit = "Due Nov 6th", @title = "Lab 03", @assignment, @foldout  }
+
+<br>
+<br>
+
+## Brief Video Instruction
+
+## Reading Assignment 
+Read the two papers from `Neighborhood Types` section (Links provided again here: ([ [PDF 1](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]; [ [PDF 2](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]), then answer the following questions:
 
 1. **How did each author identify coherent “neighborhoods” (or groups) in each model?**
 2. **Would these "neighborhoods" line up with neighborhoods that are defined on a city's zoning maps (Links to an external site.)?**
@@ -422,22 +437,9 @@ Read the two papers, then answer the following questions:
 4. **How do the labels and descriptions of the groups differ in each model and why?**
 
 
-<br>
-<br>
-
-
-
-*** { @unit = "Due Nov 6th", @title = "Lab 03", @assignment  }
-
-<br>
-<br>
-
-## Brief Video Instruction
-
-
 ## Lab Instructions
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-03-instructions/">LAB-03 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/LABS/lab-03-tutorial/">LAB-03 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
