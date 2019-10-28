@@ -484,17 +484,29 @@ Nice job! You have successfully completed lab assignment 3 that relies on a host
 
 **ASSIGNMENT:** 
 
-> For your discussion topic this week, you will  propose labels for Groups 1-8 constructed during Lab 3 using cluster analysis ([Image 1](https://www.dropbox.com/s/56wxc6jgwpfhlj9/Phoenix_Cluster_Neighborhoods.png?dl=1)).  In order to provide an appropriate label, you must do a careful inspection of how the census variables overall relate to a particular group ([Image 2](https://www.dropbox.com/s/4dgflw2x6tvkljr/Phoenix_Cluster_Neighborhoods-Comparison.png?dl=1)). A good label will be catchy and descriptive of the population within the neighborhood cluster.
+> For your discussion topic this week, you will  propose labels for Groups 1-8 constructed during Lab 3 using cluster analysis **Image 1** below.  In order to provide an appropriate label, you must do a careful inspection of how the census variables overall relate to a particular group **Image 2**. A good label will be catchy and descriptive of the population within the neighborhood cluster.
 
 
 **Please post your reflection as a new pin on [YellowDig](https://canvas.asu.edu/courses/37703/assignments/842344).**
 
 <br>
+Image 1:
 
+![](https://ds4ps.org/cpp-529-master/labs/lab-03-tutorial_files/figure-html/unnamed-chunk-13-1.png)
 
 <br> 
---------------------------------------------------------------------------------------------------- 
+Image 2:
+![](https://ds4ps.org/cpp-529-master/labs/lab-03-tutorial_files/figure-html/unnamed-chunk-22-1.png)
+
 <br>
+
+--------------------------------------------------------------------------------------------------- 
+
+<br>
+
+
+
+
 
 ** Week 4 - Dot Density Plots 
 
