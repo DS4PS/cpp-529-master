@@ -377,11 +377,14 @@ Please submit both the .RMD file and .Html file.
 --------------------------------------------------------------------------------------------------- 
 <br>
 
-** Week 3 - Identifying Neighborhood Types
+** Week 3 - Identifying Neighborhood Types with Cluster Analysis
 
 *** { @unit = "", @title = "Unit Overview", @foldout  }
 
 In this unit, we will be learning how to implement cluster analysis in R as a data reduction technique.  We will classify census tracts in the Pheonix area into group (or neighborhoods) that can be defined on the basis of certain characteristics.  Before we get into the application portion of this unit, it is important to first understand what is cluster analysis and what are some common methods and applications. 
+
+
+*** { @unit = "", @title = "Cluster Analysis: Overview", @lecture, @foldout  }
 
 The first video below introduces cluster analysis and a simple partitioning algorithm used to segment data into specific partitions or groups.  The second video below introduces other popular clustering methods -- Hierarchical and model-based clustering.  Model-based clustering is the method we will use in R with the MClust package. The lecture notes can be found [here (PPT)](https://www.dropbox.com/s/i79w2jzagpwzcsz/ClusBasic.ppt?dl=1).
 
@@ -389,10 +392,13 @@ The first video below introduces cluster analysis and a simple partitioning algo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/U8zHi32KnJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+<br>
+<br>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-_oPRGATOBw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-*** { @unit = "", @title = "Neighborhood Types", @lecture, @foldout  }
+
+*** { @unit = "", @title = "Clustering Neighborhood Types", @reading, @foldout  }
 
 
 <br>
@@ -419,23 +425,32 @@ A data-driven approach to understanding neighborhood change requires use to (1) 
 <br>
 <br>
 
-
-
-*** { @unit = "Due Nov 6th", @title = "Lab 03", @assignment, @foldout  }
+*** { @unit = "Due Nov 6th", @title = "Reading Assignment", @assignment, @foldout  }
 
 <br>
 <br>
 
-## Brief Video Instruction
-
-## Reading Assignment 
-Read the two papers from `Neighborhood Types` section (Links provided again here: ([ [PDF 1](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]; [ [PDF 2](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]), then answer the following questions:
+Read the two papers from `Neighborhood Types` section above (Links provided again here: ([ [PDF 1](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]; [ [PDF 2](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]), then answer the following questions:
 
 1. **How did each author identify coherent “neighborhoods” (or groups) in each model?**
 2. **Would these "neighborhoods" line up with neighborhoods that are defined on a city's zoning maps (Links to an external site.)?**
 3. **Did the two models use the same data to create the groups?**
 4. **How do the labels and descriptions of the groups differ in each model and why?**
 
+Please copy these questions, along with your answers, at the beginning of your .rmd file used for Lab 3 (See Lab 3 assignment below). 
+
+*** { @unit = "Due Nov 6th", @title = "Lab 03", @assignment, @foldout  }
+
+<br>
+<br>
+
+## Overview
+
+Please click on the link below to go to Lab 3 instructions.  This lab is a code-through only and will not require you to modify any code like Lab 2.  The purpose here is to show you how to apply model-based clustering to classify Phoenix neighborhoods into meaninful groups.  
+
+After you have completed your lab you can submit it via Canvas using the link below.  Upload your RMD and your HTML files to the appropriate lab submission link.  Remember to include the four questions and answers from the reading assignment (see above) at the beginning of your RMD file. 
+
+Also, remember to name your files according to the convention: Lab-##-LastName.xxx
 
 ## Lab Instructions
 
@@ -448,6 +463,27 @@ Read the two papers from `Neighborhood Types` section (Links provided again here
 <br>
 <br>
 
+
+*** { @unit = "Due Nov 6th", @title = "Yellowdig Discussion Assignment: Labeling Phoenix Neighborhood Groups", @assignment, @foldout  }
+
+<br>
+<br>
+
+Nice job! You have successfully completed lab assignment 3 that relies on a host of census variables and employs model-based clustering (mclust) to group Phoenix neighborhoods into 8 unique categories.  You are now ready for the fun part -- giving a `label` for each neighborhood grouping that adequately represents that particular grouping.  To do this, you need to visually inspect carefully how the census varaibles relate to each neighborhood group and make an informed opinion about what type of label to apply.  
+
+
+<br> 
+
+**ASSIGNMENT:** 
+
+> For your discussion topic this week, 
+
+For the YellowDig discussion this week, propose labels for Groups 1-8 based on a careful inspection of how the census variable relate to a particular group. A good label will be catchy and descriptive of the population within the neighborhood cluster.
+
+
+**Please post your reflection as a new pin on [YellowDig](https://canvas.asu.edu/courses/37703/assignments/842344).**
+
+<br>
 
 
 
