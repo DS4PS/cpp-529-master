@@ -476,17 +476,12 @@ Nice job! You have successfully completed lab assignment 3 that relies on a host
 
 **ASSIGNMENT:** 
 
-> For your discussion topic this week, 
-
-For the YellowDig discussion this week, propose labels for Groups 1-8 based on a careful inspection of how the census variable relate to a particular group. A good label will be catchy and descriptive of the population within the neighborhood cluster.
+> For your discussion topic this week, you will  propose labels for Groups 1-8 constructed during Lab 3 using cluster analysis ([Image 1](https://www.dropbox.com/s/56wxc6jgwpfhlj9/Phoenix_Cluster_Neighborhoods.png?dl=1)).  In order to provide an appropriate label, you must do a careful inspection of how the census variables overall relate to a particular group (([Image 2](https://www.dropbox.com/s/4dgflw2x6tvkljr/Phoenix_Cluster_Neighborhoods-Comparison.png?dl=1))). A good label will be catchy and descriptive of the population within the neighborhood cluster.
 
 
 **Please post your reflection as a new pin on [YellowDig](https://canvas.asu.edu/courses/37703/assignments/842344).**
 
 <br>
-
-
-
 
 
 <br> 
