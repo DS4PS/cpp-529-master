@@ -368,6 +368,14 @@ Please submit both the .RMD file and .Html file.
 
 
 
+*** { @unit = "", @title = "Lab 02 Solutions", @assignment, @foldout  }
+
+Solutions to Lab 2 can be found here [(HTML)](https://www.dropbox.com/s/20vgnnx8hvd2ur1/Lab2Solutions.html?dl=1) [(RMD)](
+https://www.dropbox.com/s/hhvexm19w6xrpzi/Lab2Solutions.Rmd?dl=1). 
+
+
+<br>
+<br>
 
 
 
