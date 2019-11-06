@@ -25,9 +25,9 @@ library( sf )          # work with shapefiles - simple features format
 library( mclust )      # cluster analysis 
 library( tmap )        # theme maps
 library( ggplot2 )     # graphing 
-library( ggthemes )
-library( dplyr )
-library( pander )
+library( ggthemes )    # nice formats for ggplots
+library( dplyr )       # data wrangling 
+library( pander )      # formatting RMD tables
 ```
 
 
