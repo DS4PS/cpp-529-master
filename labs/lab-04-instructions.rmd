@@ -335,29 +335,36 @@ You are now ready to identify meaningful labels for your clusters!
 # Variable Selection for Clustering
 
 
-Neighborhood transitivity
-* % homes that are owner occupied
-*	% of homes that are multi-family
-*	% of residents that have been in the neighborhood under 10 years
-*	% of households currently not married
-*	% of households led by single female
-
-Neighborhood Diversity
-*	% white
-*	% black
-*	% Hispanic
-*	% foreign born
-*	% speaking another language at home
+We can compare the model created with reliable measures of community stability that were identified from the first lab, and compare this model to one created from three census variables, and one created from three reliable indices of neighborhood stability generated from Lab 01:
 
 
-Human Capital
-*	% adults with college degree
-*	% adults with a high school degree or less
-*	% employed in professional industries
-*	Median household income + Per capita income (these give the high score, but cheating a little)
-*	Median home value (drops alpha to 0.92)
+**Neighborhood transitivity (Cronbach's Alpha 0.8)** 
+
+* % homes that are owner occupied  
+*	% of homes that are multi-family  
+*	% of residents that have been in the neighborhood under 10 years  
+*	% of households currently not married  
+*	% of households led by single female  
+
+**Neighborhood Diversity (Cronbach's Alpha 0.78)**
+
+*	% white  
+*	% black  
+*	% Hispanic  
+*	% foreign born  
+*	% speaking another language at home  
 
 
+**Human Capital (Cronbach's Alpha 0.93)**  
+
+*	% adults with college degree  
+*	% adults with a high school degree or less  
+*	% employed in professional industries  
+*	Median household income + Per capita income (these give the high score, but cheating a little)  
+*	Median home value (drops alpha to 0.92)  
+
+
+You will create each index by adding the component variables together:
 
 
 
@@ -376,18 +383,18 @@ plot( dim2, dim3, pch=19, col=gray(0.5,0.5), cex=1.5 )
 ```
 
 
-We can compare the model created with reliable measures of community stability that were identified from the first lab, and compare this model to one created from three census variables. 
-
+I arbitrarily selected three census variables to compare methods. Here we are using % of population 18 and under, % of female labor force participation, and household income. 
 
 
 ```{r}
 
+# data set of three indices
 d22 <- data.frame( dim1, dim2, dim3 )
 fit2 <- Mclust( d22 )
 summary( fit2 )
 msp_dorling$cluster2 <- as.factor( fit2$classification )
 
-
+# dataset of three census variables 
 d33 <- data.frame( d3$p18und12, d3$pflabf12, d3$hinc12 )
 fit3 <- Mclust( d33 )
 summary( fit3 )
@@ -417,7 +424,11 @@ tmap_arrange( tm1, tm2, tm3 )
 
 
 
+This function does not work well using the model with 30 census variables because the plots are so small, but when you plot the model results from the clustering procedure is will show the relationship between each variable, and color-code each group. This helps you visualize how each set of variables is contributing the the clusters that were identified. 
 
+Recall that similar to how regression models are trying to select lines that minimize the residual errors in the model, clustering tries to select groups (assign tracts to groups) in a way that maximizes the overall distance between group centroids. 
+
+You can see here that the three indices we created do a better job of creating meaningful groups that the three census variables. When selecting variables for your model it is better to have independent measures - highly-correlated input variables will be explaining the same variance in your populations, and thus provide redundant information that is not useful for identifying groups. 
 
 ```{r}
 plot( fit3, what = "classification" )
@@ -439,13 +450,49 @@ plot( fit2, what = "classification" )
 # Lab Instructions
 
 
-**PART 1**:
+## PART 1:
 
 Select a city, build your dataset, and cluster the neighborhoods in your city using the same techniques we used last week. 
 
+Show the clusters and the cluster demographics for the new city. 
+
 Report the labels you have assigned to each group. 
 
-**PART 2**:
+<br>
+
+
+
+## PART 2:
+
+Part 2 explores how the input data impacts your clusters. 
+
+You will use your full model with 30 census variables as the reference point, then do the following:
+
+**Question 1:** 
+
+Compare that set of groups to the groups identified by the model using only the three indices above. Are they identifying the same groups? Which group is missing? 
+
+**Question 2:**  
+
+Select three census variables from the full list of 30, and create a new clustering model. How many groups are generated? Are they similar groups to the full model? Are our inferences significantly different if we have a limited amount of data to draw from? 
+
+Report your three variables and describe the groups that are identified. 
+
+
+
+**Reflection (not graded, but please answer):**
+
+Reflect on how the data we use in these models defines how we are defining and describing the neighborhoods (groups) within these models? 
+
+Are these clusters valid constructs? Do we believe that they are accurately describing a concrete reality about the world? Would knowing which group that a tract is part of help us predict something about the tract, such as outcomes that children would experience living there, or how the tract might change over time? 
+
+How do we know which is the right set of groups to use? 
+
+
+
+
+
+
 
 
 <br>
@@ -460,7 +507,7 @@ Report the labels you have assigned to each group.
 
 
 
-# Submission Instructions
+## Submission Instructions
 
 After you have completed your lab submit via Canvas. Login to the ASU portal at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your RMD and your HTML files to the appropriate lab submission link. Or else use the link from the Schedule page. 
 
