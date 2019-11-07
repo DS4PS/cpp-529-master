@@ -516,17 +516,12 @@ Image 2:
 
 
 
-** Week 4 - Dot Density Plots 
+** Week 4 - More Practice Clustering 
 
-*** { @unit = "", @title = "Unit Overview"  }
-
-*** { @unit = "Due Nov 13th", @title = "Lab 04", @assignment  }
+*** { @unit = "Due Nov 13th", @title = "Lab 04", @assignment, @foldout  }
 
 <br>
 <br>
-
-## Brief Video Instruction
-
 
 ## Lab Instructions
 
