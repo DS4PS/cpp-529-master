@@ -2,6 +2,30 @@
 
 Some useful files for lectures and labs. 
 
+
+## Prep LTDB Data for Labs
+
+```r
+dat <- read.csv( "ltdb_std_2010_sample.csv", stringsAsFactors=F )
+
+proper.class <- sapply( dat, class )
+proper.class[1:4] <- "character"
+
+d2 <- read.csv( "ltdb_std_2010_sample.csv", stringsAsFactors=F,
+                 colClasses=proper.class )
+
+for( i in 5:ncol(d2) )
+{
+  vec <- d2[,i]
+  vec[ vec == -999 ] <- NA
+  mean.vec <- mean( vec, na.rm=T )
+  vec[ is.na(vec) ] <- mean.vec
+  d2[,i] <- vec
+}
+
+saveRDS( d2, "ltdb_std_2010_sample.rds" )
+```
+
 ## Load Shapefiles
 
 
