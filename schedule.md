@@ -557,7 +557,7 @@ Image 2:
 
 ## Lab Instructions
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-05-instructions/">LAB-05 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/labs/lab-04-instructions.html">LAB-05 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
