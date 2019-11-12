@@ -331,7 +331,7 @@ $(document).ready(function () {
 <p>I have added the file to GitHub for ease of access.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">crosswalk &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="st">&quot;https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/cbsatocountycrosswalk.csv&quot;</span>,  <span class="dt">stringsAsFactors=</span>F, <span class="dt">colClasses=</span><span class="st">&quot;character&quot;</span> )</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co"># search for citie names by strings for &quot;begins with&quot; </span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co"># search for citie names by strings, use the ^ anchor for &quot;begins with&quot; </span></a>
 <a class="sourceLine" id="cb2-4" title="4"></a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="kw">grep</span>( <span class="st">&quot;^CHI&quot;</span>, crosswalk<span class="op">$</span>msaname, <span class="dt">value=</span><span class="ot">TRUE</span> ) </a></code></pre></div>
 <pre><code>##  [1] &quot;CHICO-PARADISE, CA&quot; &quot;CHICAGO, IL&quot;        &quot;CHICAGO, IL&quot;       
@@ -405,202 +405,27 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb8-9" title="9"><span class="kw">get_acs</span>( <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;B01003_001&quot;</span>,</a>
 <a class="sourceLine" id="cb8-10" title="10">         <span class="dt">state =</span> <span class="st">&quot;27&quot;</span>, <span class="dt">county =</span> county.fips[state.fips<span class="op">==</span><span class="st">&quot;27&quot;</span>], <span class="dt">geometry =</span> <span class="ot">TRUE</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb8-11" title="11"><span class="st">         </span><span class="kw">select</span>( GEOID, estimate ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="st">         </span><span class="kw">rename</span>( <span class="dt">POP=</span>estimate )</a></code></pre></div>
-<pre><code>## 
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |=                                                                |   2%
-  |                                                                       
-  |===                                                              |   4%
-  |                                                                       
-  |====                                                             |   6%
-  |                                                                       
-  |=====                                                            |   7%
-  |                                                                       
-  |======                                                           |   9%
-  |                                                                       
-  |=======                                                          |  11%
-  |                                                                       
-  |========                                                         |  12%
-  |                                                                       
-  |=========                                                        |  13%
-  |                                                                       
-  |=========                                                        |  14%
-  |                                                                       
-  |===========                                                      |  16%
-  |                                                                       
-  |============                                                     |  18%
-  |                                                                       
-  |============                                                     |  19%
-  |                                                                       
-  |=============                                                    |  21%
-  |                                                                       
-  |==============                                                   |  22%
-  |                                                                       
-  |===============                                                  |  23%
-  |                                                                       
-  |================                                                 |  25%
-  |                                                                       
-  |=================                                                |  26%
-  |                                                                       
-  |==================                                               |  28%
-  |                                                                       
-  |===================                                              |  29%
-  |                                                                       
-  |====================                                             |  31%
-  |                                                                       
-  |======================                                           |  33%
-  |                                                                       
-  |=======================                                          |  35%
-  |                                                                       
-  |=======================                                          |  36%
-  |                                                                       
-  |=========================                                        |  38%
-  |                                                                       
-  |==========================                                       |  40%
-  |                                                                       
-  |==========================                                       |  41%
-  |                                                                       
-  |============================                                     |  42%
-  |                                                                       
-  |============================                                     |  43%
-  |                                                                       
-  |=============================                                    |  45%
-  |                                                                       
-  |===============================                                  |  47%
-  |                                                                       
-  |===============================                                  |  48%
-  |                                                                       
-  |=================================                                |  51%
-  |                                                                       
-  |====================================                             |  55%
-  |                                                                       
-  |======================================                           |  58%
-  |                                                                       
-  |=======================================                          |  60%
-  |                                                                       
-  |========================================                         |  62%
-  |                                                                       
-  |=========================================                        |  62%
-  |                                                                       
-  |==========================================                       |  65%
-  |                                                                       
-  |============================================                     |  67%
-  |                                                                       
-  |=============================================                    |  70%
-  |                                                                       
-  |==============================================                   |  71%
-  |                                                                       
-  |===============================================                  |  72%
-  |                                                                       
-  |=================================================                |  76%
-  |                                                                       
-  |==================================================               |  77%
-  |                                                                       
-  |====================================================             |  80%
-  |                                                                       
-  |=====================================================            |  81%
-  |                                                                       
-  |======================================================           |  83%
-  |                                                                       
-  |=======================================================          |  84%
-  |                                                                       
-  |========================================================         |  87%
-  |                                                                       
-  |===========================================================      |  91%
-  |                                                                       
-  |=============================================================    |  93%
-  |                                                                       
-  |=============================================================    |  94%
-  |                                                                       
-  |==============================================================   |  96%
-  |                                                                       
-  |================================================================ |  99%
-  |                                                                       
-  |=================================================================| 100%</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">msp.pop2 &lt;-</a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="kw">get_acs</span>( <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;B01003_001&quot;</span>,</a>
-<a class="sourceLine" id="cb10-3" title="3">         <span class="dt">state =</span> <span class="st">&quot;55&quot;</span>, <span class="dt">county =</span> county.fips[state.fips<span class="op">==</span><span class="st">&quot;55&quot;</span>], <span class="dt">geometry =</span> <span class="ot">TRUE</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="st">         </span><span class="kw">select</span>( GEOID, estimate ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="st">         </span><span class="kw">rename</span>( <span class="dt">POP=</span>estimate )</a></code></pre></div>
-<pre><code>## 
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |==                                                               |   4%
-  |                                                                       
-  |====                                                             |   7%
-  |                                                                       
-  |=======                                                          |  11%
-  |                                                                       
-  |=========                                                        |  14%
-  |                                                                       
-  |============                                                     |  18%
-  |                                                                       
-  |=============                                                    |  21%
-  |                                                                       
-  |================                                                 |  25%
-  |                                                                       
-  |==================                                               |  28%
-  |                                                                       
-  |=====================                                            |  32%
-  |                                                                       
-  |=======================                                          |  35%
-  |                                                                       
-  |=========================                                        |  39%
-  |                                                                       
-  |===========================                                      |  42%
-  |                                                                       
-  |==============================                                   |  46%
-  |                                                                       
-  |================================                                 |  49%
-  |                                                                       
-  |=================================                                |  50%
-  |                                                                       
-  |==================================                               |  53%
-  |                                                                       
-  |====================================                             |  55%
-  |                                                                       
-  |=======================================                          |  60%
-  |                                                                       
-  |=========================================                        |  62%
-  |                                                                       
-  |==========================================                       |  64%
-  |                                                                       
-  |===========================================                      |  67%
-  |                                                                       
-  |=============================================                    |  69%
-  |                                                                       
-  |================================================                 |  74%
-  |                                                                       
-  |==================================================               |  76%
-  |                                                                       
-  |====================================================             |  81%
-  |                                                                       
-  |======================================================           |  83%
-  |                                                                       
-  |=========================================================        |  88%
-  |                                                                       
-  |===========================================================      |  90%
-  |                                                                       
-  |=============================================================    |  95%
-  |                                                                       
-  |===============================================================  |  97%
-  |                                                                       
-  |=================================================================| 100%</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">msp.pop &lt;-<span class="st"> </span><span class="kw">rbind</span>( msp.pop1, msp.pop2 )</a></code></pre></div>
+<a class="sourceLine" id="cb8-12" title="12"><span class="st">         </span><span class="kw">rename</span>( <span class="dt">POP=</span>estimate )</a>
+<a class="sourceLine" id="cb8-13" title="13"></a>
+<a class="sourceLine" id="cb8-14" title="14"></a>
+<a class="sourceLine" id="cb8-15" title="15">msp.pop2 &lt;-</a>
+<a class="sourceLine" id="cb8-16" title="16"><span class="kw">get_acs</span>( <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;B01003_001&quot;</span>,</a>
+<a class="sourceLine" id="cb8-17" title="17">         <span class="dt">state =</span> <span class="st">&quot;55&quot;</span>, <span class="dt">county =</span> county.fips[state.fips<span class="op">==</span><span class="st">&quot;55&quot;</span>], <span class="dt">geometry =</span> <span class="ot">TRUE</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-18" title="18"><span class="st">         </span><span class="kw">select</span>( GEOID, estimate ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-19" title="19"><span class="st">         </span><span class="kw">rename</span>( <span class="dt">POP=</span>estimate )</a>
+<a class="sourceLine" id="cb8-20" title="20"></a>
+<a class="sourceLine" id="cb8-21" title="21">msp.pop &lt;-<span class="st"> </span><span class="kw">rbind</span>( msp.pop1, msp.pop2 )</a></code></pre></div>
 </div>
 <div id="step-3-add-census-data" class="section level2">
 <h2>Step 3: Add Census Data</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">URL &lt;-<span class="st"> &quot;https://github.com/DS4PS/cpp-529-master/raw/master/data/ltdb_std_2010_sample.rds&quot;</span></a>
-<a class="sourceLine" id="cb13-2" title="2">census.dat &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="kw">gzcon</span>(<span class="kw">url</span>( URL )))</a>
-<a class="sourceLine" id="cb13-3" title="3"></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="co"># can merge an sf object and data.frame</span></a>
-<a class="sourceLine" id="cb13-5" title="5">msp &lt;-<span class="st"> </span><span class="kw">merge</span>( msp.pop, census.dat, <span class="dt">by.x=</span><span class="st">&quot;GEOID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;tractid&quot;</span> )</a>
-<a class="sourceLine" id="cb13-6" title="6"></a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="co"># make sure there are no empty polygons</span></a>
-<a class="sourceLine" id="cb13-8" title="8">msp &lt;-<span class="st"> </span>msp[ <span class="op">!</span><span class="st"> </span><span class="kw">st_is_empty</span>( msp ) , ]</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">URL &lt;-<span class="st"> &quot;https://github.com/DS4PS/cpp-529-master/raw/master/data/ltdb_std_2010_sample.rds&quot;</span></a>
+<a class="sourceLine" id="cb9-2" title="2">census.dat &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="kw">gzcon</span>(<span class="kw">url</span>( URL )))</a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co"># can merge an sf object and data.frame</span></a>
+<a class="sourceLine" id="cb9-5" title="5">msp &lt;-<span class="st"> </span><span class="kw">merge</span>( msp.pop, census.dat, <span class="dt">by.x=</span><span class="st">&quot;GEOID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;tractid&quot;</span> )</a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co"># make sure there are no empty polygons</span></a>
+<a class="sourceLine" id="cb9-8" title="8">msp &lt;-<span class="st"> </span>msp[ <span class="op">!</span><span class="st"> </span><span class="kw">st_is_empty</span>( msp ) , ]</a></code></pre></div>
 <p><strong>DATA DICTIONARY</strong></p>
 <table style="width:61%;">
 <colgroup>
@@ -743,56 +568,56 @@ $(document).ready(function () {
 </div>
 <div id="step-4-transform-the-shapefile-into-a-dorling-cartogram" class="section level2">
 <h2>Step 4: Transform the Shapefile into A Dorling Cartogram</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># convert sf map object to an sp version</span></a>
-<a class="sourceLine" id="cb14-2" title="2">msp.sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>( msp )</a>
-<a class="sourceLine" id="cb14-3" title="3"></a>
-<a class="sourceLine" id="cb14-4" title="4"><span class="kw">class</span>( msp.sp )</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># convert sf map object to an sp version</span></a>
+<a class="sourceLine" id="cb10-2" title="2">msp.sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>( msp )</a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="kw">class</span>( msp.sp )</a></code></pre></div>
 <pre><code>## [1] &quot;SpatialPolygonsDataFrame&quot;
 ## attr(,&quot;package&quot;)
 ## [1] &quot;sp&quot;</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">plot</span>( msp.sp )</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">plot</span>( msp.sp )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-9-1.png" width="960" /></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># project map and remove empty tracts</span></a>
-<a class="sourceLine" id="cb17-2" title="2">msp.sp &lt;-<span class="st"> </span><span class="kw">spTransform</span>( msp.sp, <span class="kw">CRS</span>(<span class="st">&quot;+init=epsg:3395&quot;</span>))</a>
-<a class="sourceLine" id="cb17-3" title="3">msp.sp &lt;-<span class="st"> </span>msp.sp[ msp.sp<span class="op">$</span>POP <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>(<span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>( msp.sp<span class="op">$</span>POP )) , ]</a>
-<a class="sourceLine" id="cb17-4" title="4"></a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="co"># convert census tract polygons to dorling cartogram</span></a>
-<a class="sourceLine" id="cb17-6" title="6"><span class="co"># no idea why k=0.03 works, but it does - default is k=5</span></a>
-<a class="sourceLine" id="cb17-7" title="7">msp.sp<span class="op">$</span>pop.w &lt;-<span class="st"> </span>msp.sp<span class="op">$</span>POP <span class="op">/</span><span class="st"> </span><span class="dv">9000</span> <span class="co"># max(msp.sp$POP)   # standardizes it to max of 1.5</span></a>
-<a class="sourceLine" id="cb17-8" title="8">msp_dorling &lt;-<span class="st"> </span><span class="kw">cartogram_dorling</span>( <span class="dt">x=</span>msp.sp, <span class="dt">weight=</span><span class="st">&quot;pop.w&quot;</span>, <span class="dt">k=</span><span class="fl">0.05</span> )</a>
-<a class="sourceLine" id="cb17-9" title="9"><span class="kw">plot</span>( msp_dorling )</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># project map and remove empty tracts</span></a>
+<a class="sourceLine" id="cb13-2" title="2">msp.sp &lt;-<span class="st"> </span><span class="kw">spTransform</span>( msp.sp, <span class="kw">CRS</span>(<span class="st">&quot;+init=epsg:3395&quot;</span>))</a>
+<a class="sourceLine" id="cb13-3" title="3">msp.sp &lt;-<span class="st"> </span>msp.sp[ msp.sp<span class="op">$</span>POP <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>(<span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>( msp.sp<span class="op">$</span>POP )) , ]</a>
+<a class="sourceLine" id="cb13-4" title="4"></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co"># convert census tract polygons to dorling cartogram</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="co"># no idea why k=0.03 works, but it does - default is k=5</span></a>
+<a class="sourceLine" id="cb13-7" title="7">msp.sp<span class="op">$</span>pop.w &lt;-<span class="st"> </span>msp.sp<span class="op">$</span>POP <span class="op">/</span><span class="st"> </span><span class="dv">9000</span> <span class="co"># max(msp.sp$POP)   # standardizes it to max of 1.5</span></a>
+<a class="sourceLine" id="cb13-8" title="8">msp_dorling &lt;-<span class="st"> </span><span class="kw">cartogram_dorling</span>( <span class="dt">x=</span>msp.sp, <span class="dt">weight=</span><span class="st">&quot;pop.w&quot;</span>, <span class="dt">k=</span><span class="fl">0.05</span> )</a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="kw">plot</span>( msp_dorling )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-9-2.png" width="960" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">tm_shape</span>( msp_dorling ) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">size=</span><span class="st">&quot;POP&quot;</span>, <span class="dt">col=</span><span class="st">&quot;hinc12&quot;</span>, <span class="dt">n=</span><span class="dv">7</span>, <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span> ) </a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">tm_shape</span>( msp_dorling ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">size=</span><span class="st">&quot;POP&quot;</span>, <span class="dt">col=</span><span class="st">&quot;hinc12&quot;</span>, <span class="dt">n=</span><span class="dv">7</span>, <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span> ) </a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-9-3.png" width="960" /></p>
 <p>Improve the aestetics with a bounding box. I use the <strong>locator()</strong> function to get location.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">tm_shape</span>( msp_dorling ) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">size=</span><span class="st">&quot;POP&quot;</span>, <span class="dt">col=</span><span class="st">&quot;hinc12&quot;</span>, <span class="dt">n=</span><span class="dv">7</span>, <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span> ) </a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">tm_shape</span>( msp_dorling ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">size=</span><span class="st">&quot;POP&quot;</span>, <span class="dt">col=</span><span class="st">&quot;hinc12&quot;</span>, <span class="dt">n=</span><span class="dv">7</span>, <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span> ) </a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-10-1.png" width="960" /></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># user-defined bounding box to move slocer to subjects </span></a>
-<a class="sourceLine" id="cb20-2" title="2">bb &lt;-<span class="st"> </span><span class="kw">st_bbox</span>( <span class="kw">c</span>( <span class="dt">xmin =</span>  <span class="dv">-10451823</span>, <span class="dt">xmax =</span> <span class="dv">-10324525</span>, </a>
-<a class="sourceLine" id="cb20-3" title="3">                  <span class="dt">ymax =</span> <span class="dv">5639769</span>, <span class="dt">ymin =</span> <span class="dv">5491665</span> ), </a>
-<a class="sourceLine" id="cb20-4" title="4">               <span class="dt">crs =</span> <span class="kw">st_crs</span>(<span class="st">&quot;+init=epsg:3395&quot;</span>))</a>
-<a class="sourceLine" id="cb20-5" title="5"></a>
-<a class="sourceLine" id="cb20-6" title="6"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-7" title="7"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;hinc12&quot;</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span> ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb20-8" title="8"><span class="st">  </span><span class="kw">tm_layout</span>( <span class="st">&quot;Dorling Cartogram&quot;</span>, <span class="dt">title.position=</span><span class="kw">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>) )</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># user-defined bounding box to move slocer to subjects </span></a>
+<a class="sourceLine" id="cb16-2" title="2">bb &lt;-<span class="st"> </span><span class="kw">st_bbox</span>( <span class="kw">c</span>( <span class="dt">xmin =</span>  <span class="dv">-10451823</span>, <span class="dt">xmax =</span> <span class="dv">-10324525</span>, </a>
+<a class="sourceLine" id="cb16-3" title="3">                  <span class="dt">ymax =</span> <span class="dv">5639769</span>, <span class="dt">ymin =</span> <span class="dv">5491665</span> ), </a>
+<a class="sourceLine" id="cb16-4" title="4">               <span class="dt">crs =</span> <span class="kw">st_crs</span>(<span class="st">&quot;+init=epsg:3395&quot;</span>))</a>
+<a class="sourceLine" id="cb16-5" title="5"></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;hinc12&quot;</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span> ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-8" title="8"><span class="st">  </span><span class="kw">tm_layout</span>( <span class="st">&quot;Dorling Cartogram&quot;</span>, <span class="dt">title.position=</span><span class="kw">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>) )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-10-2.png" width="960" /></p>
 </div>
 </div>
 <div id="clustering" class="section level1">
 <h1>Clustering</h1>
 <p>We will use the same set of variables as last week. The data is transformed into z-score so that they are all on similar scales.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
-<a class="sourceLine" id="cb21-5" title="5"><span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
-<a class="sourceLine" id="cb21-6" title="6"></a>
-<a class="sourceLine" id="cb21-7" title="7">d1 &lt;-<span class="st"> </span>msp_dorling<span class="op">@</span>data</a>
-<a class="sourceLine" id="cb21-8" title="8">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
-<a class="sourceLine" id="cb21-9" title="9">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a>
-<a class="sourceLine" id="cb21-10" title="10"><span class="kw">head</span>( d3[,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
+<a class="sourceLine" id="cb17-6" title="6"></a>
+<a class="sourceLine" id="cb17-7" title="7">d1 &lt;-<span class="st"> </span>msp_dorling<span class="op">@</span>data</a>
+<a class="sourceLine" id="cb17-8" title="8">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
+<a class="sourceLine" id="cb17-9" title="9">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a>
+<a class="sourceLine" id="cb17-10" title="10"><span class="kw">head</span>( d3[,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table style="width:90%;">
 <colgroup>
 <col width="15%" />
@@ -866,16 +691,16 @@ $(document).ready(function () {
 <div id="prepare-data-for-clustering" class="section level2">
 <h2>Prepare Data for Clustering</h2>
 <p>We transform all of the variables to z scorse so they are on the same scale while clustering. This ensures that each census variable has equal weight. Z-scores typically range from about -3 to +3 with a mean of zero.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
-<a class="sourceLine" id="cb22-5" title="5"><span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
-<a class="sourceLine" id="cb22-6" title="6"></a>
-<a class="sourceLine" id="cb22-7" title="7">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
-<a class="sourceLine" id="cb22-8" title="8">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a>
-<a class="sourceLine" id="cb22-9" title="9"></a>
-<a class="sourceLine" id="cb22-10" title="10"><span class="kw">head</span>( d3[,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
+<a class="sourceLine" id="cb18-6" title="6"></a>
+<a class="sourceLine" id="cb18-7" title="7">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
+<a class="sourceLine" id="cb18-8" title="8">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a>
+<a class="sourceLine" id="cb18-9" title="9"></a>
+<a class="sourceLine" id="cb18-10" title="10"><span class="kw">head</span>( d3[,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table style="width:90%;">
 <colgroup>
 <col width="15%" />
@@ -950,11 +775,11 @@ $(document).ready(function () {
 <div id="perform-cluster-analysis" class="section level2">
 <h2>Perform Cluster Analysis</h2>
 <p>For more details on cluster analysis visit the <a href="https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html"><strong>mclust</strong> tutorial</a>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># library( mclust )</span></a>
-<a class="sourceLine" id="cb23-2" title="2"><span class="kw">set.seed</span>( <span class="dv">1234</span> )</a>
-<a class="sourceLine" id="cb23-3" title="3">fit &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d3 )</a>
-<a class="sourceLine" id="cb23-4" title="4">msp_dorling<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit<span class="op">$</span>classification )</a>
-<a class="sourceLine" id="cb23-5" title="5"><span class="kw">summary</span>( fit )</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># library( mclust )</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">set.seed</span>( <span class="dv">1234</span> )</a>
+<a class="sourceLine" id="cb19-3" title="3">fit &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d3 )</a>
+<a class="sourceLine" id="cb19-4" title="4">msp_dorling<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit<span class="op">$</span>classification )</a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="kw">summary</span>( fit )</a></code></pre></div>
 <pre><code>## ---------------------------------------------------- 
 ## Gaussian finite mixture model fitted by EM algorithm 
 ## ---------------------------------------------------- 
@@ -968,41 +793,41 @@ $(document).ready(function () {
 ##   1   2   3   4   5   6   7 
 ##  74 151 112 237  89  63  45</code></pre>
 <p>Some visuals of model fit statistics (doesn’t work well with a lot of variables):</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">plot</span>( fit, <span class="dt">what =</span> <span class="st">&quot;classification&quot;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">plot</span>( fit, <span class="dt">what =</span> <span class="st">&quot;classification&quot;</span> )</a></code></pre></div>
 </div>
 <div id="identifying-neighborhood-clusters" class="section level2">
 <h2>Identifying Neighborhood Clusters</h2>
 <p>Build the charts to compare census characteristics across the groups.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">df.pct &lt;-<span class="st"> </span><span class="kw">sapply</span>( d2, ntile, <span class="dv">100</span> )</a>
-<a class="sourceLine" id="cb26-2" title="2">d4 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>( df.pct )</a>
-<a class="sourceLine" id="cb26-3" title="3">d4<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>( <span class="kw">paste0</span>(<span class="st">&quot;GROUP-&quot;</span>,fit<span class="op">$</span>classification) )</a>
-<a class="sourceLine" id="cb26-4" title="4"></a>
-<a class="sourceLine" id="cb26-5" title="5">num.groups &lt;-<span class="st"> </span><span class="kw">length</span>( <span class="kw">unique</span>( fit<span class="op">$</span>classification ) )</a>
-<a class="sourceLine" id="cb26-6" title="6"></a>
-<a class="sourceLine" id="cb26-7" title="7">stats &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb26-8" title="8">d4 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb26-9" title="9"><span class="st">  </span><span class="kw">group_by</span>( cluster ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb26-10" title="10"><span class="st">  </span><span class="kw">summarise_each</span>( <span class="kw">funs</span>(mean) )</a>
-<a class="sourceLine" id="cb26-11" title="11"></a>
-<a class="sourceLine" id="cb26-12" title="12">t &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="kw">t</span>(stats), <span class="dt">stringsAsFactors=</span>F )</a>
-<a class="sourceLine" id="cb26-13" title="13"><span class="kw">names</span>(t) &lt;-<span class="st"> </span><span class="kw">paste0</span>( <span class="st">&quot;GROUP.&quot;</span>, <span class="dv">1</span><span class="op">:</span>num.groups )</a>
-<a class="sourceLine" id="cb26-14" title="14">t &lt;-<span class="st"> </span>t[<span class="op">-</span><span class="dv">1</span>,]</a>
-<a class="sourceLine" id="cb26-15" title="15"></a>
-<a class="sourceLine" id="cb26-16" title="16"></a>
-<a class="sourceLine" id="cb26-17" title="17"></a>
-<a class="sourceLine" id="cb26-18" title="18"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>num.groups )</a>
-<a class="sourceLine" id="cb26-19" title="19">{</a>
-<a class="sourceLine" id="cb26-20" title="20">  z &lt;-<span class="st"> </span>t[,i]</a>
-<a class="sourceLine" id="cb26-21" title="21">  <span class="kw">plot</span>( <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">30</span>), <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">75</span>,<span class="dv">100</span>), </a>
-<a class="sourceLine" id="cb26-22" title="22">        <span class="dt">type=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,</a>
-<a class="sourceLine" id="cb26-23" title="23">        <span class="dt">xlab=</span><span class="st">&quot;Percentile&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb26-24" title="24">        <span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;GROUP&quot;</span>,i) )</a>
-<a class="sourceLine" id="cb26-25" title="25">  <span class="kw">abline</span>( <span class="dt">v=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">25</span>), <span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&quot;gray90&quot;</span> )</a>
-<a class="sourceLine" id="cb26-26" title="26">  <span class="kw">segments</span>( <span class="dt">y0=</span><span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">x1=</span><span class="dv">100</span>, <span class="dt">col=</span><span class="st">&quot;gray70&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb26-27" title="27">  <span class="kw">text</span>( <span class="fl">-0.2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, data.dictionary<span class="op">$</span>VARIABLE[<span class="op">-</span><span class="dv">1</span>], <span class="dt">cex=</span><span class="fl">0.85</span>, <span class="dt">pos=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb26-28" title="28">  <span class="kw">points</span>( z, <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">1.5</span> )</a>
-<a class="sourceLine" id="cb26-29" title="29">  <span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">at=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>), <span class="dt">col.axis=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
-<a class="sourceLine" id="cb26-30" title="30">}</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">df.pct &lt;-<span class="st"> </span><span class="kw">sapply</span>( d2, ntile, <span class="dv">100</span> )</a>
+<a class="sourceLine" id="cb22-2" title="2">d4 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>( df.pct )</a>
+<a class="sourceLine" id="cb22-3" title="3">d4<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>( <span class="kw">paste0</span>(<span class="st">&quot;GROUP-&quot;</span>,fit<span class="op">$</span>classification) )</a>
+<a class="sourceLine" id="cb22-4" title="4"></a>
+<a class="sourceLine" id="cb22-5" title="5">num.groups &lt;-<span class="st"> </span><span class="kw">length</span>( <span class="kw">unique</span>( fit<span class="op">$</span>classification ) )</a>
+<a class="sourceLine" id="cb22-6" title="6"></a>
+<a class="sourceLine" id="cb22-7" title="7">stats &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb22-8" title="8">d4 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-9" title="9"><span class="st">  </span><span class="kw">group_by</span>( cluster ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-10" title="10"><span class="st">  </span><span class="kw">summarise_each</span>( <span class="kw">funs</span>(mean) )</a>
+<a class="sourceLine" id="cb22-11" title="11"></a>
+<a class="sourceLine" id="cb22-12" title="12">t &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="kw">t</span>(stats), <span class="dt">stringsAsFactors=</span>F )</a>
+<a class="sourceLine" id="cb22-13" title="13"><span class="kw">names</span>(t) &lt;-<span class="st"> </span><span class="kw">paste0</span>( <span class="st">&quot;GROUP.&quot;</span>, <span class="dv">1</span><span class="op">:</span>num.groups )</a>
+<a class="sourceLine" id="cb22-14" title="14">t &lt;-<span class="st"> </span>t[<span class="op">-</span><span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb22-15" title="15"></a>
+<a class="sourceLine" id="cb22-16" title="16"></a>
+<a class="sourceLine" id="cb22-17" title="17"></a>
+<a class="sourceLine" id="cb22-18" title="18"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>num.groups )</a>
+<a class="sourceLine" id="cb22-19" title="19">{</a>
+<a class="sourceLine" id="cb22-20" title="20">  z &lt;-<span class="st"> </span>t[,i]</a>
+<a class="sourceLine" id="cb22-21" title="21">  <span class="kw">plot</span>( <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">30</span>), <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">75</span>,<span class="dv">100</span>), </a>
+<a class="sourceLine" id="cb22-22" title="22">        <span class="dt">type=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb22-23" title="23">        <span class="dt">xlab=</span><span class="st">&quot;Percentile&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb22-24" title="24">        <span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;GROUP&quot;</span>,i) )</a>
+<a class="sourceLine" id="cb22-25" title="25">  <span class="kw">abline</span>( <span class="dt">v=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">25</span>), <span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&quot;gray90&quot;</span> )</a>
+<a class="sourceLine" id="cb22-26" title="26">  <span class="kw">segments</span>( <span class="dt">y0=</span><span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">x1=</span><span class="dv">100</span>, <span class="dt">col=</span><span class="st">&quot;gray70&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb22-27" title="27">  <span class="kw">text</span>( <span class="fl">-0.2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, data.dictionary<span class="op">$</span>VARIABLE[<span class="op">-</span><span class="dv">1</span>], <span class="dt">cex=</span><span class="fl">0.85</span>, <span class="dt">pos=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb22-28" title="28">  <span class="kw">points</span>( z, <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">1.5</span> )</a>
+<a class="sourceLine" id="cb22-29" title="29">  <span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">at=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>), <span class="dt">col.axis=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb22-30" title="30">}</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-1.png" width="960" /><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-2.png" width="960" /><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-3.png" width="960" /><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-4.png" width="960" /><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-5.png" width="960" /><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-6.png" width="960" /><img src="lab-04-instructions_files/figure-html/unnamed-chunk-15-7.png" width="960" /></p>
 <p>You are now ready to identify meaningful labels for your clusters!</p>
 </div>
@@ -1047,23 +872,23 @@ $(document).ready(function () {
 <li>Median home value (drops alpha to 0.92)</li>
 </ul>
 <p>You will create each index by adding the component variables together:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">d3 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(d3)</a>
-<a class="sourceLine" id="cb27-2" title="2">dim1 &lt;-<span class="st"> </span>d3<span class="op">$</span>pown12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pmulti12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>p10yrs12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pwds12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pfhh12   </a>
-<a class="sourceLine" id="cb27-3" title="3">dim2 &lt;-<span class="st"> </span>d3<span class="op">$</span>pnhwht12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pnhblk12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>phisp12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pfb12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>polang12</a>
-<a class="sourceLine" id="cb27-4" title="4">dim3 &lt;-<span class="st"> </span>d3<span class="op">$</span>pcol12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>phs12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pprof12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>hinc12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>mhmval12</a>
-<a class="sourceLine" id="cb27-5" title="5"></a>
-<a class="sourceLine" id="cb27-6" title="6"></a>
-<a class="sourceLine" id="cb27-7" title="7"><span class="kw">plot</span>( dim1, dim2, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="dt">cex=</span><span class="fl">1.5</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">d3 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(d3)</a>
+<a class="sourceLine" id="cb23-2" title="2">dim1 &lt;-<span class="st"> </span>d3<span class="op">$</span>pown12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pmulti12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>p10yrs12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pwds12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pfhh12   </a>
+<a class="sourceLine" id="cb23-3" title="3">dim2 &lt;-<span class="st"> </span>d3<span class="op">$</span>pnhwht12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pnhblk12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>phisp12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pfb12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>polang12</a>
+<a class="sourceLine" id="cb23-4" title="4">dim3 &lt;-<span class="st"> </span>d3<span class="op">$</span>pcol12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>phs12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>pprof12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>hinc12 <span class="op">+</span><span class="st"> </span>d3<span class="op">$</span>mhmval12</a>
+<a class="sourceLine" id="cb23-5" title="5"></a>
+<a class="sourceLine" id="cb23-6" title="6"></a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="kw">plot</span>( dim1, dim2, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="dt">cex=</span><span class="fl">1.5</span> )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-16-1.png" width="960" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">plot</span>( dim1, dim3, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="dt">cex=</span><span class="fl">1.5</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">plot</span>( dim1, dim3, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="dt">cex=</span><span class="fl">1.5</span> )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-16-2.png" width="960" /></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">plot</span>( dim2, dim3, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="dt">cex=</span><span class="fl">1.5</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">plot</span>( dim2, dim3, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="dt">cex=</span><span class="fl">1.5</span> )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-16-3.png" width="960" /></p>
 <p>I arbitrarily selected three census variables to compare methods. Here we are using % of population 18 and under, % of female labor force participation, and household income.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># data set of three indices</span></a>
-<a class="sourceLine" id="cb30-2" title="2">d22 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( dim1, dim2, dim3 )</a>
-<a class="sourceLine" id="cb30-3" title="3">fit2 &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d22 )</a>
-<a class="sourceLine" id="cb30-4" title="4"><span class="kw">summary</span>( fit2 )</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># data set of three indices</span></a>
+<a class="sourceLine" id="cb26-2" title="2">d22 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( dim1, dim2, dim3 )</a>
+<a class="sourceLine" id="cb26-3" title="3">fit2 &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d22 )</a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="kw">summary</span>( fit2 )</a></code></pre></div>
 <pre><code>## ---------------------------------------------------- 
 ## Gaussian finite mixture model fitted by EM algorithm 
 ## ---------------------------------------------------- 
@@ -1076,12 +901,12 @@ $(document).ready(function () {
 ## Clustering table:
 ##   1   2   3   4   5 
 ## 156  78 180 268  89</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">msp_dorling<span class="op">$</span>cluster2 &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit2<span class="op">$</span>classification )</a>
-<a class="sourceLine" id="cb32-2" title="2"></a>
-<a class="sourceLine" id="cb32-3" title="3"><span class="co"># dataset of three census variables </span></a>
-<a class="sourceLine" id="cb32-4" title="4">d33 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( d3<span class="op">$</span>p18und12, d3<span class="op">$</span>pflabf12, d3<span class="op">$</span>hinc12 )</a>
-<a class="sourceLine" id="cb32-5" title="5">fit3 &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d33 )</a>
-<a class="sourceLine" id="cb32-6" title="6"><span class="kw">summary</span>( fit3 )</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">msp_dorling<span class="op">$</span>cluster2 &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit2<span class="op">$</span>classification )</a>
+<a class="sourceLine" id="cb28-2" title="2"></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="co"># dataset of three census variables </span></a>
+<a class="sourceLine" id="cb28-4" title="4">d33 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( d3<span class="op">$</span>p18und12, d3<span class="op">$</span>pflabf12, d3<span class="op">$</span>hinc12 )</a>
+<a class="sourceLine" id="cb28-5" title="5">fit3 &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d33 )</a>
+<a class="sourceLine" id="cb28-6" title="6"><span class="kw">summary</span>( fit3 )</a></code></pre></div>
 <pre><code>## ---------------------------------------------------- 
 ## Gaussian finite mixture model fitted by EM algorithm 
 ## ---------------------------------------------------- 
@@ -1094,34 +919,34 @@ $(document).ready(function () {
 ## Clustering table:
 ##   1   2   3 
 ## 187 263 321</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">msp_dorling<span class="op">$</span>cluster3 &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit3<span class="op">$</span>classification )</a>
-<a class="sourceLine" id="cb34-2" title="2"></a>
-<a class="sourceLine" id="cb34-3" title="3"></a>
-<a class="sourceLine" id="cb34-4" title="4"></a>
-<a class="sourceLine" id="cb34-5" title="5"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a>
-<a class="sourceLine" id="cb34-6" title="6"><span class="kw">tmap_style</span>(<span class="st">&quot;cobalt&quot;</span>)</a>
-<a class="sourceLine" id="cb34-7" title="7"></a>
-<a class="sourceLine" id="cb34-8" title="8">tm1 &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb34-9" title="9"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-10" title="10"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
-<a class="sourceLine" id="cb34-11" title="11"></a>
-<a class="sourceLine" id="cb34-12" title="12">tm2 &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb34-13" title="13"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-14" title="14"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster2&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
-<a class="sourceLine" id="cb34-15" title="15"></a>
-<a class="sourceLine" id="cb34-16" title="16">tm3 &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb34-17" title="17"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-18" title="18"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster3&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
-<a class="sourceLine" id="cb34-19" title="19"></a>
-<a class="sourceLine" id="cb34-20" title="20"></a>
-<a class="sourceLine" id="cb34-21" title="21"><span class="kw">tmap_arrange</span>( tm1, tm2, tm3 )</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">msp_dorling<span class="op">$</span>cluster3 &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit3<span class="op">$</span>classification )</a>
+<a class="sourceLine" id="cb30-2" title="2"></a>
+<a class="sourceLine" id="cb30-3" title="3"></a>
+<a class="sourceLine" id="cb30-4" title="4"></a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="kw">tmap_style</span>(<span class="st">&quot;cobalt&quot;</span>)</a>
+<a class="sourceLine" id="cb30-7" title="7"></a>
+<a class="sourceLine" id="cb30-8" title="8">tm1 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb30-9" title="9"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-10" title="10"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
+<a class="sourceLine" id="cb30-11" title="11"></a>
+<a class="sourceLine" id="cb30-12" title="12">tm2 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb30-13" title="13"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-14" title="14"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster2&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
+<a class="sourceLine" id="cb30-15" title="15"></a>
+<a class="sourceLine" id="cb30-16" title="16">tm3 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb30-17" title="17"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-18" title="18"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster3&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
+<a class="sourceLine" id="cb30-19" title="19"></a>
+<a class="sourceLine" id="cb30-20" title="20"></a>
+<a class="sourceLine" id="cb30-21" title="21"><span class="kw">tmap_arrange</span>( tm1, tm2, tm3 )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-17-1.png" width="960" /></p>
 <p>This function does not work well using the model with 30 census variables because the plots are so small, but when you plot the model results from the clustering procedure is will show the relationship between each variable, and color-code each group. This helps you visualize how each set of variables is contributing the the clusters that were identified.</p>
 <p>Recall that similar to how regression models are trying to select lines that minimize the residual errors in the model, clustering tries to select groups (assign tracts to groups) in a way that maximizes the overall distance between group centroids.</p>
 <p>You can see here that the three indices we created do a better job of creating meaningful groups that the three census variables. When selecting variables for your model it is better to have independent measures - highly-correlated input variables will be explaining the same variance in your populations, and thus provide redundant information that is not useful for identifying groups.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">plot</span>( fit3, <span class="dt">what =</span> <span class="st">&quot;classification&quot;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">plot</span>( fit3, <span class="dt">what =</span> <span class="st">&quot;classification&quot;</span> )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">plot</span>( fit2, <span class="dt">what =</span> <span class="st">&quot;classification&quot;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">plot</span>( fit2, <span class="dt">what =</span> <span class="st">&quot;classification&quot;</span> )</a></code></pre></div>
 <p><img src="lab-04-instructions_files/figure-html/unnamed-chunk-18-2.png" width="960" /></p>
 <hr />
 <p><br> <br></p>
@@ -1145,49 +970,49 @@ $(document).ready(function () {
 <p>Select three census variables from the full list of 30, and create a new clustering model. How many groups are generated? Are they similar groups to the full model? Are our inferences significantly different if we have a limited amount of data to draw from?</p>
 <p>Report your three variables and describe the groups that are identified.</p>
 <p>You can use the following to create data dictionaries to provide informative labels to the group percentile plots:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># use dput( data.dictionary ) to create reproducible data frames for RMD files</span></a>
-<a class="sourceLine" id="cb37-2" title="2">data.dictionary &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb37-3" title="3"><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">LABEL =</span> <span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-4" title="4"><span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, <span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-5" title="5"><span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, <span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-6" title="6"><span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, <span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-7" title="7"><span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, <span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-8" title="8"><span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>), <span class="dt">VARIABLE =</span> <span class="kw">c</span>(<span class="st">&quot;Percent white, non-Hispanic&quot;</span>, </a>
-<a class="sourceLine" id="cb37-9" title="9"><span class="st">&quot;Percent black, non-Hispanic&quot;</span>, <span class="st">&quot;Percent Hispanic&quot;</span>, <span class="st">&quot;Percent Native American race&quot;</span>, </a>
-<a class="sourceLine" id="cb37-10" title="10"><span class="st">&quot;Percent foreign born&quot;</span>, <span class="st">&quot;Percent speaking other language at home, age 5 plus&quot;</span>, </a>
-<a class="sourceLine" id="cb37-11" title="11"><span class="st">&quot;Percent with high school degree or less&quot;</span>, <span class="st">&quot;Percent with 4-year college degree or more&quot;</span>, </a>
-<a class="sourceLine" id="cb37-12" title="12"><span class="st">&quot;Percent unemployed&quot;</span>, <span class="st">&quot;Percent female labor force participation&quot;</span>, </a>
-<a class="sourceLine" id="cb37-13" title="13"><span class="st">&quot;Percent professional employees&quot;</span>, <span class="st">&quot;Percent manufacturing employees&quot;</span>, </a>
-<a class="sourceLine" id="cb37-14" title="14"><span class="st">&quot;Percent veteran&quot;</span>, <span class="st">&quot;Percent self-employed&quot;</span>, <span class="st">&quot;Median HH income, total&quot;</span>, </a>
-<a class="sourceLine" id="cb37-15" title="15"><span class="st">&quot;Per capita income&quot;</span>, <span class="st">&quot;Percent in poverty, total&quot;</span>, <span class="st">&quot;Percent owner-occupied units&quot;</span>, </a>
-<a class="sourceLine" id="cb37-16" title="16"><span class="st">&quot;Percent vacant units&quot;</span>, <span class="st">&quot;Percent multi-family units&quot;</span>, <span class="st">&quot;Median rent&quot;</span>, </a>
-<a class="sourceLine" id="cb37-17" title="17"><span class="st">&quot;Median home value&quot;</span>, <span class="st">&quot;Percent structures more than 30 years old&quot;</span>, </a>
-<a class="sourceLine" id="cb37-18" title="18"><span class="st">&quot;Percent HH in neighborhood 10 years or less&quot;</span>, <span class="st">&quot;Percent 17 and under, total&quot;</span>, </a>
-<a class="sourceLine" id="cb37-19" title="19"><span class="st">&quot;Percent 60 and older, total&quot;</span>, <span class="st">&quot;Percent 75 and older, total&quot;</span>, </a>
-<a class="sourceLine" id="cb37-20" title="20"><span class="st">&quot;Percent currently married, not separated&quot;</span>, <span class="st">&quot;Percent widowed, divorced and separated&quot;</span>, </a>
-<a class="sourceLine" id="cb37-21" title="21"><span class="st">&quot;Percent female-headed families with children&quot;</span>)), <span class="dt">class =</span> <span class="st">&quot;data.frame&quot;</span>, <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, </a>
-<a class="sourceLine" id="cb37-22" title="22"><span class="op">-</span>30L))</a>
-<a class="sourceLine" id="cb37-23" title="23"></a>
-<a class="sourceLine" id="cb37-24" title="24"></a>
-<a class="sourceLine" id="cb37-25" title="25"><span class="co"># list variables for clustering</span></a>
-<a class="sourceLine" id="cb37-26" title="26">use.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-27" title="27">               <span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-28" title="28">               <span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-29" title="29">               <span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
-<a class="sourceLine" id="cb37-30" title="30">               <span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
-<a class="sourceLine" id="cb37-31" title="31"></a>
-<a class="sourceLine" id="cb37-32" title="32">dd.cluster1 &lt;-<span class="st"> </span>data.dictionary[ data.dictionary<span class="op">$</span>LABEL <span class="op">%in%</span><span class="st"> </span>use.these , ]</a>
-<a class="sourceLine" id="cb37-33" title="33"></a>
-<a class="sourceLine" id="cb37-34" title="34"></a>
-<a class="sourceLine" id="cb37-35" title="35"><span class="co"># cluster 2</span></a>
-<a class="sourceLine" id="cb37-36" title="36">LABEL &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dim1&quot;</span>,<span class="st">&quot;dim2&quot;</span>,<span class="st">&quot;dim3&quot;</span>)</a>
-<a class="sourceLine" id="cb37-37" title="37">VARIABLE &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Neighborhood transitivity&quot;</span>,<span class="st">&quot;Neighborhood diversity&quot;</span>,<span class="st">&quot;Human capital&quot;</span>)</a>
-<a class="sourceLine" id="cb37-38" title="38">dd.cluster2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( LABEL, VARIABLE )</a>
-<a class="sourceLine" id="cb37-39" title="39"></a>
-<a class="sourceLine" id="cb37-40" title="40"></a>
-<a class="sourceLine" id="cb37-41" title="41"><span class="co"># cluster 3 - update with your variables</span></a>
-<a class="sourceLine" id="cb37-42" title="42">use.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwhtxx&quot;</span>, <span class="st">&quot;pnhblkxx&quot;</span>, <span class="st">&quot;phispxx&quot;</span>)</a>
-<a class="sourceLine" id="cb37-43" title="43">dd.cluster3 &lt;-<span class="st"> </span>data.dictionary[ data.dictionary<span class="op">$</span>LABEL <span class="op">%in%</span><span class="st"> </span>use.these , ]</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># use dput( data.dictionary ) to create reproducible data frames for RMD files</span></a>
+<a class="sourceLine" id="cb33-2" title="2">data.dictionary &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">LABEL =</span> <span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, <span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-5" title="5"><span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, <span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-6" title="6"><span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, <span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-7" title="7"><span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, <span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-8" title="8"><span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>), <span class="dt">VARIABLE =</span> <span class="kw">c</span>(<span class="st">&quot;Percent white, non-Hispanic&quot;</span>, </a>
+<a class="sourceLine" id="cb33-9" title="9"><span class="st">&quot;Percent black, non-Hispanic&quot;</span>, <span class="st">&quot;Percent Hispanic&quot;</span>, <span class="st">&quot;Percent Native American race&quot;</span>, </a>
+<a class="sourceLine" id="cb33-10" title="10"><span class="st">&quot;Percent foreign born&quot;</span>, <span class="st">&quot;Percent speaking other language at home, age 5 plus&quot;</span>, </a>
+<a class="sourceLine" id="cb33-11" title="11"><span class="st">&quot;Percent with high school degree or less&quot;</span>, <span class="st">&quot;Percent with 4-year college degree or more&quot;</span>, </a>
+<a class="sourceLine" id="cb33-12" title="12"><span class="st">&quot;Percent unemployed&quot;</span>, <span class="st">&quot;Percent female labor force participation&quot;</span>, </a>
+<a class="sourceLine" id="cb33-13" title="13"><span class="st">&quot;Percent professional employees&quot;</span>, <span class="st">&quot;Percent manufacturing employees&quot;</span>, </a>
+<a class="sourceLine" id="cb33-14" title="14"><span class="st">&quot;Percent veteran&quot;</span>, <span class="st">&quot;Percent self-employed&quot;</span>, <span class="st">&quot;Median HH income, total&quot;</span>, </a>
+<a class="sourceLine" id="cb33-15" title="15"><span class="st">&quot;Per capita income&quot;</span>, <span class="st">&quot;Percent in poverty, total&quot;</span>, <span class="st">&quot;Percent owner-occupied units&quot;</span>, </a>
+<a class="sourceLine" id="cb33-16" title="16"><span class="st">&quot;Percent vacant units&quot;</span>, <span class="st">&quot;Percent multi-family units&quot;</span>, <span class="st">&quot;Median rent&quot;</span>, </a>
+<a class="sourceLine" id="cb33-17" title="17"><span class="st">&quot;Median home value&quot;</span>, <span class="st">&quot;Percent structures more than 30 years old&quot;</span>, </a>
+<a class="sourceLine" id="cb33-18" title="18"><span class="st">&quot;Percent HH in neighborhood 10 years or less&quot;</span>, <span class="st">&quot;Percent 17 and under, total&quot;</span>, </a>
+<a class="sourceLine" id="cb33-19" title="19"><span class="st">&quot;Percent 60 and older, total&quot;</span>, <span class="st">&quot;Percent 75 and older, total&quot;</span>, </a>
+<a class="sourceLine" id="cb33-20" title="20"><span class="st">&quot;Percent currently married, not separated&quot;</span>, <span class="st">&quot;Percent widowed, divorced and separated&quot;</span>, </a>
+<a class="sourceLine" id="cb33-21" title="21"><span class="st">&quot;Percent female-headed families with children&quot;</span>)), <span class="dt">class =</span> <span class="st">&quot;data.frame&quot;</span>, <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, </a>
+<a class="sourceLine" id="cb33-22" title="22"><span class="op">-</span>30L))</a>
+<a class="sourceLine" id="cb33-23" title="23"></a>
+<a class="sourceLine" id="cb33-24" title="24"></a>
+<a class="sourceLine" id="cb33-25" title="25"><span class="co"># list variables for clustering</span></a>
+<a class="sourceLine" id="cb33-26" title="26">use.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-27" title="27">               <span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-28" title="28">               <span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-29" title="29">               <span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
+<a class="sourceLine" id="cb33-30" title="30">               <span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
+<a class="sourceLine" id="cb33-31" title="31"></a>
+<a class="sourceLine" id="cb33-32" title="32">dd.cluster1 &lt;-<span class="st"> </span>data.dictionary[ data.dictionary<span class="op">$</span>LABEL <span class="op">%in%</span><span class="st"> </span>use.these , ]</a>
+<a class="sourceLine" id="cb33-33" title="33"></a>
+<a class="sourceLine" id="cb33-34" title="34"></a>
+<a class="sourceLine" id="cb33-35" title="35"><span class="co"># cluster 2</span></a>
+<a class="sourceLine" id="cb33-36" title="36">LABEL &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dim1&quot;</span>,<span class="st">&quot;dim2&quot;</span>,<span class="st">&quot;dim3&quot;</span>)</a>
+<a class="sourceLine" id="cb33-37" title="37">VARIABLE &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Neighborhood transitivity&quot;</span>,<span class="st">&quot;Neighborhood diversity&quot;</span>,<span class="st">&quot;Human capital&quot;</span>)</a>
+<a class="sourceLine" id="cb33-38" title="38">dd.cluster2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( LABEL, VARIABLE )</a>
+<a class="sourceLine" id="cb33-39" title="39"></a>
+<a class="sourceLine" id="cb33-40" title="40"></a>
+<a class="sourceLine" id="cb33-41" title="41"><span class="co"># cluster 3 - update with your variables</span></a>
+<a class="sourceLine" id="cb33-42" title="42">use.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwhtxx&quot;</span>, <span class="st">&quot;pnhblkxx&quot;</span>, <span class="st">&quot;phispxx&quot;</span>)</a>
+<a class="sourceLine" id="cb33-43" title="43">dd.cluster3 &lt;-<span class="st"> </span>data.dictionary[ data.dictionary<span class="op">$</span>LABEL <span class="op">%in%</span><span class="st"> </span>use.these , ]</a></code></pre></div>
 <p><strong>Reflection (not graded, but please answer):</strong></p>
 <p>Reflect on how the data we use in these models defines how we are defining and describing the neighborhoods (groups) within these models?</p>
 <p>Are these clusters valid constructs? Do we believe that they are accurately describing a concrete reality about the world? Would knowing which group that a tract is part of help us predict something about the tract, such as outcomes that children would experience living there, or how the tract might change over time?</p>

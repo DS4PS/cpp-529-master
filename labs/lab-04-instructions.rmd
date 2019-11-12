@@ -79,7 +79,7 @@ I have added the file to GitHub for ease of access.
 ```{r}
 crosswalk <- read.csv( "https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/cbsatocountycrosswalk.csv",  stringsAsFactors=F, colClasses="character" )
 
-# search for citie names by strings for "begins with" 
+# search for citie names by strings, use the ^ anchor for "begins with" 
 
 grep( "^CHI", crosswalk$msaname, value=TRUE ) 
 grep( "^MIN", crosswalk$msaname, value=TRUE ) 
@@ -114,7 +114,7 @@ library( tidycensus )
 ```
 
 
-```{r}
+```{r, results='hide'}
 these.msp <- crosswalk$msaname == "MINNEAPOLIS-ST. PAUL, MN-WI"
 these.fips <- crosswalk$fipscounty[ these.msp ]
 these.fips <- na.omit( these.fips )
