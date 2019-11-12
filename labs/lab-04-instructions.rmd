@@ -147,6 +147,9 @@ census.dat <- readRDS(gzcon(url( URL )))
 
 # can merge an sf object and data.frame
 msp <- merge( msp.pop, census.dat, by.x="GEOID", by.y="tractid" )
+
+# make sure there are no empty polygons
+msp <- msp[ ! st_is_empty( msp ) , ]
 ```
 
 
@@ -477,6 +480,54 @@ Compare that set of groups to the groups identified by the model using only the 
 Select three census variables from the full list of 30, and create a new clustering model. How many groups are generated? Are they similar groups to the full model? Are our inferences significantly different if we have a limited amount of data to draw from? 
 
 Report your three variables and describe the groups that are identified. 
+
+You can use the following to create data dictionaries to provide informative labels to the group percentile plots:
+
+```{r, eval=F}
+# use dput( data.dictionary ) to create reproducible data frames for RMD files
+data.dictionary <- 
+structure(list(LABEL = c("pnhwht12", "pnhblk12", "phisp12", 
+"pntv12", "pfb12", "polang12", "phs12", "pcol12", "punemp12", 
+"pflabf12", "pprof12", "pmanuf12", "pvet12", "psemp12", "hinc12", 
+"incpc12", "ppov12", "pown12", "pvac12", "pmulti12", "mrent12", 
+"mhmval12", "p30old12", "p10yrs12", "p18und12", "p60up12", "p75up12", 
+"pmar12", "pwds12", "pfhh12"), VARIABLE = c("Percent white, non-Hispanic", 
+"Percent black, non-Hispanic", "Percent Hispanic", "Percent Native American race", 
+"Percent foreign born", "Percent speaking other language at home, age 5 plus", 
+"Percent with high school degree or less", "Percent with 4-year college degree or more", 
+"Percent unemployed", "Percent female labor force participation", 
+"Percent professional employees", "Percent manufacturing employees", 
+"Percent veteran", "Percent self-employed", "Median HH income, total", 
+"Per capita income", "Percent in poverty, total", "Percent owner-occupied units", 
+"Percent vacant units", "Percent multi-family units", "Median rent", 
+"Median home value", "Percent structures more than 30 years old", 
+"Percent HH in neighborhood 10 years or less", "Percent 17 and under, total", 
+"Percent 60 and older, total", "Percent 75 and older, total", 
+"Percent currently married, not separated", "Percent widowed, divorced and separated", 
+"Percent female-headed families with children")), class = "data.frame", row.names = c(NA, 
+-30L))
+
+
+# list variables for clustering
+use.these <- c("pnhwht12", "pnhblk12", "phisp12", "pntv12", "pfb12", "polang12", 
+               "phs12", "pcol12", "punemp12", "pflabf12", "pprof12", "pmanuf12", 
+               "pvet12", "psemp12", "hinc12", "incpc12", "ppov12", "pown12", 
+               "pvac12", "pmulti12", "mrent12", "mhmval12", "p30old12", "p10yrs12", 
+               "p18und12", "p60up12", "p75up12", "pmar12", "pwds12", "pfhh12")
+
+dd.cluster1 <- data.dictionary[ data.dictionary$LABEL %in% use.these , ]
+
+
+# cluster 2
+LABEL <- c("dim1","dim2","dim3")
+VARIABLE <- c("Neighborhood transitivity","Neighborhood diversity","Human capital")
+dd.cluster2 <- data.frame( LABEL, VARIABLE )
+
+
+# cluster 3 - update with your variables
+use.these <- c("pnhwhtxx", "pnhblkxx", "phispxx")
+dd.cluster3 <- data.dictionary[ data.dictionary$LABEL %in% use.these , ]
+```
 
 
 
