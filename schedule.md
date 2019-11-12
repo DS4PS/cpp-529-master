@@ -599,8 +599,28 @@ Image 2:
 <br>
 
 
-*** { @unit = "Due Dec 2nd", @title = "Explainer Assignment", @assignment  }
+*** { @unit = "Due Dec 2nd", @title = "Explainer Assignment", @assignment, @foldout  }
 
+<br>
+<br>
+
+## Code-Through
+ 
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/LABS/code-through-assignment.html">Code-Through Instructions</a>
+
+## Submit to Canvas:
+
+<a class="uk-button uk-button-primary" href="">SUBMIT CODE-THROUGH</a>
+
+## Post on Yellowdig
+
+Publish your code-through as an RPub or shiny app. Share you link on YellowDig. 
+
+<a class="uk-button uk-button-primary" href="https://www.yellowdig.com/board/42045">Yellowdig</a>
+
+
+<br>
+<br>
 
 
 
