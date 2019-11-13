@@ -543,21 +543,40 @@ Image 2:
 --------------------------------------------------------------------------------------------------- 
 <br>
 
-** Week 5 - Transitions  
+** Week 5 - Visualizing Neighborhood Changes  
 
-*** { @unit = "", @title = "Unit Overview"  }
+*** { @unit = "", @title = "Unit Overview", @foldout  }
+
+In this unit, a brief video introduction is given related to neighborhood change and gentficication, serving as important foundation for our data science work using census data to visualize changes in neighborhoods over time.  The second goal of this unit is to offer a set of "good practices" when creating maps to display spatial information.  
+
+*** { @unit = "", @title = "Neighborhood Change and Gentficication", @lecture, @foldout  }
+
+The first video below provides a general overview of neighborhood change and gentrification, including: defintions, debates,  policies, and a case study example.  The lecture notes can be found [here (PDF)](https://www.dropbox.com/s/0p9iay4v7mxuube/Gentrification_and%20affordable%20housing%202016.pdf?dl=1).
+
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b4GgKBhltu8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+
+*** { @unit = "", @title = "Visualization Recap", @lecture, @foldout  }
+
+The video below describes the importance of creating maps that accurately conveys spatial information contained in the underlying data.  Far too often, maps are used incorrectly to advocate a certain narrative that does not accurately reflect underlying data.  As data scientists, it is important that we are careful of how we map spatial information.  The lecture notes can be found [here (PDF)](https://www.dropbox.com/s/mr1lgydl2hvpke9/Lecture-Visual%20Narrative%20-%20Choropleth%20and%20Dot%20Density%20Maps.pdf?dl=1).
+
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AWwOYNvxK-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
 
 *** { @unit = "Due Nov 20th", @title = "Lab 05", @assignment  }
 
 <br>
 <br>
 
-## Brief Video Instruction
-
-
 ## Lab Instructions
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/labs/lab-04-instructions.html">LAB-05 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/labs/lab-05-instructions.html">LAB-05 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -567,8 +586,26 @@ Image 2:
 <br>
 
 
+*** { @unit = "Due Nov 20th", @title = "Yellowdig Discussion Assignment: Predicting Neighborhood Change", @assignment, @foldout  }
+
+<br>
+<br>
+
+### Required Readings
+
+1. Using Algorithms To Predict Gentrification [(Link)](https://www.citylab.com/solutions/2017/02/algorithms-that-predict-gentrification/516945/)
+
+2. How Machine Learning and AI Can Predict Gentrification [(Link)](https://www.citylab.com/solutions/2017/02/algorithms-that-predict-gentrification/516945/)
 
 
+
+### Questions
+
+1. Provide a 2-3 sentence summary of the above two articles (research topic, data, method, findings). 
+
+2. What are the main variables used to predict gentrification in the above studies? 
+
+3.  What other information would you like to have that you think would be an important predictor of gentrification?
 
 
 <br> 
