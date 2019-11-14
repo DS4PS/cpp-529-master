@@ -576,16 +576,16 @@ The video below describes the importance of creating maps that accurately convey
 
 ## Lab Instructions
 
-There are 3 parts to this week's lab.  The first two parts are largely a review and a primer of what we've done already and where we are heading.  The Rmarkdown file (.RMD) is below.  
+There are 3 parts to this week's lab.  The first two parts are largely a review and a primer of what we've done already and where we are heading.  The Rmarkdown file and HTML file is below.  
 
-Access Parts 1 and 2 of Lab 5 here: [RMD](https://www.dropbox.com/s/8u6uy683xrodd8j/MapVis1.Rmd?dl=1) 
+Access Parts 1 and 2 of Lab 5 here: [RMD](https://www.dropbox.com/s/8u6uy683xrodd8j/MapVis1.Rmd?dl=1); [HTML](https://www.dropbox.com/s/hpkxwcnz3u91mnl/MapVis1.html?dl=1)
 
-After you go through Parts 1 and 2, please download part 3 of the lab, which focuses on using dot density maps to display changes in demographics, in this case with respect to education levels.  There are several questions for you to consider at the bottom of the file that pertain to all parts of the lab.  The Rmarkdown file (.RMD) is below.  
+After you go through Parts 1 and 2, please download part 3 of the lab, which focuses on using dot density maps to display changes in demographics, in this case with respect to education levels.  There are several questions for you to consider at the bottom of the file that pertain to all parts of the lab.   The Rmarkdown file and HTML file is below.  
 
-Access Part 3 Lab 2 here: [RMD](https://www.dropbox.com/s/dw8l52gi7i1uwpi/MapVis2.Rmd?dl=1) 
+Access Part 3 Lab 2 here: [RMD](https://www.dropbox.com/s/dw8l52gi7i1uwpi/MapVis2.Rmd?dl=1); [HTML](https://www.dropbox.com/s/axju928amfnl0v8/MapVis2.html?dl=0) 
 
 
-Please submit your .rmd and .html files for Part 3 of the lab only.  
+Please submit your .rmd and .html files for Part 3 of the lab only, including your answers to the questions.  
 
 
 ## Submit Solutions to Canvas:
