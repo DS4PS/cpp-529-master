@@ -569,7 +569,7 @@ The video below describes the importance of creating maps that accurately convey
 
 <br>
 
-*** { @unit = "Due Nov 20th", @title = "Lab 05", @assignment  }
+*** { @unit = "Due Nov 20th", @title = "Lab 05", @assignment, @foldout  }
 
 <br>
 <br>
