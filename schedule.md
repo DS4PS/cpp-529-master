@@ -605,7 +605,7 @@ Please submit your .rmd and .html files for Part 3 of the lab only, including yo
 
 1. Using Algorithms To Predict Gentrification [(Link)](https://www.citylab.com/solutions/2017/02/algorithms-that-predict-gentrification/516945/)
 
-2. How Machine Learning and AI Can Predict Gentrification [(Link)](https://www.citylab.com/solutions/2017/02/algorithms-that-predict-gentrification/516945/)
+2. How Machine Learning and AI Can Predict Gentrification [(Link)](https://www.citylab.com/life/2018/12/gentrification-london-ai-machine-learning/578329/)
 
 
 
