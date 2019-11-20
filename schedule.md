@@ -622,21 +622,71 @@ Please submit your .rmd and .html files for Part 3 of the lab only, including yo
 --------------------------------------------------------------------------------------------------- 
 <br>
 
-** Week 6 - Models of Neighborhood Change 
+** Week 6 - OLS Regression and Models of Neighborhood Change 
 
-*** { @unit = "", @title = "Unit Overview"  }
+*** { @unit = "", @title = "Unit Overview", , @foldout  }
+In this unit, a set of brief videos are provided to give an introduction and overview of employing model regressions in R.  In the lab, we will then use regression analysis to explore how changes in certain demographic variables influence change in house prices over time. 
+
+The second theme of this unit is to continue working with cluster analysis to classify neighborhoods (at the tract or county level) into groups and provide appropriate labels for those groups based on how the demographic information relates to them.  We will then extent our cluster analysis to predict clusters using the same set of demographic variables for a different time period, and then track how counties (or tracts) transition from one cluster grouping to another over time. 
+
+
+*** { @unit = "", @title = "Regression", @lecture, @foldout  }
+
+This set of videos provide a general overview of Ordinary Least Squares (OLS) model regression.  The lecture notes can be found [here (HTML)](https://www.dropbox.com/s/oydeeaexmr1cdyd/OLS.html?dl=1).
+
+<br>
+
+### OLS Introduction
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3nQrCvJun-4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### OLS Graphical Example 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o9VrJtKScE4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### OLS Assumptions
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/laq6rDlq6S4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### Manual OLS with Matrix Algebra
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2BN_23cFh2E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### OLS Example using Crime Data
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jPUd5xiVSqo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+
+
+
+
 
 *** { @unit = "Due Nov 27th", @title = "Lab 06", @assignment  }
 
 <br>
 <br>
 
-## Brief Video Instruction
 
 
 ## Lab Instructions
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-06-instructions/">LAB-06 Instructions</a>
+This will be the last lab for the semester and will serve as the primary foundation for your final city project.  There are two parts to the lab.  
+
+In the first part, you will download census information from the 2008-2012 ACS 5-year estimates and the 2013-2017 ACS 5-year estimates,  calculate change over time for each variable, and then run OLS regression to explore how changes in demographic variables relate to changes in house prices at the county level.  
+
+In the second part, you will perform cluster analysis, as in previous labs, but this time grouping all US counties into unique groups based on variables from the 2013-2017 ACS 5-year estimates.  As before, you will visualize how demographic information relates to each group and provide an appropriate label.  
+
+What's new in this part 2 of the lab is that you will then combine the cluster model output performed for counties during the 2013-2017 period, and `predict` what cluster groups those counties would have been in during the 2008-2012 time period. Next, you will track transitions of counties from one cluster group to another over the 2008-2012 and 2013-2017 time period, and see how those changes relate to house prices.  From here you will attempt to detect which cluster groups gentrified over the time period.   
+
+Access the lab here: [RMD](https://www.dropbox.com/s/ntk363nc7hayctx/RegClustPred.Rmd?dl=1); [HTML](https://www.dropbox.com/s/gzq8h3ebl0ke7u6/RegClustPred.html?dl=1) 
+
+
+Please submit your .rmd and .html files on Canvas, including your answers to the questions.  
 
 ## Submit Solutions to Canvas:
 
@@ -645,6 +695,44 @@ Please submit your .rmd and .html files for Part 3 of the lab only, including yo
 <br>
 <br>
 
+
+
+*** { @unit = "Due Nov 27th", @title = "Yellowdig Discussion Assignment: Predicting Neighborhood Change", @assignment, @foldout  }
+
+<br>
+<br>
+
+### Required Readings
+
+1. Using Algorithms To Predict Gentrification [(Link)](https://www.citylab.com/equity/2017/01/gentrification-hurts-renters-more-than-homeowners/510074/)
+
+
+
+
+### Questions
+
+1. How does the study by Martin and Beck define gentrification?  What are the limits/advantages of using this definition?  
+
+2. How does our approach taken in the lab to identify potential clusters of counties that gentrified compare to Martin and Beck's definition of gentrification?  Is our approach better?  What other variables should we like to include in our cluster anlaysis to better describe gentrified areas?  
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+<br> 
+--------------------------------------------------------------------------------------------------- 
+<br>
+
+** Week 7 - Final Project 
+
+*** { @unit = "", @title = "Unit Overview"  }
 
 *** { @unit = "Due Dec 2nd", @title = "Explainer Assignment", @assignment, @foldout  }
 
@@ -666,22 +754,8 @@ Publish your code-through as an RPub or shiny app. Share you link on YellowDig.
 <a class="uk-button uk-button-primary" href="https://www.yellowdig.com/board/42045">Yellowdig</a>
 
 
-<br>
-<br>
 
 
-
-
-
-
-
-<br> 
---------------------------------------------------------------------------------------------------- 
-<br>
-
-** Week 7 - Final Project 
-
-*** { @unit = "", @title = "Unit Overview"  }
 
 *** { @unit = "Due Dec 6th", @title = "DASHBOARD", @assignment  }
 
