@@ -624,13 +624,13 @@ Please submit your .rmd and .html files for Part 3 of the lab only, including yo
 
 ** Week 6 - OLS Regression and Models of Neighborhood Change 
 
-*** { @unit = "", @title = "Unit Overview", , @foldout  }
+*** { @unit = "", @title = "Unit Overview",  @foldout  }
 In this unit, a set of brief videos are provided to give an introduction and overview of employing model regressions in R.  In the lab, we will then use regression analysis to explore how changes in certain demographic variables influence change in house prices over time. 
 
 The second theme of this unit is to continue working with cluster analysis to classify neighborhoods (at the tract or county level) into groups and provide appropriate labels for those groups based on how the demographic information relates to them.  We will then extent our cluster analysis to predict clusters using the same set of demographic variables for a different time period, and then track how counties (or tracts) transition from one cluster grouping to another over time. 
 
 
-*** { @unit = "", @title = "Regression", @lecture, @foldout  }
+*** { @unit = "", @title = "Regression Overview", @lecture, @foldout  }
 
 This set of videos provide a general overview of Ordinary Least Squares (OLS) model regression.  The lecture notes can be found [here (HTML)](https://www.dropbox.com/s/oydeeaexmr1cdyd/OLS.html?dl=1).
 
@@ -666,7 +666,7 @@ This set of videos provide a general overview of Ordinary Least Squares (OLS) mo
 
 
 
-*** { @unit = "Due Nov 27th", @title = "Lab 06", @assignment  }
+*** { @unit = "Due Nov 27th", @title = "Lab 06", @assignment, @foldout  }
 
 <br>
 <br>
