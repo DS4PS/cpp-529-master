@@ -706,16 +706,18 @@ Please submit your .rmd and .html files on Canvas, including your answers to the
 
 ### Required Readings
 
-1. Using Algorithms To Predict Gentrification [(Link)](https://www.citylab.com/equity/2017/01/gentrification-hurts-renters-more-than-homeowners/510074/)
+1. Gentrification Has Virtually No Effect on Homeowners [(Link)](https://www.citylab.com/equity/2017/01/gentrification-hurts-renters-more-than-homeowners/510074/)
 
 
 
 
 ### Questions
 
-1. How does the study by Martin and Beck define gentrification?  What are the limits/advantages of using this definition?  
+1.  Summarize the main debate about gentrification and what your stance is after reading the article. 
 
-2. How does our approach taken in the lab to identify potential clusters of counties that gentrified compare to Martin and Beck's definition of gentrification?  Is our approach better?  What other variables should we like to include in our cluster anlaysis to better describe gentrified areas?  
+2. How does the study by Martin and Beck define gentrification?  What are the limits/advantages of using this definition?  
+
+3. How does our approach taken in the lab to identify potential clusters of counties that gentrified compare to Martin and Beck's definition of gentrification?  Is our approach better?  What other variables should we like to include in our cluster anlaysis to better describe gentrified areas?  
 
 
 
