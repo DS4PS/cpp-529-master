@@ -736,8 +736,6 @@ Please submit your .rmd and .html files on Canvas, including your answers to the
 
 ** Week 7 - Final Project 
 
-*** { @unit = "", @title = "Unit Overview"  }
-
 *** { @unit = "Due Dec 2nd", @title = "Explainer Assignment", @assignment, @foldout  }
 
 <br>
@@ -766,10 +764,36 @@ Publish your code-through as an RPub or shiny app. Share you link on YellowDig.
 <br>
 <br>
 
+For the final project, you will extend the work you've done over the course of the semester by creating a professional presentation that will be used to detect neighborhood change and gentrification at the census tract level for your metroplitan area (MS) of choice.  
+
+To this end, you will combine aspects into your final project from Lab 6 (descriptives, regression, clustering, clustering prediction, and sankey charting) and from Lab 4 that focuses on your selected MSA to perform cluster analysis and creating a dorling map of your 2010 cluster.  
+
+The goal of your presentation is to empower members of the City Council to better understand economic and demographic trends impacting the communities they govern.  
+
+As part of the final project, you will record a video presentation of 15-20 minutes to orally present your findings and policy implications and recommendations.  You may record the video presentation and upload it to youtube. 
+
+Submission: You will submit the .rmd file, the .html file, and the link to your youtube video to Canvas. 
+
+
+
+
+
 
 ## Instructions
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/final-project-instructions/">Instructions</a>
+The skeleton for the presentation using `ioslides_presentation` can be downloaded here [(LINK to FINAL PROJECT .RMD)](https://www.dropbox.com/s/gfedy6r47gp46f0/Final_Project_Outline.Rmd?dl=1).  The first thing you should do after opening the .rmd file is to knit it and make sure it compiles to the ioslides_presentation.  If it does not, check that all packages are updated.  
+
+You have two major coding tasks denoted as `edit me` in R chunks: (1) subset all census data from Lab 6 to your chosen MSA from Lab 4; and (2) merge spatial information from Lab 4 to census data from Lab 6.  
+
+In addition to the two coding task you must also describe your research project and interpret the results.  Specifically, in the knitted slides, you should notice latin placeholder text on some slides.  The latin placeholder text is created using `r lorem::ipsum(paragraphs = 1)` that you can see in the .rmd file, followed by some instructions enclosed within notes (<!---  -->) that are commented out from the final presentation slides.  You will need to delete each instance of `r lorem::ipsum(paragraphs = 1)` placeholder text in the .rmd file and provide your own answers based on the instructions contained within notes (<!---  -->).  
+
+Once you have completed the final project, you should record a well-rehearsed presentation of 15-20 minutes targeting local government and community leaders. You may post the video (as unlisted to keep it private) on youtube. 
+
+
+Submission: You will submit the .rmd file, the .html file, and the link to your youtube video to Canvas. 
+
+
+
 
 ## Submit Solutions to Canvas:
 
