@@ -759,18 +759,18 @@ Publish your code-through as an RPub or shiny app. Share you link on YellowDig.
 
 
 
-*** { @unit = "Due Dec 6th", @title = "DASHBOARD", @assignment  }
+*** { @unit = "Due Dec 6th", @title = "DASHBOARD", @assignment, @foldout }
 
 <br>
 <br>
 
-For the final project, you will extend the work you've done over the course of the semester by creating a professional presentation that will be used to detect neighborhood change and gentrification at the census tract level for your metroplitan area (MS) of choice.  
+For the final project, you will extend the work you've done over the course of the semester by creating a dynamic dashboard that will be used to detect neighborhood change and gentrification at the census tract level for your metroplitan statistical area (MSA) of choice.  
 
-To this end, you will combine aspects into your final project from Lab 6 (descriptives, regression, clustering, clustering prediction, and sankey charting) and from Lab 4 that focuses on your selected MSA to perform cluster analysis and creating a dorling map of your 2010 cluster.  
+To this end, you will combine aspects into your final project from Lab 4 that focuses on your selected MSA to perform cluster analysis and create a dorling map of your 2010 cluster and Lab 6 (descriptives, regression, clustering, clustering prediction, and sankey charting). 
 
-The goal of your presentation is to empower members of the City Council to better understand economic and demographic trends impacting the communities they govern.  
+The goal of your dynamic dashboard is to empower members of the City Council to better understand economic and demographic trends impacting the communities they govern.  
 
-As part of the final project, you will record a video presentation of 15-20 minutes to orally present your findings and policy implications and recommendations.  You may record the video presentation and upload it to youtube. 
+As part of the final project, you will also record a video presentation of 15-20 minutes and give an oral presentation of your dynamic dashboard.  Be sure to highlight your findings, and policy implications and recommendations.  You may record the video presentation on your computer and then upload it to [youtube](https://www.youtube.com/upload). 
 
 Submission: You will submit the .rmd file, the .html file, and the link to your youtube video to Canvas. 
 
@@ -781,13 +781,15 @@ Submission: You will submit the .rmd file, the .html file, and the link to your 
 
 ## Instructions
 
-The skeleton for the presentation using `ioslides_presentation` can be downloaded here [(LINK to FINAL PROJECT .RMD)](https://www.dropbox.com/s/gfedy6r47gp46f0/Final_Project_Outline.Rmd?dl=1).  The first thing you should do after opening the .rmd file is to knit it and make sure it compiles to the ioslides_presentation.  If it does not, check that all packages are updated.  
+The skeleton for the final project using `flex_dashboard` can be downloaded here [(LINK to FINAL PROJECT .RMD)](https://www.dropbox.com/s/edmitdjdsdrm54z/Final_Project_Outline_Storyboard.Rmd?dl=1).  The first thing you should do after downloading the file, is to open it and then knit it in order to make sure it compiles properly.  If it does not, check that all R packages are updated.  
 
 You have two major coding tasks denoted as `edit me` in R chunks: (1) subset all census data from Lab 6 to your chosen MSA from Lab 4; and (2) merge spatial information from Lab 4 to census data from Lab 6.  
 
-In addition to the two coding task you must also describe your research project and interpret the results.  Specifically, in the knitted slides, you should notice latin placeholder text on some slides.  The latin placeholder text is created using `r lorem::ipsum(paragraphs = 1)` that you can see in the .rmd file, followed by some instructions enclosed within notes (<!---  -->) that are commented out from the final presentation slides.  You will need to delete each instance of `r lorem::ipsum(paragraphs = 1)` placeholder text in the .rmd file and provide your own answers based on the instructions contained within notes (<!---  -->).  
+In addition to the two coding task you must also describe your research project and interpret the results.  Specifically, when viewing the knitted dashboard, you should notice latin placeholder text in some areas.  The latin placeholder text is created using `r lorem::ipsum(paragraphs = 1)` that you can see in the .rmd file, followed by some instructions enclosed within notes (<!---  -->) that are commented out.  
 
-Once you have completed the final project, you should record a well-rehearsed presentation of 15-20 minutes targeting local government and community leaders. You may post the video (as unlisted to keep it private) on youtube. 
+You will need to delete each instance of `r lorem::ipsum(paragraphs = 1)` placeholder text in the .rmd file and provide your own answers based on the instructions contained within notes (<!---  -->).  There are ***11*** instances of latin placeholder text that you need to remove and provide answers.   
+
+Once you have completed the final project, you should record a well-rehearsed presentation of 15-20 minutes targeting local government and community leaders. You may post the video on [youtube](https://www.youtube.com/upload).  When uploading to youtube, you can select the unlisted option to keep the video from being found via search, rather it can only be viewed if you have the link.
 
 
 Submission: You will submit the .rmd file, the .html file, and the link to your youtube video to Canvas. 
