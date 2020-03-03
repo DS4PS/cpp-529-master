@@ -288,9 +288,8 @@ In general, data scientists using R often run into two problems related to this 
 
 This unit will teach students how to resolve both problems, as well as learn mapping tools to effectively transform raw census data into visually appealing choropleth (i.e. color-coded) maps.   This unit includes 4 videos: (1) introduction to Census and Census data; (2) Introduction to Mapping; (3) Mapping Census Data in R; and (4) Mapping Census Data in R with TidyCensus. 
 
-The lecture notes accompanying the videos can be found at the following links: [HTML](https://ds4ps.org/cpp-529-master/lectures/MappingIntro.html#/); [PDF](https://www.dropbox.com/s/lrht06bplcs3mew/MappingIntro.pdf?dl=1)
-
-Note: Interactive imagery will be viewable only in the HTML file, but not PDF file.  So please use HTML file to follow lecture.  
+The lecture notes accompanying the videos can be found at the following links: [HTML](https://ds4ps.org/cpp-529-master/lectures/MappingIntro.html#/)
+  
 
 ## Assigned Reading
 
@@ -355,7 +354,9 @@ The data collected by the decennial census are used to determine the number of s
 
 Please download the Rmarkdown file (.RMD) below.  In steps 1-4, you can input your R code chunk in the areas that say ``#edit me``.  In Questions 1-3, you can simply answer the questions (i.e. you do not need to show or include any additional code needed to answer the questions).  
 
-Access Lab 2 here: [RMD](https://www.dropbox.com/s/s3ux5d0pyo34es6/Lab2.Rmd?dl=1) 
+
+Access Lab 2 here: [RMD](https://ds4ps.org/cpp-529-master/labs/Lab2.Rmd) 
+
 
 Please submit both the .RMD file and .Html file.
 
@@ -370,9 +371,7 @@ Please submit both the .RMD file and .Html file.
 
 *** { @unit = "", @title = "Lab 02 Solutions", @assignment, @foldout  }
 
-Solutions to Lab 2 can be found here [(HTML)](https://www.dropbox.com/s/20vgnnx8hvd2ur1/Lab2Solutions.html?dl=1) [(RMD)](
-https://www.dropbox.com/s/hhvexm19w6xrpzi/Lab2Solutions.Rmd?dl=1). 
-
+Solutions to Lab 2 can be found here [(HTML)](https://ds4ps.org/cpp-529-master/labs/Lab2Solutions.html) [(RMD)](https://ds4ps.org/cpp-529-master/labs/Lab2Solutions.Rmd). 
 
 <br>
 <br>
@@ -394,7 +393,7 @@ In this unit, we will be learning how to implement cluster analysis in R as a da
 
 *** { @unit = "", @title = "Cluster Analysis: Overview", @lecture, @foldout  }
 
-The first video below introduces cluster analysis and a simple partitioning algorithm used to segment data into specific partitions or groups.  The second video below introduces other popular clustering methods -- Hierarchical and model-based clustering.  Model-based clustering is the method we will use in R with the MClust package. The lecture notes can be found [here (PPT)](https://www.dropbox.com/s/i79w2jzagpwzcsz/ClusBasic.ppt?dl=1).
+The first video below introduces cluster analysis and a simple partitioning algorithm used to segment data into specific partitions or groups.  The second video below introduces other popular clustering methods -- Hierarchical and model-based clustering.  Model-based clustering is the method we will use in R with the MClust package. The lecture notes can be found [here (PPT)](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/ClusBasic.ppt).
 
 
 
@@ -551,7 +550,9 @@ In this unit, a brief video introduction is given related to neighborhood change
 
 *** { @unit = "", @title = "Neighborhood Change and Gentficication", @lecture, @foldout  }
 
-The first video below provides a general overview of neighborhood change and gentrification, including: defintions, debates,  policies, and a case study example.  The lecture notes can be found [here (PDF)](https://www.dropbox.com/s/0p9iay4v7mxuube/Gentrification_and%20affordable%20housing%202016.pdf?dl=1).
+The first video below provides a general overview of neighborhood change and gentrification, including: defintions, debates,  policies, and a case study example.  The lecture notes can be found [here (PDF)](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/Gentrification_and_affordable_housing_2016.pdf).
+
+
 
 <br>
 
@@ -561,7 +562,10 @@ The first video below provides a general overview of neighborhood change and gen
 
 *** { @unit = "", @title = "Visualization Recap", @lecture, @foldout  }
 
-The video below describes the importance of creating maps that accurately conveys spatial information contained in the underlying data.  Far too often, maps are used incorrectly to advocate a certain narrative that does not accurately reflect underlying data.  As data scientists, it is important that we are careful of how we map spatial information.  The lecture notes can be found [here (PDF)](https://www.dropbox.com/s/mr1lgydl2hvpke9/Lecture-Visual%20Narrative%20-%20Choropleth%20and%20Dot%20Density%20Maps.pdf?dl=1).
+The video below describes the importance of creating maps that accurately conveys spatial information contained in the underlying data.  Far too often, maps are used incorrectly to advocate a certain narrative that does not accurately reflect underlying data.  As data scientists, it is important that we are careful of how we map spatial information.  The lecture notes can be found [here (PDF)](https://github.com/DS4PS/cpp-529-master/raw/master/lectures/Lecture-Visual_Narrative- Choropleth_and_Dot_Density_Maps.pdf).
+
+
+
 
 <br>
 
@@ -578,11 +582,13 @@ The video below describes the importance of creating maps that accurately convey
 
 There are 3 parts to this week's lab.  The first two parts are largely a review and a primer of what we've done already and where we are heading.  The Rmarkdown file and HTML file is below.  
 
-Access Parts 1 and 2 of Lab 5 here: [RMD](https://www.dropbox.com/s/8u6uy683xrodd8j/MapVis1.Rmd?dl=1); [HTML](https://www.dropbox.com/s/hpkxwcnz3u91mnl/MapVis1.html?dl=1)
+
+
+Access Parts 1 and 2 of Lab 5 here: [RMD](https://ds4ps.org/cpp-529-master/labs/Lab5a-MapVis1.Rmd); [HTML](https://ds4ps.org/cpp-529-master/labs/Lab5a-MapVis1.html)
 
 After you go through Parts 1 and 2, please download part 3 of the lab, which focuses on using dot density maps to display changes in demographics, in this case with respect to education levels.  There are several questions for you to consider at the bottom of the file that pertain to all parts of the lab.   The Rmarkdown file and HTML file is below.  
 
-Access Part 3 Lab 2 here: [RMD](https://www.dropbox.com/s/dw8l52gi7i1uwpi/MapVis2.Rmd?dl=1); [HTML](https://www.dropbox.com/s/axju928amfnl0v8/MapVis2.html?dl=0) 
+Access Part 3 Lab 2 here: [RMD](https://ds4ps.org/cpp-529-master/labs/Lab5b-MapVis2.Rmd); [HTML](https://ds4ps.org/cpp-529-master/labs/Lab5b-MapVis2.html) 
 
 
 Please submit your .rmd and .html files for Part 3 of the lab only, including your answers to the questions.  
@@ -634,7 +640,7 @@ The second theme of this unit is to continue working with cluster analysis to cl
 
 *** { @unit = "", @title = "Regression Overview", @lecture, @foldout  }
 
-This set of videos provide a general overview of Ordinary Least Squares (OLS) model regression.  The lecture notes can be found [here (HTML)](https://www.dropbox.com/s/oydeeaexmr1cdyd/OLS.html?dl=1).
+This set of videos provide a general overview of Ordinary Least Squares (OLS) model regression.  The lecture notes can be found [here (HTML)](https://ds4ps.org/cpp-529-master/lectures/OLS.html).
 
 <br>
 
@@ -685,7 +691,7 @@ In the second part, you will perform cluster analysis, as in previous labs, but 
 
 What's new in this part 2 of the lab is that you will then combine the cluster model output performed for counties during the 2013-2017 period, and `predict` what cluster groups those counties would have been in during the 2008-2012 time period. Next, you will track transitions of counties from one cluster group to another over the 2008-2012 and 2013-2017 time period, and see how those changes relate to house prices.  From here you will attempt to detect which cluster groups gentrified over the time period.   
 
-Access the lab here: [RMD](https://www.dropbox.com/s/ntk363nc7hayctx/RegClustPred.Rmd?dl=1); [HTML](https://www.dropbox.com/s/gzq8h3ebl0ke7u6/RegClustPred.html?dl=1) 
+Access the lab here: [RMD](https://ds4ps.org/cpp-529-master/labs/RegClustPred.Rmd); [HTML](https://ds4ps.org/cpp-529-master/labs/RegClustPred.html) 
 
 
 Please submit your .rmd and .html files on Canvas, including your answers to the questions.  
