@@ -1,0 +1,396 @@
+---
+title: "Lab 6 - Regression, Clustering and Prediction"
+author: Prof. Anthony Howell
+output: html_document
+---
+
+# Part 1: Regression Model
+
+In this part of the lab, we will employ a multiple regression model to study the effects of changes in demographic variables (i.e. ethnicity, human capital, poverty, etc.) influences changes in housing affordability in the US between the 2008-2012 time period and the 2013-2017 time period.  
+
+## Grab Census Data
+
+
+- Using     ```tidycensus    ```, load in variable on median housing value from the     ```acs5    ``` 2008-2012 and 2013-2017 time periods, respectively, which will be our dependent variable.
+
+- Also, load in demographic variables that will serve as our controls. 
+
+
+    ```{r, message=F, warning=F}
+library(tidycensus)
+library(tidyverse)
+library(plyr)
+    ```
+
+    ```{r, echo=F, message=F, warning=F}
+census_api_key("8eab9b16f44cb26460ecbde164482194b7052772")
+
+    ```
+
+    ```{r, eval=F,message=F, warning=F}
+census_api_key("Your Key here")
+
+    ```
+
+
+- Instead of separately downloading census data from two time periods (2008-2012; 2013-2017), we can use `map_dfr` in  `Purr` part of the tidyverse to create a looping function to grab census data over the two different time periods
+
+    ```{r, message=F, warning=F}
+# 2 different 5-year ACS time periods.
+years <- lst(2012, 2017)
+
+# R will loop through both time periods, drawin variables, and merge both time periods into one dataset
+census <-map_dfr(
+  years,
+  ~ get_acs(
+    geography = "county",
+    variables = c(
+                  HousePrice = 'B25077_001', #Median Value of  Housing Units
+                  total_pop ='B01001_001',
+                  pop_white = 'B01001H_001',  # not hispanic
+                  pop_black = 'B01001B_001',
+                  pop_hispanic = 'B01001I_001',
+                  below_poverty = 'B05010_002',
+                  speak_english = 'B06007_002',
+                  speak_spanish = 'B06007_003',
+                  bachelors = 'B06008_002',
+                  married = 'B06008_003',
+                  no_hs = 'B06009_002',
+                  hs = 'B06009_003',
+                  bach_degree = 'B06009_005',
+                  grad_degree = 'B06009_006'),
+    year = .x  
+    ),
+  .id = "year"
+)
+
+    ```
+
+## Data manipulation
+- Normalize control variables by converting most to proportions of the county's total population:
+
+ 
+    ```{r, message=F, warning=F}
+
+census <- census %>% 
+  select(-moe) %>%
+  spread(variable, estimate) %>%
+  mutate(
+         bach_degree = bach_degree / total_pop,
+         bachelors = bachelors / total_pop,
+         below_poverty = below_poverty/ total_pop,
+         grad_degree = grad_degree / total_pop,
+         hs = hs / total_pop,
+         married = married / total_pop,
+         no_hs = no_hs / total_pop,
+         pop_black = pop_black / total_pop,
+         pop_hispanic = pop_hispanic / total_pop,
+         pop_white = pop_white / total_pop,
+         speak_english = speak_english / total_pop,
+         speak_spanish = speak_spanish / total_pop
+  )
+    ```
+
+
+## Descriptives 
+- Create Correlation Plot 
+
+
+
+    ```{r, message=F, warning=F}
+library(corrplot)
+#Remove NAs
+census<-na.omit(census)
+##Correlation Plot
+train_cor <- cor(census[, c(8, 4:7,9:17)])
+corrplot(train_cor, type='lower')
+
+    ```
+
+- ***Interpretation***: A couple of the explanatory variables exhibit high correlations above .7, indicating potential problems of multicollinearity. For instance, we probably do not want to include both `pop_hispanic` and `speak_spanish` in an ols regression model.  Same intution goes for `bachelors` and `grad_degree`.  
+
+
+## More Data Manipulation
+- We need to calculate change over time for each variable using `ddply` in `plyr` package
+    ```{r, message=F, warning=F}
+# First sort data so each county observation is ordered by most recent time period (2017) to prior time period (2012)
+census<-census[order(census$GEOID,rev(census$year)),]
+
+
+# Get change over time for each variable by creating a lead variable (t+1) and divididing it by previous time period (t) and then subtracting 1. 
+
+library(plyr)
+censusChange<-ddply(census,"GEOID",summarise, 
+       HousePrice = log(HousePrice)/log(lead(HousePrice))-1,# Dependent variable in logarithm form
+       bach_degree = bach_degree/lead(bach_degree + .01) - 1,
+       bachelors = bachelors / lead(bachelors + .01) - 1,
+       below_poverty = below_poverty/ lead(below_poverty + .01) - 1,
+       grad_degree = grad_degree / lead(grad_degree + .01) - 1,
+       hs = hs / lead(hs + .01) - 1,
+       married = married / lead(married +.01) - 1,
+       no_hs = no_hs / lead(no_hs +.01) - 1,
+       pop_black = pop_black / lead(pop_black +.01) - 1,
+       pop_hispanic = pop_hispanic / lead(pop_hispanic +.01) - 1,
+       pop_white = pop_white / lead(pop_white +.01) - 1,
+       speak_english = speak_english / lead(speak_english +.01) - 1,
+       speak_spanish = speak_spanish / lead(speak_spanish +.01) - 1
+)
+
+#remove NAs that result, leaving us with only one observation for each county and change in each variable over the 2008-2012 and 2013-2017 5-year acs estimate. 
+
+censusChange<-censusChange[!duplicated(censusChange$GEOID),]
+    ```       
+
+## Regression Model
+- Employ basic regression model to explore how changes in demographic information relates to changes in median house price
+
+    ```{r, results='asis',message=F, warning=F}
+
+reg1<-lm(HousePrice ~  no_hs +hs + bachelors  
+            , data=censusChange)
+
+
+reg2<-lm(HousePrice ~  no_hs +hs + bachelors  +
+           married + pop_black + pop_hispanic   + pop_white + speak_english , data=censusChange)
+
+
+reg3<-lm(HousePrice ~  no_hs +hs + bachelors +
+           married + pop_black + pop_hispanic   + pop_white + speak_english +
+           below_poverty , data=censusChange)
+
+#present results with stargazer
+library(stargazer)
+stargazer(reg1, reg2, reg3, title="Effect of Changes in Demographics on Housing Prices",type='html',align=TRUE)
+
+    ```
+
+- ***Interpretaion***: In Column (1), A 1-unit increase in the share of population without high school degree is associated with a 1.4% decrease in median household price, controlling for other variables. Notice bachelors coefficient is negative and statistically significant in column (1) but then becomes statistically insignificant after we add in additional controls.  Highlights issues of omitted variable bias. 
+
+
+# Part 2: Clustering and Prediction
+
+- We are going to obtain cluster grouping using `mclust` to cluster our counties into 5 groups using the 2013-2017 `acs5` data. The next step will be to use the cluster groups obtained in 2017 acs5 to predict what cluster counties were in during the 2008-2012 acs5 time period. Lastly, we will calculate a probability transition matrix to see how counties transition from one cluster group in 2008-20012 `acs5` time period to the same or another cluster group in 2013-2017 `acs5` time period. 
+
+## Detect Clusters for 2017
+
+- Run `mclust` on 2017 dataframe
+    ```{r, message=F, warning=F}
+library(mclust)
+Census2017<-census[census$year==2017,]
+
+
+keep.these <-c("no_hs","hs","bachelors","grad_degree","married","below_poverty","pop_black","pop_hispanic")
+
+#Run Cluster Analysis
+mod1 <- Mclust(Census2017[keep.these], 
+               G=4) # Set groups to 5, but you can remove this to let r split data into own groupings
+
+#summary(mod1, parameters = TRUE)
+
+#Add group classification to df
+Census2017$cluster <- mod1$classification
+    ```
+
+- manipulate data to better visualize cluster groups for each covariate
+    ```{r, message=F, warning=F}
+
+#Visualize Data
+stats <- 
+  Census2017 %>% 
+  group_by( cluster ) %>% 
+  select(keep.these)%>% 
+  summarise_each( funs(mean) )
+
+t <- data.frame( t(stats), stringsAsFactors=F )
+names(t) <- paste0( "GROUP.", 1:4 )
+t <- t[-1,]
+
+for( i in 1:4 )
+{
+  z <- t[,i]
+  plot( rep(1,8), 1:8, bty="n", xlim=c(-.2,.6), 
+        type="n", xaxt="n", yaxt="n",
+        xlab="Score", ylab="",
+        main=paste("GROUP",i) )
+  abline( v=seq(0,.5,.1), lty=3, lwd=1.5, col="gray90" )
+  segments( y0=1:8, x0=0, x1=100, col="gray70", lwd=2 )
+  text( -0, 1:8, keep.these, cex=0.85, pos=2 )
+  points( z, 1:8, pch=19, col="firebrick", cex=1.5 )
+  axis( side=1, at=c(0,.3,.6), col.axis="gray", col="gray" )
+}
+
+    ```
+
+- ***Interpretation***: 
+
+    - Cluster 1: Vibrant: Ethnically diverse, lower poverty, higher educated population
+
+    - Cluster 2: Lagging I:  Less diverse, lower educated population
+    
+    - Cluster 3: Lagging II: Less diverse, lower educated population, higher poverty rate
+        
+    - Cluster 4: Failing: Ethnically diverse, higher poverty rate, lower educated
+## Predict 2012 Clustering
+
+- 
+    ```{r, message=F, warning=F}
+
+# Get 2012 data
+Census2012<-census[census$year==2012,]
+
+#Predict 2012 using paramaters obtained from mod1
+pred1<-predict(mod1, Census2012[keep.these])
+
+#Attach predictue cluster groups back to data
+Census2012$PredCluster <- pred1$classification
+
+
+#Keep only GEOID and cluster assignments for 2012 and 2017 df
+TransDF2012<-Census2012 %>%
+  select(GEOID, PredCluster)
+
+TransDF2017<-Census2017 %>%
+  select(GEOID, cluster,HousePrice) # We will use  initial  house price later on
+
+#Merge datasets
+TransDF<-merge(TransDF2012,TransDF2017,by.all="GEOID",all.x=TRUE)
+    ```
+
+
+## Create Transition Matrix
+
+```{r, message=F, warning=F}
+
+#Transition Matrix
+prop.table( table( TransDF$PredCluster, TransDF$cluster ) , margin=1 )
+    
+```
+
+- ***Interpretation***: We can see that most counties remain in the same clustering over the two time periods.  This is not super surprising due to the relatively short time frame 2008-2012 to 2013-2017.  
+
+- Let's try to visualize the transitions that do exist using     ```Sankey    ``` plot 
+
+    ```{r, message=F, warning=F}
+
+# Sankey Transition Plot
+trn_mtrx <-
+  with(TransDF,
+       table(PredCluster, 
+             cluster))
+
+library(Gmisc)
+transitionPlot(trn_mtrx, 
+               type_of_arrow = "gradient")
+    ```
+
+## Identifying Gentrification
+
+- Are any of the cluster dynamics indicative of gentrification?  
+
+- To answer this question, lets relate our clusters to the 2012 intitial house price and the change in house price over the two time periods 
+
+    ```{r, message=F, warning=F}
+
+## Get change in house price information from previous dataset
+TransDFChange<-censusChange %>%
+  select(GEOID, HousePriceChange="HousePrice") 
+
+## Merge house price change to transition dataset
+TransDFChange<-merge(TransDF,TransDFChange,by.all="GEOID", all.x=TRUE)
+
+## Lets get average initial 2012 housing price and change in housing price for each cluster 
+
+TransDFChange<-ddply(TransDFChange,"PredCluster",summarize, 
+                     HousePriceAvg=mean(HousePrice,na.rm=TRUE),
+                     HousePriceChange =mean(HousePriceChange,na.rm=TRUE))
+## Look at results
+TransDFChange
+
+##order by average initial house price
+TransDFChange<-TransDFChange[order(TransDFChange$HousePriceAvg),]
+    ```
+
+
+- Add this new information to our Sankey figure
+    ```{r, message=F, warning=F}
+
+
+output_perc <- 
+  function(txt, n) paste0(txt,"\n (", n,")")
+box_txt <- 
+  cbind(mapply(output_perc, 
+               txt = c("1", "3", "4", "2"), 
+               n = c("Low","Med-Low","Med-High","High")),
+        mapply(output_perc, 
+               txt = c("Failing", "Vibrant", "Lagging I", "Lagging II"), 
+               n = c("Low","High","Med-High","Med-Low"))
+  )
+      
+
+
+transitionPlot(trn_mtrx, 
+               main="County Group Transitions \n (House Prices)",
+               box_label=c("Cluster Group, 2012 \n (2012 Initial House Price)",
+                           "Cluster Group, 2017 \n (Change in House Price)"),
+               type_of_arrow = "gradient",
+               box_txt = box_txt,
+               cex=1)
+
+    ```
+
+
+- ***Interpretation***: Cluster 3 looks like an obvious candidate for a group of counties that are being gentrified.  In 2008-2012 period, counties in Cluster 3 had relatively low median house prices, but also experienced the most rapid growth in housing prices by 2013-2017 period, and correlate with positive demographic factors like ethnically diverse, relatively high educated population, and low share of poverty.  
+
+
+
+# On Your Own
+
+For this lab, you will perform a replication analysis of the above code using an alternative cleaned census data set from [Diversity and Disparities Project](https://s4.ad.brown.edu/projects/diversity/Researcher/Bridging.htm). They have created a dataset with 170 variables that have been harmonized from 1970 onward for analysis of changes in tracts over time.  Recall, you have already worked on the 2010 data using your selected city for Lab 4.  
+
+You are now going to load in a database into R for census variables in 2000 and 2010.  You can do so with the following code: 
+
+```{r, message=F, warning=F}
+    URL <- "https://github.com/DS4PS/cpp-529-master/raw/master/data/CensusData.rds"
+    census.dats <- readRDS(gzcon(url( URL )))
+    census.dats<-na.omit(census.dats)
+```
+
+- Notes: Variable names are self-explanatory, i.e. `Foreign.Born00` is share of foreign-born population in 2000; `Foreign.Born10` is share of foreign-born population in 2010, `Pop.Black00` is share of black population in 2000; `Pop.Black10` is share of black population in 2010, and so forth. 
+
+
+## Part 1: Regression Analysis
+* Step 1: Calculate change values  
+
+    ***Hint*** Rely on `ddply` in `plyr` package to aggregate dataset by tract (`TRTID10`) using `summarize` and calculate new change variables for each variable.  Note that you do not need to use `lead` here because the 2000 and 2010 variable information is already contained in the dataset.  Instead, your new change variable, i.e. for median house price, will be calculated as follows: `HousePriceChange = Median.HH.Value00/(Median.HH.Value10+1)`. Note that the `+1` is important to include for other demographic variables where the value in the denominator may be 0, which would otherwise be undefined.  
+
+* Step 2: Run several OLS regression models with different number of explanatory variables with `lm()`
+
+* Step 3: Use `stargazer` to report regression model results
+
+* Step 4: Interpret main results: which, if any, change variables are useful (not useful) for explaining changes in house prices?
+
+* Step 5: Show diagnostic plots and report whether not OLS assumptions are violated
+
+    ***Hint:*** See Video Lecture 3 on OLS assumptions and the accompanying lecture notes with respect to testing whether the residuals are (1) linear with respected to predicted y values; and (2) follow normal distribution using Q-Q plot
+
+
+
+## Part 2: Clustering, Prediction, and Transition
+
+* Step 1: Perform Cluster analysis on 2010 census data variables using `mclust`
+    ***Hint***: Include all of the 2010 variables (look for the `10` at the end of each variable name) in the clustering except for `Median.HH.Value10` since this is our dependent variable. 
+
+* Step 2: Label Clusters based on covariates
+
+* Step 3: Predict cluster grouping for 2000 census data using `predict`. 
+    
+    ***Hint***: The data that you use to predict must contain the same set of variables used in Step 1 above, although this time you include the variables that end with `00`.  
+
+* Step 4: Create a Sankey transition matrix with associated initial house prices in 2000 clusters and change in house prices in 2010 clusters. 
+
+    ***Hint*** See identifying Gentrification section above for details
+    
+* Step 5: Interpret results from Step 4.  Does any particular cluster look like it was gentrifying during the 2000-2010 time period?     
+
+
+

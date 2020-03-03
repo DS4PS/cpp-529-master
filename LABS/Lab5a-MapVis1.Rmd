@@ -1,0 +1,359 @@
+---
+title: "Lab 5 - Map Visualizations and Neighorhood Change"
+author: Prof. Anthony Howell
+output: html_document
+---
+
+# Part 1: How not to lie with choropleth
+
+## Grab Census Data (review from Lab 2)
+
+
+- Using ```tidycensus```, load in variables on median household income and median housing value from the ```acs5``` 2013-2017. 
+
+```{r, message=F, warning=F}
+library(tidycensus)
+library(tidyverse)
+library(viridis)
+library(plyr)
+library(gtools)
+```
+
+```{r, echo=F, message=F, warning=F}
+census_api_key("8eab9b16f44cb26460ecbde164482194b7052772")
+
+```
+
+```{r, eval=F,message=F, warning=F}
+census_api_key("Your Key here")
+
+```
+
+
+```{r, message=F, warning=F}
+
+Var<-c("B19013_001","B25077_001")
+## c(Median household Income, Median Housing Value)
+  CenDF <- get_acs(geography = "county",
+                   variables = Var,
+                   year = 2017,
+                   survey = "acs5",
+                   geometry = TRUE,
+                   shift_geo = TRUE) 
+```
+
+
+## Manipulate Data
+
+- Create new variable for the housing price to income ratio. 
+
+```{r, message=F, warning=F}
+
+CenDF<-CenDF %>% 
+    mutate(variable=case_when( 
+      variable=="B19013_001" ~ "HHIncome",
+      variable=="B25077_001" ~ "HouseValue")) %>%
+    select(-moe) %>%  
+    spread(variable, estimate) %>%  #Spread moves rows into columns
+    mutate(HHInc_HousePrice_Ratio=round(HouseValue/HHIncome,2)) 
+```
+
+
+
+
+## Map Data
+
+- Rely on ggplot and ```scale_fill_viridis``` to create natural breaks for color sequencing and to mapHouse-Price-to-Income Ratio
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+Plot1<-  ggplot(CenDF) +
+    geom_sf(aes(fill = HHInc_HousePrice_Ratio), color=NA) +
+    coord_sf(datum=NA) +
+    labs(title = "House-Price-to-Income Ratio \n R Built-in Color Cut",
+         caption = "Source: ACS 5-year, 2013-2017",
+         fill = "Price-Income Ratio") +
+    scale_fill_viridis(direction=-1)
+Plot1
+```
+
+
+## Color Scales in R
+
+R has a variety of functions that allow the user to create color scales easily. These functions generally require you to specify a color on each end of the spectrum and they will interpolate the values between based upon how many levels you desire.
+
+## Importance
+
+We select colors to communicate information about our data. If we are using a continuous variable the most basic decision is whether we want to represent it as positive and negative deviations from the average (a divergent scale), or as a continuum of low to high values (a sequential scale). If we have categorical data, it is generally visualized through different colors representing each group (a qualitative scale).
+
+
+
+## Color Schemes
+
+```{r out.width = '50%', fig.align='center',fig.width=5,fig.height=5}
+plot( 1:7, rep(1,7), ylim=c(-0.5,3.5), xlim=c(0,12), yaxt="n", xaxt="n", bty="n", xlab="", ylab=""  )
+
+color.function <- colorRampPalette( c("gray80","darkred") )
+col.ramp <- color.function( 7 ) # number of groups you desire
+points( 1:7, rep(3,7), pch=15, cex=8, col=col.ramp )
+
+color.function <- colorRampPalette( c("darkred","gray80","steelblue") )
+col.ramp <- color.function( 7 ) # number of groups you desire
+points( 1:7, rep(2,7), pch=15, cex=8, col=col.ramp )
+
+color.function <- colorRampPalette( c("gray80","black") )
+col.ramp <- color.function( 7 ) # number of groups you desire
+points( 1:7, rep(1,7), pch=15, cex=8, col=col.ramp )
+
+text( 8, 3, "Sequential", pos=4 )
+text( 8, 2, "Divergent", pos=4 )
+text( 8, 1, "Grayscale", pos=4 )
+```
+
+
+## Alternative Map: 2 Color Groups
+
+- Transform ```HHInc_HousePrice_Ratio``` from continuous variable to factor variable with 2 levels
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+## Convert Integer into factor variable
+CenDF$fill_factor <- quantcut(CenDF$HHInc_HousePrice_Ratio, q = seq(0, 1, by = 0.5))
+CenDF$fill_factor = mapvalues(CenDF$fill_factor, from = levels(CenDF$fill_factor),
+                        to = c("low","high"))
+
+
+## Assign 2 colors
+col.ramp <- viridis(n = 2) # number of groups you desire
+```
+
+
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+
+Plot2<-ggplot(CenDF) +
+  geom_sf(aes(fill = fill_factor), color=NA) +
+  coord_sf(datum=NA) +
+  labs(title = "House-Price-to-Income Ratio",
+       caption = "Source: ACS 5-year, 2013-2017",
+       fill = "Price-Income Ratio") +
+  scale_fill_manual("Price-Income Ratio",values =  col.ramp) 
+Plot2
+```
+
+
+## Terciles - 3 Color Groups
+
+- Transform ```HHInc_HousePrice_Ratio``` from continuous variable to factor variable with 3 levels
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+## Convert Integer into factor variable
+CenDF$fill_factor <- quantcut(CenDF$HHInc_HousePrice_Ratio, q = seq(0, 1, by = .33))
+CenDF$fill_factor = mapvalues(CenDF$fill_factor, from = levels(CenDF$fill_factor),
+                        to = c("low","med", "high"))
+
+
+## Assign 3 colors
+col.ramp <- viridis(n = 3) # number of groups you desire
+```
+
+
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+
+Plot3<-ggplot(CenDF) +
+  geom_sf(aes(fill = fill_factor), color=NA) +
+  coord_sf(datum=NA) +
+  labs(title = "House-Price-to-Income Ratio",
+       caption = "Source: ACS 5-year, 2013-2017",
+       fill = "Price-Income Ratio") +
+  scale_fill_manual("Price-Income Ratio \n (Terciles)",values =  col.ramp) 
+Plot3
+```
+
+
+
+
+## Quintiles - 5 Color Groups
+
+- Transform ```HHInc_HousePrice_Ratio``` from continuous variable to factor variable with 5 levels
+
+```{r, message=F, warning=F}
+## Convert Integer into factor variable
+CenDF$fill_factor <- quantcut(CenDF$HHInc_HousePrice_Ratio, q = seq(0, 1, by = .2))
+CenDF$fill_factor = mapvalues(CenDF$fill_factor, from = levels(CenDF$fill_factor),
+                        to = c("1","2","3", "4","5"))
+
+
+## Assign 5 colors
+col.ramp <- viridis(n = 5) # number of groups you desire
+```
+
+
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+
+Plot4<-ggplot(CenDF) +
+  geom_sf(aes(fill = fill_factor), color=NA) +
+  coord_sf(datum=NA) +
+  labs(title = "House-Price-to-Income Ratio",
+       caption = "Source: ACS 5-year, 2013-2017",
+       fill = "Price-Income Ratio") +
+  scale_fill_manual("Price-Income Ratio  \n (Quintiles)",values =  col.ramp) 
+Plot4
+```
+
+
+## Unequal Intervals
+
+- Transform ```HHInc_HousePrice_Ratio``` from continuous variable to factor variable with 6 levels
+
+```{r, message=F, warning=F}
+## Convert Integer into factor variable
+CenDF$fill_factor <- quantcut(CenDF$HHInc_HousePrice_Ratio, q = c(0,.1,.25,.5,.75,.9,1))
+#CenDF$fill_factor = mapvalues(CenDF$fill_factor, from = levels(CenDF$fill_factor),
+ #                       to = c("< .1",".1-.25",".25-.5", ".5-.75",".75-.9","> .9"))
+
+
+## Assign 6 colors
+col.ramp <- viridis(n = 6) # number of groups you desire
+```
+
+
+
+```{r, message=F, warning=F, out.width = '50%', fig.align='center',fig.width=9,fig.height=9}
+
+Plot5<-ggplot(CenDF) +
+  geom_sf(aes(fill = fill_factor), color=NA) +
+  coord_sf(datum=NA) +
+  labs(title = "House-Price-to-Income Ratio",
+       caption = "Source: ACS 5-year, 2013-2017",
+       fill = "Price-Income Ratio") +
+  scale_fill_manual("Price-Income Ratio",values =  col.ramp) 
+Plot5
+```
+
+
+## Compare Maps
+```{r, message=F, warning=F, out.width = '100%', fig.align='center',fig.width=9,fig.height=9}
+library(gridExtra)
+grid.arrange(Plot1,Plot3,Plot4,Plot5, nrow=2)
+```
+
+
+
+
+# Part 2: Detecting Neighborhood change
+
+## Step 1: Get 2012 5-year ACS data
+
+- In `get_acs` function, change year from 2017 to 2012, and call new DF as `CenDF2012`.  
+
+- Then create the ratio of household price divided by median household income for the 2008-2012.  Call the variable name `HHInc_HousePrice_Ratio2012`
+     
+    ```{r, message=F, warning=F}
+library(tidycensus)
+library(tidyverse)
+library(viridis)
+library(plyr)
+library(gtools)
+
+census_api_key("8eab9b16f44cb26460ecbde164482194b7052772")
+
+Var<-c("B19013_001","B25077_001")
+
+# Download 2008-2012 df
+  CenDF2012 <- get_acs(geography = "county",
+                   variables = Var,
+                   year = 2012,
+                   survey = "acs5",
+                   geometry = FALSE)
+  
+  #Create new variable for the housing price to income ratio. 
+CenDF2012<-CenDF2012 %>% 
+  mutate(variable=case_when( 
+    variable=="B19013_001" ~ "HHIncome2012",
+    variable=="B25077_001" ~ "HouseValue2012")) %>%
+  select(-moe,-NAME) %>%  
+  spread(variable, estimate) %>%  #Spread moves rows into columns
+  mutate(HHInc_HousePrice_Ratio2012=round(HouseValue2012/HHIncome2012,2)) 
+    ```
+
+
+##    Step 2: Merge 2008-12 and 2013-2017 dataframes 
+
+- Hint: you can not merge to `sf` DFs.  Go back and turn `Geometry=FALSE` for one of your 2012 DF 
+
+    ```{r}
+    CenDF<-merge(CenDF,CenDF2012,by.all="GEOID", all.x=TRUE) # all.x=TRUE makes sure that the merged dataframe keeps all counties in CenDF even if missing in CenDF2012
+    ```
+
+
+##    Step 3:  Compare Descriptive statistics
+
+- Look at summary statistics and plot histograms for the 2008-2012 housing price to income ratio versus the 2013-2017 housing price to income ratio. 
+
+    ```{r, message=F, warning=F}
+
+Hist1<-ggplot(CenDF, aes(HHInc_HousePrice_Ratio)) +
+  geom_histogram(fill = "firebrick2", 
+                 color = "white", bins = 60) +
+  xlab("house price to income ratio by county, 2017") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = mean(CenDF$HHInc_HousePrice_Ratio,na.rm=TRUE), lty = "dashed")
+
+Hist2<-ggplot(CenDF, aes(HHInc_HousePrice_Ratio2012)) +
+  geom_histogram(fill = "firebrick2", 
+                 color = "white", bins = 60) +
+  xlab("house price to income ratio by county, 2012") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = mean(CenDF$HHInc_HousePrice_Ratio2012,na.rm=TRUE), lty = "dashed")
+
+library(gridExtra)
+grid.arrange(Hist1,Hist2, nrow=2)
+
+summary(CenDF$HHInc_HousePrice_Ratio2012)
+summary(CenDF$HHInc_HousePrice_Ratio)
+
+    ```
+
+
+##    Step 4: Create a new variable to track changes in house price to income ratio over the 2008-2017 time period.  
+
+***Hint***: To calculate percentage change of a variable use the following equation: pct_change = 100 * (Present - Past) / Past.  Use `mutate` and replace `present` and `past` with the 2017 and 2012 house price to income ratios, respectively.
+    
+```{r}
+    ## Change Variable
+CenDF<-CenDF %>%
+mutate(pct_change = 100 * (`HHInc_HousePrice_Ratio` - `HHInc_HousePrice_Ratio2012`) / `HHInc_HousePrice_Ratio2012`)
+```
+
+##    Step 5: Create a cloropleth map to visualize changes 
+
+- Create cloropleth map to visualize changes in the house price to income ratio from the 2008-2012 5-year ACS estimate verus the 2013-2017 estimate 
+
+***Hint***: You will make minor changes to the code you used to create Plot 1 above.  e.g. change the `fill` variable in `ggplot` to the name of the change variable you created in the previous step.
+    
+
+```{r}
+upper_limit <- round(max(CenDF$pct_change,na.rm=TRUE) + 10, -1)
+lower_limit <- round(min(CenDF$pct_change,na.rm=TRUE) - 10, -1)
+
+Plot6<-  ggplot(CenDF,aes(fill = pct_change)) +
+  geom_sf(size = 0) +
+  #geom_sf(data = major_roads_geo, color = "white", size = 0.8, fill = NA) +
+  #geom_sf(data = minor_roads_geo, color = "white", size = 0.4, fill = NA) +
+  scale_fill_viridis(option = "viridis", name = "% Change", limits = c(lower_limit, upper_limit), breaks = seq(lower_limit, upper_limit, 20)) +
+  labs(title="Changes in House Price to Income Ratio",
+       subtitle = "2017 5-Year Estimates vs. 2012 5-Year Estimates for Census Tracts",
+       caption = paste0(
+         "Data sources:",
+         "\n  U.S. Census Bureau, 2012 and 2017 American Community Survey 5-Year Estimates"
+       )
+  ) +
+  theme(plot.caption = element_text(hjust = 0, margin = margin(t = 15))) +
+  theme(axis.ticks = element_blank(), axis.text = element_blank()) +
+  theme(panel.background = element_blank())
+
+```
+  
+
+### Return to course website to get the next part of the lab
