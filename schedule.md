@@ -643,11 +643,11 @@ There are 3 parts to this week's lab.  The first two parts are largely a review 
 
 
 
-Access Parts 1 and 2 of Lab 5 here: [RMD](https://ds4ps.org/cpp-529-master/labs/Lab5a-MapVis1.Rmd); [HTML](https://ds4ps.org/cpp-529-master/labs/Lab5a-MapVis1.html)
+Access Parts 1 and 2 of Lab 5 here: [RMD](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab5a-MapVis1.Rmd); [HTML](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab5a-MapVis1.html)
 
 After you go through Parts 1 and 2, please download part 3 of the lab, which focuses on using dot density maps to display changes in demographics, in this case with respect to education levels.  There are several questions for you to consider at the bottom of the file that pertain to all parts of the lab.   The Rmarkdown file and HTML file is below.  
 
-Access Part 3 Lab 2 here: [RMD](https://ds4ps.org/cpp-529-master/labs/Lab5b-MapVis2.Rmd); [HTML](https://ds4ps.org/cpp-529-master/labs/Lab5b-MapVis2.html) 
+Access Part 3 Lab 2 here: [RMD](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab5b-MapVis2.Rmd); [HTML](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab5b-MapVis2.html) 
 
 
 Please submit your .rmd and .html files for Part 3 of the lab only, including your answers to the questions.  
@@ -765,7 +765,7 @@ In the second part, you will perform cluster analysis, as in previous labs, but 
 
 What's new in this part 2 of the lab is that you will then combine the cluster model output performed for counties during the 2013-2017 period, and `predict` what cluster groups those counties would have been in during the 2008-2012 time period. Next, you will track transitions of counties from one cluster group to another over the 2008-2012 and 2013-2017 time period, and see how those changes relate to house prices.  From here you will attempt to detect which cluster groups gentrified over the time period.   
 
-Access the lab here: [RMD](https://ds4ps.org/cpp-529-master/labs/RegClustPred.Rmd); [HTML](https://ds4ps.org/cpp-529-master/labs/RegClustPred.html) 
+Access the lab here: [RMD](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab6-RegClustPred.Rmd); [HTML](https://www.dropbox.com/s/ao6dpep5n559sm5/Lab6-RegClustPred.html?dl=1) 
 
 
 Please submit your .rmd and .html files on Canvas, including your answers to the questions.  
