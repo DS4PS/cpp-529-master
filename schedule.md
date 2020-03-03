@@ -21,6 +21,7 @@ Unit Metadata is comprised of:
 @assignment - turn on lecture icon
 @lecture - turn on lecture icon
 @foldout - activate unit content (allow foldout)
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/lab-01-instructions/">LAB-01 Instructions</a>
 Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 -->
 
