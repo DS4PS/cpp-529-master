@@ -30,6 +30,14 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 
+<!--- 
+######################################################
+####
+####      COURSE OVERVIEW
+####
+######################################################
+-->
+
 ** Course Overview
 
 *** { @unit = "", @title = "Instructor Introduction",  @lecture, @foldout }
@@ -123,13 +131,22 @@ All three articles share a common approach of using census data and clustering t
 
 
 
-
-
-
-
 <br> 
 -------------------------------------------------------------------------------------------------------- 
 <br>
+
+
+
+
+
+<!--- 
+######################################################
+####
+####      WEEK 1
+####
+######################################################
+-->
+
 
 ** Week 1 - Measurement & The Theory of Neighborhoods
 
@@ -266,13 +283,25 @@ Solutions to Lab 1 can be found here [(Lab 1 Solutions)](https://www.dropbox.com
 <br>
 
 
-
-
-
-
 <br> 
 --------------------------------------------------------------------------------------------------- 
 <br>
+
+
+
+
+
+
+<!--- 
+######################################################
+####
+####      WEEK 2
+####
+######################################################
+-->
+
+
+
 
 ** Week 2 - Intro to Census Data and Mapping
 
@@ -375,15 +404,25 @@ Please submit both the .RMD file and .Html file.
 Solutions to Lab 2 can be found here [(HTML)](https://ds4ps.org/cpp-529-master/labs/Lab2Solutions.html) [(RMD)](https://ds4ps.org/cpp-529-master/labs/Lab2Solutions.Rmd). 
 
 <br>
-<br>
-
-
-
-
 
 <br> 
 --------------------------------------------------------------------------------------------------- 
 <br>
+
+
+
+
+
+
+<!--- 
+######################################################
+####
+####      WEEK 3
+####
+######################################################
+-->
+
+
 
 ** Week 3 - Identifying Neighborhood Types with Cluster Analysis
 
@@ -516,6 +555,16 @@ Image 2:
 
 
 
+
+<!--- 
+######################################################
+####
+####      WEEK 4
+####
+######################################################
+-->
+
+
 ** Week 4 - More Practice Clustering 
 
 *** { @unit = "Due Nov 13th", @title = "Lab 04", @assignment, @foldout  }
@@ -532,16 +581,25 @@ Image 2:
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
 <br>
-<br>
 
-
-
-
-
-
-<br> 
 --------------------------------------------------------------------------------------------------- 
 <br>
+
+
+
+
+
+
+
+
+<!--- 
+######################################################
+####
+####      WEEK 5
+####
+######################################################
+-->
+
 
 ** Week 5 - Visualizing Neighborhood Changes  
 
@@ -628,6 +686,21 @@ Please submit your .rmd and .html files for Part 3 of the lab only, including yo
 <br> 
 --------------------------------------------------------------------------------------------------- 
 <br>
+
+
+
+
+
+<!--- 
+######################################################
+####
+####      WEEK 6
+####
+######################################################
+-->
+
+
+
 
 ** Week 6 - OLS Regression and Models of Neighborhood Change 
 
@@ -729,17 +802,26 @@ Please submit your .rmd and .html files on Canvas, including your answers to the
 
 
 <br>
-<br>
-
-
-
-
-
-
-
-<br> 
 --------------------------------------------------------------------------------------------------- 
 <br>
+
+
+
+
+
+
+
+
+
+
+<!--- 
+######################################################
+####
+####      WEEK 7
+####
+######################################################
+-->
+
 
 ** Week 7 - Final Project 
 
