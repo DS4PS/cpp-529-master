@@ -428,6 +428,8 @@ Solutions to Lab 2 can be found here [(HTML)](https://ds4ps.org/cpp-529-master/l
 
 *** { @unit = "", @title = "Unit Overview", @foldout  }
 
+## Description 
+
 In this unit, we will be learning how to implement cluster analysis in R as a data reduction technique.  We will classify census tracts in the Pheonix area into group (or neighborhoods) that can be defined on the basis of certain characteristics.  Before we get into the application portion of this unit, it is important to first understand what is cluster analysis and what are some common methods and applications. 
 
 
@@ -525,11 +527,11 @@ Image 2:
 
 ** Week 4 - More Practice Clustering 
 
-*** { @unit = "", @title = "Clustering Neighborhood Types", @reading, @foldout  }
+*** { @unit = "", @title = "Unit Overview", @reading, @foldout  }
 
 
-<br>
-<br>
+## Description 
+
 
 Neighborhood change is a complicated concept with a lot of loaded terminology. We might think about neighborhoods that are "revitalized", "gentrified", that are "stable", or that "decline".  We could spend an entire semester unpacking all of these constructs, but that is out of scope of the lab. Here we are more interested in how we might make sense of our data, and then once we have meaningful groups how we might use them to make predictions with the data. Can a city forecast how it's current neighborhoods are likely to change over the next decade, and can that help with urban planning processes? 
 
@@ -617,6 +619,9 @@ You may access Lab 4 instructions by clicking on the LAB-04 Instructions below.
 ** Week 5 - Visualizing Neighborhood Changes  
 
 *** { @unit = "", @title = "Unit Overview", @foldout  }
+
+## Description 
+
 
 In this unit, a brief video introduction is given related to neighborhood change and gentficication, serving as important foundation for our data science work using census data to visualize changes in neighborhoods over time.  The second goal of this unit is to offer a set of "good practices" when creating maps to display spatial information.  
 
@@ -717,6 +722,8 @@ Please submit your .rmd and .html files for Part 3 of the lab only, including yo
 ** Week 6 - OLS Regression and Models of Neighborhood Change 
 
 *** { @unit = "", @title = "Unit Overview", @foldout  }
+
+## Description 
 
 
 In this unit, a set of brief videos are provided to give an introduction and overview of employing model regressions in R.  In the lab, we will then use regression analysis to explore how changes in certain demographic variables influence change in house prices over time. 
