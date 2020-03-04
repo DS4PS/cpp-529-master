@@ -164,11 +164,7 @@ This section introduces the field of measurement theory in psychology and social
 
 > Many variables studied by psychologists are straightforward and simple to measure. These include sex, age, height, weight, and birth order. You can often tell whether someone is male or female just by looking. You can ask people how old they are and be reasonably sure that they know and will tell you. Although people might not know or want to tell you how much they weigh, you can have them step onto a bathroom scale. Other variables studied by psychologists—perhaps the majority—are not so straightforward or simple to measure. We cannot accurately assess people’s level of intelligence by looking at them, and we certainly cannot put their self-esteem on a bathroom scale. **These kinds of variables are called latent CONSTRUCTS** (pronounced CON-structs) and include personality traits (e.g., extraversion), emotional states (e.g., fear), attitudes (e.g., toward taxes), and abilities (e.g., athleticism). [ [Understanding Psychological Measurement](https://opentextbc.ca/researchmethods/chapter/understanding-psychological-measurement/) ]
 
-We are less interested in psychological measures as in constructs of neighborhood quality. 
-
-> A new study by the Harvard economists Raj Chetty and Nathaniel Hendren, when read in combination with an important study they wrote with Lawrence Katz, makes the most compelling case to date that **good neighborhoods nurture success**... they are the most powerful demonstration yet that neighborhoods — their schools, community, neighbors, local amenities, economic opportunities and social norms — are a critical factor shaping your children’s outcomes. It’s an intuitive idea, although the earlier evidence for it had been surprisingly thin.
-
-But we will use some of the tools developed in psychometrics to help us develop a reliable measure of neighborhood quality. 
+We are less interested in psychological measures as in constructs of neighborhood quality. But we will use some of the tools developed in psychometrics to help us develop a reliable measure of neighborhood quality. 
 
 ## Learning Objectives
 
@@ -208,17 +204,6 @@ FOR REFERENCE:
 
 
 
-
-*** { @unit = "", @title = "Geography and Economic Success", @lecture, @foldout  }
-
-<br>
-<br>
-(Note: Audio begins at the 10 second mark.)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=2000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<br>
-<br>
 
 
 
@@ -572,6 +557,23 @@ Read the two papers from `Neighborhood Types` section above (Links provided agai
 
 Please copy these questions, along with your answers, at the beginning of your .rmd file used for Lab 4 (See Lab 4 assignment below). 
 
+
+
+*** { @unit = "", @title = "Geography and Economic Success", @lecture, @foldout  }
+
+A new study by the Harvard economists Raj Chetty and Nathaniel Hendren, when read in combination with an important study they wrote with Lawrence Katz, makes the most compelling case to date that **good neighborhoods nurture success**... they are the most powerful demonstration yet that neighborhoods — their schools, community, neighbors, local amenities, economic opportunities and social norms — are a critical factor shaping your children’s outcomes. It’s an intuitive idea, although the earlier evidence for it had been surprisingly thin.
+
+I discuss Chetty's work in the video lecture below. 
+
+
+<br>
+<br>
+(Note: Audio begins at the 10 second mark.)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7nzIOHTSto?start=2000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+<br>
 
 
 *** { @unit = "Due Nov 13th", @title = "Lab 04", @assignment, @foldout  }
