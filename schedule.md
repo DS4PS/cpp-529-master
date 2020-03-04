@@ -445,47 +445,6 @@ The first video below introduces cluster analysis and a simple partitioning algo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-_oPRGATOBw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-*** { @unit = "", @title = "Clustering Neighborhood Types", @reading, @foldout  }
-
-
-<br>
-<br>
-
-Neighborhood change is a complicated concept with a lot of loaded terminology. We might think about neighborhoods that are "revitalized", "gentrified", that are "stable", or that "decline".  We could spend an entire semester unpacking all of these constructs, but that is out of scope of the lab. Here we are more interested in how we might make sense of our data, and then once we have meaningful groups how we might use them to make predictions with the data. Can a city forecast how it's current neighborhoods are likely to change over the next decade, and can that help with urban planning processes? 
-
-Read the following articles:
-
-> Market Value Analysis: A Data-Based Approach to Understanding Urban Housing Markets. pp 49-59 [ [PDF](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]
-
-> Delmelle, E. C. (2017). Differentiating pathways of neighborhood change in 50 US metropolitan areas. Environment and planning A, 49(10), 2402-2424. [ [PDF](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]
-
-We are interesting in understanding neighborhood change. These data-driven approaches to the phenomenon use machine-learning algorithms to "discover" coherent communities within the city by grouping census tracks into groups that minimize within-group differences and maximize between-group differences. 
-
-You can explore one of these algorithms by looking at examples of how botanists might create "species" based upon characteristics of flowers:
-
-[Clustering Example](https://shiny.rstudio.com/gallery/kmeans-example.html)
-
-A data-driven approach to understanding neighborhood change requires use to (1) define "neighborhoods", or groups of census tracks in the data that are very similar, and (2) use those group characteristics at a point in time to predict how the "neighborhood" might change in the future. Both of the papers present variations on Step (1) above.
-
-
-
-<br>
-<br>
-
-*** { @unit = "Due Nov 6th", @title = "Reading Assignment", @assignment, @foldout  }
-
-<br>
-<br>
-
-Read the two papers from `Neighborhood Types` section above (Links provided again here: ([ [PDF 1](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]; [ [PDF 2](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]), then answer the following questions:
-
-1. **How did each author identify coherent “neighborhoods” (or groups) in each model?**
-2. **Would these "neighborhoods" line up with neighborhoods that are defined on a city's zoning maps (Links to an external site.)?**
-3. **Did the two models use the same data to create the groups?**
-4. **How do the labels and descriptions of the groups differ in each model and why?**
-
-Please copy these questions, along with your answers, at the beginning of your .rmd file used for Lab 3 (See Lab 3 assignment below). 
-
 *** { @unit = "Due Nov 6th", @title = "Lab 03", @assignment, @foldout  }
 
 <br>
@@ -500,7 +459,6 @@ The purpose of Lab 3 is to show you how to apply model-based clustering to class
 
 You may access Lab 3 instructions by clicking on the LAB-03 Instructions below.   First view the instructions and see some of the code chunks and output that you will create yourself.  Next, download the Rmardown file ([RMD](https://ds4ps.org/cpp-529-master/labs/lab-03-tutorial.rmd)) and execute each code chunk step-by-step to understand each stage of the process.  
 
-***Reminder:*** Include the four questions, along with your answers from the reading assignment (see above) at the beginning of your RMD file. 
 
 ***Reminder:*** Name your files according to the convention: Lab-##-LastName.xxx
 
@@ -567,6 +525,49 @@ Image 2:
 
 ** Week 4 - More Practice Clustering 
 
+*** { @unit = "", @title = "Clustering Neighborhood Types", @reading, @foldout  }
+
+
+<br>
+<br>
+
+Neighborhood change is a complicated concept with a lot of loaded terminology. We might think about neighborhoods that are "revitalized", "gentrified", that are "stable", or that "decline".  We could spend an entire semester unpacking all of these constructs, but that is out of scope of the lab. Here we are more interested in how we might make sense of our data, and then once we have meaningful groups how we might use them to make predictions with the data. Can a city forecast how it's current neighborhoods are likely to change over the next decade, and can that help with urban planning processes? 
+
+Read the following articles:
+
+> Market Value Analysis: A Data-Based Approach to Understanding Urban Housing Markets. pp 49-59 [ [PDF](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]
+
+> Delmelle, E. C. (2017). Differentiating pathways of neighborhood change in 50 US metropolitan areas. Environment and planning A, 49(10), 2402-2424. [ [PDF](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]
+
+We are interesting in understanding neighborhood change. These data-driven approaches to the phenomenon use machine-learning algorithms to "discover" coherent communities within the city by grouping census tracks into groups that minimize within-group differences and maximize between-group differences. 
+
+You can explore one of these algorithms by looking at examples of how botanists might create "species" based upon characteristics of flowers:
+
+[Clustering Example](https://shiny.rstudio.com/gallery/kmeans-example.html)
+
+A data-driven approach to understanding neighborhood change requires use to (1) define "neighborhoods", or groups of census tracks in the data that are very similar, and (2) use those group characteristics at a point in time to predict how the "neighborhood" might change in the future. Both of the papers present variations on Step (1) above.
+
+
+
+<br>
+<br>
+
+*** { @unit = "Due Nov 6th", @title = "Reading Assignment", @assignment, @foldout  }
+
+<br>
+<br>
+
+Read the two papers from `Neighborhood Types` section above (Links provided again here: ([ [PDF 1](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/MVA-DD-App-to-Strengthening-Neighborhoods.pdf) ]; [ [PDF 2](https://github.com/DS4PS/paf-586-summer-2019/raw/master/Reading/differentiating-pathways-of-neighborhood-change.pdf) ]), then answer the following questions:
+
+1. **How did each author identify coherent “neighborhoods” (or groups) in each model?**
+2. **Would these "neighborhoods" line up with neighborhoods that are defined on a city's zoning maps (Links to an external site.)?**
+3. **Did the two models use the same data to create the groups?**
+4. **How do the labels and descriptions of the groups differ in each model and why?**
+
+Please copy these questions, along with your answers, at the beginning of your .rmd file used for Lab 4 (See Lab 4 assignment below). 
+
+
+
 *** { @unit = "Due Nov 13th", @title = "Lab 04", @assignment, @foldout  }
 
 <br>
@@ -580,6 +581,9 @@ The purpose of Lab 4 is to replicate the work you did for the previous lab, but 
 ## Lab Instructions
 
 You may access Lab 4 instructions by clicking on the LAB-04 Instructions below.   
+
+***Reminder:*** Include the four questions, along with your answers from the reading assignment (see above) at the beginning of your RMD file. 
+
 
 ## Lab Instructions
 
