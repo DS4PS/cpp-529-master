@@ -572,6 +572,15 @@ Image 2:
 <br>
 <br>
 
+## Overview
+
+The purpose of Lab 4 is to replicate the work you did for the previous lab, but instead of using the Phoenix data you will select a city of your choice to use for this lab, and the final project.
+
+
+## Lab Instructions
+
+You may access Lab 4 instructions by clicking on the LAB-04 Instructions below.   
+
 ## Lab Instructions
 
 <a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-529-master/labs/lab-04-instructions.html">LAB-04 Instructions</a>
@@ -640,7 +649,6 @@ The video below describes the importance of creating maps that accurately convey
 ## Lab Instructions
 
 There are 3 parts to this week's lab.  The first two parts are largely a review and a primer of what we've done already and where we are heading.  The Rmarkdown file and HTML file is below.  
-
 
 
 Access Parts 1 and 2 of Lab 5 here: [RMD](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab5a-MapVis1.Rmd); [HTML](https://github.com/DS4PS/cpp-529-master/raw/master/LABS/Lab5a-MapVis1.html)
@@ -743,8 +751,6 @@ This set of videos provide a general overview of Ordinary Least Squares (OLS) mo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jPUd5xiVSqo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
-
-
 
 
 
