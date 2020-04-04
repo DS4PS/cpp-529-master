@@ -46,13 +46,13 @@ bb <- st_bbox( c( xmin = -12519146, xmax = -12421368,
                   ymax = 3965924, ymin = 3899074 ), 
                crs = st_crs("+init=epsg:3395"))
 
-tm_shape( phx_dorling, bbox=bb ) + 
+tm_shape( phx, bbox=bb ) + 
   tm_polygons( col="MHHI", n=10, style="quantile", palette="Spectral" ) +
   tm_layout( "Dorling Cartogram", title.position=c("right","top") )
 
 tmap_mode("view")
 tm_basemap( "Stamen.Watercolor" ) +
-  tm_shape( phx_dorling, bbox=bb ) + 
+  tm_shape( phx, bbox=bb ) + 
   tm_polygons( col="MHHI", n=7, style="quantile", palette="-inferno" ) 
 ```
 
