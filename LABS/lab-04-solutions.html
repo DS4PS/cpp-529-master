@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lab-04 Build a City Dataset</title>
+
+<script src="lab-04-solutions_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lab-04-solutions_files/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="lab-04-solutions_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lab-04-solutions_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lab-04-solutions_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="lab-04-solutions_files/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="textbook.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Lab-04 Build a City Dataset</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#packages">Packages</a><ul>
+<li><a href="#step-1-select-your-msa">Step 1: Select Your MSA</a></li>
+<li><a href="#step-2-download-a-shapefile-with-population-data">Step 2: Download a Shapefile with Population Data</a></li>
+<li><a href="#step-3-add-census-data">Step 3: Add Census Data</a></li>
+<li><a href="#step-4-transform-the-shapefile-into-a-dorling-cartogram">Step 4: Transform the Shapefile into A Dorling Cartogram</a></li>
+</ul></li>
+<li><a href="#cluster-analysis">Cluster analysis</a><ul>
+<li><a href="#variable-selection">Variable selection</a></li>
+<li><a href="#prepare-data-for-clustering">Prepare Data for Clustering</a></li>
+<li><a href="#perform-cluster-analysis">Perform Cluster Analysis</a></li>
+<li><a href="#identifying-neighborhood-clusters">Identifying Neighborhood Clusters</a></li>
+</ul></li>
+<li><a href="#re-run-cluster-analysis-with-fewer-variables-3-variables">Re-run Cluster Analysis with fewer variables (3 variables)</a><ul>
+<li><a href="#variable-selection-1">Variable selection</a></li>
+<li><a href="#perform-cluster-analysis-1">Perform Cluster Analysis</a></li>
+<li><a href="#identifying-neighborhood-clusters-1">Identifying Neighborhood Clusters</a></li>
+<li><a href="#map-and-visually-compare-cluster-output">Map and visually compare cluster output</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="packages" class="section level1">
+<h1>Packages</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>( geojsonio )   <span class="co"># read shapefiles</span></a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;geojsonio&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     pretty</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>( sp )          <span class="co"># work with shapefiles</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">library</span>( sf )          <span class="co"># work with shapefiles - simple features format</span></a></code></pre></div>
+<pre><code>## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>( mclust )      <span class="co"># cluster analysis </span></a></code></pre></div>
+<pre><code>## Package &#39;mclust&#39; version 5.4.5
+## Type &#39;citation(&quot;mclust&quot;)&#39; for citing this R package in publications.</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>( tmap )        <span class="co"># theme maps</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">library</span>( ggplot2 )     <span class="co"># graphing </span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">library</span>( ggthemes )    <span class="co"># nice formats for ggplots</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">library</span>( dplyr )       <span class="co"># data wrangling </span></a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>( pander )      <span class="co"># formatting RMD tables</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">library</span>( tidycensus )</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw">library</span>( cartogram )  <span class="co"># spatial maps w/ tract size bias reduction</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="kw">library</span>( maptools )   <span class="co"># spatial object manipulation </span></a></code></pre></div>
+<pre><code>## Checking rgeos availability: TRUE</code></pre>
+<div id="step-1-select-your-msa" class="section level2">
+<h2>Step 1: Select Your MSA</h2>
+<p>You can select a city from the list of <a href="https://en.wikipedia.org/wiki/List_of_metropolitan_statistical_areas">large MSAs</a>.</p>
+<p>To get Census data on the city you will first need to identify all of the counties that comprise the MSA. You can look this information up through MSA to FIPS crosswalks provided by the National Bureau for Economic Research (NBER): <a href="https://www.nber.org/data/cbsa-fips-county-crosswalk.html" class="uri">https://www.nber.org/data/cbsa-fips-county-crosswalk.html</a></p>
+<p>I have added the file to GitHub for ease of access.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">crosswalk &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="st">&quot;https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/cbsatocountycrosswalk.csv&quot;</span>,  <span class="dt">stringsAsFactors=</span>F, <span class="dt">colClasses=</span><span class="st">&quot;character&quot;</span> )</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># search for citie names by strings, use the ^ anchor for &quot;begins with&quot; </span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="kw">grep</span>( <span class="st">&quot;^CHI&quot;</span>, crosswalk<span class="op">$</span>msaname, <span class="dt">value=</span><span class="ot">TRUE</span> ) </a></code></pre></div>
+<pre><code>##  [1] &quot;CHICO-PARADISE, CA&quot; &quot;CHICAGO, IL&quot;        &quot;CHICAGO, IL&quot;       
+##  [4] &quot;CHICAGO, IL&quot;        &quot;CHICAGO, IL&quot;        &quot;CHICAGO, IL&quot;       
+##  [7] &quot;CHICAGO, IL&quot;        &quot;CHICAGO, IL&quot;        &quot;CHICAGO, IL&quot;       
+## [10] &quot;CHICAGO, IL&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">grep</span>( <span class="st">&quot;^MIN&quot;</span>, crosswalk<span class="op">$</span>msaname, <span class="dt">value=</span><span class="ot">TRUE</span> ) </a></code></pre></div>
+<pre><code>##  [1] &quot;MINNESOTA&quot;                   &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;
+##  [3] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+##  [5] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+##  [7] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+##  [9] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [11] &quot;MINNESOTA&quot;                   &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;
+## [13] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [15] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [17] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [19] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [21] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [23] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [25] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [27] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [29] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [31] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [33] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [35] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [37] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [39] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [41] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [43] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [45] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [47] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [49] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [51] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [53] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [55] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [57] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [59] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [61] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [63] &quot;MINNESOTA&quot;                   &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;
+## [65] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [67] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [69] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [71] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [73] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [75] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [77] &quot;MINNESOTA&quot;                   &quot;MINNESOTA&quot;                  
+## [79] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot; &quot;MINNESOTA&quot;                  
+## [81] &quot;MINNESOTA&quot;                   &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;
+## [83] &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;</code></pre>
+<p>Select all of your county fips. To use them in the TidyCenss package you will need to split the state and county:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">these.msp &lt;-<span class="st"> </span>crosswalk<span class="op">$</span>msaname <span class="op">==</span><span class="st"> &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">these.fips &lt;-<span class="st"> </span>crosswalk<span class="op">$</span>fipscounty[ these.msp ]</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">these.fips &lt;-<span class="st"> </span><span class="kw">na.omit</span>( these.fips )</a></code></pre></div>
+</div>
+<div id="step-2-download-a-shapefile-with-population-data" class="section level2">
+<h2>Step 2: Download a Shapefile with Population Data</h2>
+<p>To create a Dorling cartogram we need a shapefile and a population count. We can get both through the Census download that includes simple features.</p>
+<pre><code>## To install your API key for use in future sessions, run this function with `install = TRUE`.</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>( tidycensus )</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co"># census_api_key(&quot;YOUR KEY GOES HERE&quot;)</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co"># key &lt;- &quot;abc123&quot;</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co"># census_api_key( key )</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">these.msp &lt;-<span class="st"> </span>crosswalk<span class="op">$</span>msaname <span class="op">==</span><span class="st"> &quot;MINNEAPOLIS-ST. PAUL, MN-WI&quot;</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">these.fips &lt;-<span class="st"> </span>crosswalk<span class="op">$</span>fipscounty[ these.msp ]</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">these.fips &lt;-<span class="st"> </span><span class="kw">na.omit</span>( these.fips )</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">state.fips &lt;-<span class="st"> </span><span class="kw">substr</span>( these.fips, <span class="dv">1</span>, <span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">county.fips &lt;-<span class="st"> </span><span class="kw">substr</span>( these.fips, <span class="dv">3</span>, <span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb21-8" data-line-number="8">msp.pop &lt;-</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="kw">get_acs</span>( <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;B01003_001&quot;</span>,</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10">         <span class="dt">state =</span> <span class="st">&quot;27&quot;</span>, <span class="dt">county =</span> county.fips[state.fips<span class="op">==</span><span class="st">&quot;27&quot;</span>], <span class="dt">geometry =</span> <span class="ot">TRUE</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="st">         </span><span class="kw">select</span>( GEOID, estimate ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-12" data-line-number="12"><span class="st">         </span><span class="kw">rename</span>( <span class="dt">POP=</span>estimate )</a></code></pre></div>
+<pre><code>## Getting data from the 2013-2017 5-year ACS</code></pre>
+<pre><code>## Downloading feature geometry from the Census website.  To cache shapefiles for use in future sessions, set `options(tigris_use_cache = TRUE)`.</code></pre>
+</div>
+<div id="step-3-add-census-data" class="section level2">
+<h2>Step 3: Add Census Data</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">URL &lt;-<span class="st"> &quot;https://github.com/DS4PS/cpp-529-master/raw/master/data/ltdb_std_2010_sample.rds&quot;</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">census.dat &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="kw">gzcon</span>(<span class="kw">url</span>( URL )))</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="co"># can merge an sf object and data.frame</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">msp &lt;-<span class="st"> </span><span class="kw">merge</span>( msp.pop, census.dat, <span class="dt">by.x=</span><span class="st">&quot;GEOID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;tractid&quot;</span> )</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7"><span class="co"># make sure there are no empty polygons</span></a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">msp &lt;-<span class="st"> </span>msp[ <span class="op">!</span><span class="st"> </span><span class="kw">st_is_empty</span>( msp ) , ]</a></code></pre></div>
+<p><strong>DATA DICTIONARY</strong></p>
+<table style="width:61%;">
+<colgroup>
+<col width="15%" />
+<col width="45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">LABEL</th>
+<th align="center">VARIABLE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">tractid</td>
+<td align="center">GEOID</td>
+</tr>
+<tr class="even">
+<td align="center">pnhwht12</td>
+<td align="center">Percent white, non-Hispanic</td>
+</tr>
+<tr class="odd">
+<td align="center">pnhblk12</td>
+<td align="center">Percent black, non-Hispanic</td>
+</tr>
+<tr class="even">
+<td align="center">phisp12</td>
+<td align="center">Percent Hispanic</td>
+</tr>
+<tr class="odd">
+<td align="center">pntv12</td>
+<td align="center">Percent Native American race</td>
+</tr>
+<tr class="even">
+<td align="center">pfb12</td>
+<td align="center">Percent foreign born</td>
+</tr>
+<tr class="odd">
+<td align="center">polang12</td>
+<td align="center">Percent speaking other language at home, age 5 plus</td>
+</tr>
+<tr class="even">
+<td align="center">phs12</td>
+<td align="center">Percent with high school degree or less</td>
+</tr>
+<tr class="odd">
+<td align="center">pcol12</td>
+<td align="center">Percent with 4-year college degree or more</td>
+</tr>
+<tr class="even">
+<td align="center">punemp12</td>
+<td align="center">Percent unemployed</td>
+</tr>
+<tr class="odd">
+<td align="center">pflabf12</td>
+<td align="center">Percent female labor force participation</td>
+</tr>
+<tr class="even">
+<td align="center">pprof12</td>
+<td align="center">Percent professional employees</td>
+</tr>
+<tr class="odd">
+<td align="center">pmanuf12</td>
+<td align="center">Percent manufacturing employees</td>
+</tr>
+<tr class="even">
+<td align="center">pvet12</td>
+<td align="center">Percent veteran</td>
+</tr>
+<tr class="odd">
+<td align="center">psemp12</td>
+<td align="center">Percent self-employed</td>
+</tr>
+<tr class="even">
+<td align="center">hinc12</td>
+<td align="center">Median HH income, total</td>
+</tr>
+<tr class="odd">
+<td align="center">incpc12</td>
+<td align="center">Per capita income</td>
+</tr>
+<tr class="even">
+<td align="center">ppov12</td>
+<td align="center">Percent in poverty, total</td>
+</tr>
+<tr class="odd">
+<td align="center">pown12</td>
+<td align="center">Percent owner-occupied units</td>
+</tr>
+<tr class="even">
+<td align="center">pvac12</td>
+<td align="center">Percent vacant units</td>
+</tr>
+<tr class="odd">
+<td align="center">pmulti12</td>
+<td align="center">Percent multi-family units</td>
+</tr>
+<tr class="even">
+<td align="center">mrent12</td>
+<td align="center">Median rent</td>
+</tr>
+<tr class="odd">
+<td align="center">mhmval12</td>
+<td align="center">Median home value</td>
+</tr>
+<tr class="even">
+<td align="center">p30old12</td>
+<td align="center">Percent structures more than 30 years old</td>
+</tr>
+<tr class="odd">
+<td align="center">p10yrs12</td>
+<td align="center">Percent HH in neighborhood 10 years or less</td>
+</tr>
+<tr class="even">
+<td align="center">p18und12</td>
+<td align="center">Percent 17 and under, total</td>
+</tr>
+<tr class="odd">
+<td align="center">p60up12</td>
+<td align="center">Percent 60 and older, total</td>
+</tr>
+<tr class="even">
+<td align="center">p75up12</td>
+<td align="center">Percent 75 and older, total</td>
+</tr>
+<tr class="odd">
+<td align="center">pmar12</td>
+<td align="center">Percent currently married, not separated</td>
+</tr>
+<tr class="even">
+<td align="center">pwds12</td>
+<td align="center">Percent widowed, divorced and separated</td>
+</tr>
+<tr class="odd">
+<td align="center">pfhh12</td>
+<td align="center">Percent female-headed families with children</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-4-transform-the-shapefile-into-a-dorling-cartogram" class="section level2">
+<h2>Step 4: Transform the Shapefile into A Dorling Cartogram</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co"># convert sf map object to an sp version</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">msp.sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>( msp )</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw">class</span>( msp.sp )</a></code></pre></div>
+<pre><code>## [1] &quot;SpatialPolygonsDataFrame&quot;
+## attr(,&quot;package&quot;)
+## [1] &quot;sp&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co"># project map and remove empty tracts</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">msp.sp &lt;-<span class="st"> </span><span class="kw">spTransform</span>( msp.sp, <span class="kw">CRS</span>(<span class="st">&quot;+init=epsg:3395&quot;</span>))</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">msp.sp &lt;-<span class="st"> </span>msp.sp[ msp.sp<span class="op">$</span>POP <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>(<span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>( msp.sp<span class="op">$</span>POP )) , ]</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co"># convert census tract polygons to dorling cartogram</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co"># no idea why k=0.03 works, but it does - default is k=5</span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">msp.sp<span class="op">$</span>pop.w &lt;-<span class="st"> </span>msp.sp<span class="op">$</span>POP <span class="op">/</span><span class="st"> </span><span class="dv">9000</span> <span class="co"># max(msp.sp$POP)   # standardizes it to max of 1.5</span></a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">msp_dorling &lt;-<span class="st"> </span><span class="kw">cartogram_dorling</span>( <span class="dt">x=</span>msp.sp, <span class="dt">weight=</span><span class="st">&quot;pop.w&quot;</span>, <span class="dt">k=</span><span class="fl">0.05</span> )</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">d1 &lt;-<span class="st"> </span>msp_dorling<span class="op">@</span>data</a></code></pre></div>
+</div>
+</div>
+<div id="cluster-analysis" class="section level1">
+<h1>Cluster analysis</h1>
+<div id="variable-selection" class="section level2">
+<h2>Variable selection</h2>
+<p>We will use the same set of variables as last week. The data is transformed into z-score so that they are all on similar scales.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"><span class="kw">head</span>( d3[,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:90%;">
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="13%" />
+<col width="16%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">pnhwht12</th>
+<th align="center">pnhblk12</th>
+<th align="center">phisp12</th>
+<th align="center">pntv12</th>
+<th align="center">pfb12</th>
+<th align="center">polang12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.9663</td>
+<td align="center">-0.5875</td>
+<td align="center">-0.7391</td>
+<td align="center">-0.4529</td>
+<td align="center">-1.054</td>
+<td align="center">-0.9999</td>
+</tr>
+<tr class="even">
+<td align="center">1.01</td>
+<td align="center">-0.7305</td>
+<td align="center">-0.7099</td>
+<td align="center">-0.1402</td>
+<td align="center">-1.038</td>
+<td align="center">-1.098</td>
+</tr>
+<tr class="odd">
+<td align="center">1.029</td>
+<td align="center">-0.7228</td>
+<td align="center">-0.728</td>
+<td align="center">-0.009282</td>
+<td align="center">-0.8826</td>
+<td align="center">-1.072</td>
+</tr>
+<tr class="even">
+<td align="center">0.8438</td>
+<td align="center">-0.7382</td>
+<td align="center">-0.7321</td>
+<td align="center">-0.1111</td>
+<td align="center">-0.9578</td>
+<td align="center">-0.4979</td>
+</tr>
+<tr class="odd">
+<td align="center">0.8701</td>
+<td align="center">-0.7382</td>
+<td align="center">-0.6446</td>
+<td align="center">1.074</td>
+<td align="center">-1.146</td>
+<td align="center">-1.03</td>
+</tr>
+<tr class="even">
+<td align="center">1.005</td>
+<td align="center">-0.7237</td>
+<td align="center">-0.7877</td>
+<td align="center">-0.4529</td>
+<td align="center">-0.8802</td>
+<td align="center">-0.8248</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="prepare-data-for-clustering" class="section level2">
+<h2>Prepare Data for Clustering</h2>
+<p>We transform all of the variables to z scorse so they are on the same scale while clustering. This ensures that each census variable has equal weight. Z-scores typically range from about -3 to +3 with a mean of zero.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>, <span class="st">&quot;pnhblk12&quot;</span>, <span class="st">&quot;phisp12&quot;</span>, <span class="st">&quot;pntv12&quot;</span>, <span class="st">&quot;pfb12&quot;</span>, <span class="st">&quot;polang12&quot;</span>, </a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">&quot;phs12&quot;</span>, <span class="st">&quot;pcol12&quot;</span>, <span class="st">&quot;punemp12&quot;</span>, <span class="st">&quot;pflabf12&quot;</span>, <span class="st">&quot;pprof12&quot;</span>, <span class="st">&quot;pmanuf12&quot;</span>, </a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">&quot;pvet12&quot;</span>, <span class="st">&quot;psemp12&quot;</span>, <span class="st">&quot;hinc12&quot;</span>, <span class="st">&quot;incpc12&quot;</span>, <span class="st">&quot;ppov12&quot;</span>, <span class="st">&quot;pown12&quot;</span>, </a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="st">&quot;pvac12&quot;</span>, <span class="st">&quot;pmulti12&quot;</span>, <span class="st">&quot;mrent12&quot;</span>, <span class="st">&quot;mhmval12&quot;</span>, <span class="st">&quot;p30old12&quot;</span>, <span class="st">&quot;p10yrs12&quot;</span>, </a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="st">&quot;p18und12&quot;</span>, <span class="st">&quot;p60up12&quot;</span>, <span class="st">&quot;p75up12&quot;</span>, <span class="st">&quot;pmar12&quot;</span>, <span class="st">&quot;pwds12&quot;</span>, <span class="st">&quot;pfhh12&quot;</span>)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a></code></pre></div>
+</div>
+<div id="perform-cluster-analysis" class="section level2">
+<h2>Perform Cluster Analysis</h2>
+<p>For more details on cluster analysis visit the <a href="https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html"><strong>mclust</strong> tutorial</a>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># library( mclust )</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">set.seed</span>( <span class="dv">1234</span> )</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">fit &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d3 )</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">msp_dorling<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit<span class="op">$</span>classification )</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="kw">summary</span>( fit )</a></code></pre></div>
+<pre><code>## ---------------------------------------------------- 
+## Gaussian finite mixture model fitted by EM algorithm 
+## ---------------------------------------------------- 
+## 
+## Mclust VVE (ellipsoidal, equal orientation) model with 7 components: 
+## 
+##  log-likelihood   n  df       BIC       ICL
+##       -14956.35 749 861 -35611.43 -35692.91
+## 
+## Clustering table:
+##   1   2   3   4   5   6   7 
+##  89 160  81  97  81 192  49</code></pre>
+</div>
+<div id="identifying-neighborhood-clusters" class="section level2">
+<h2>Identifying Neighborhood Clusters</h2>
+<p>Build the charts to compare census characteristics across the groups.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">df.pct &lt;-<span class="st"> </span><span class="kw">sapply</span>( d2, ntile, <span class="dv">100</span> )</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">d4 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>( df.pct )</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">d4<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>( <span class="kw">paste0</span>(<span class="st">&quot;GROUP-&quot;</span>,fit<span class="op">$</span>classification) )</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">num.groups &lt;-<span class="st"> </span><span class="kw">length</span>( <span class="kw">unique</span>( fit<span class="op">$</span>classification ) )</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">stats &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb32-8" data-line-number="8">d4 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>( cluster ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-10" data-line-number="10"><span class="st">  </span><span class="kw">summarise_each</span>( <span class="kw">funs</span>(mean) )</a></code></pre></div>
+<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## Please use a list of either functions or lambdas: 
+## 
+##   # Simple named list: 
+##   list(mean = mean, median = median)
+## 
+##   # Auto named with `tibble::lst()`: 
+##   tibble::lst(mean, median)
+## 
+##   # Using lambdas
+##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+## This warning is displayed once per session.</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">t &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="kw">t</span>(stats), <span class="dt">stringsAsFactors=</span>F )</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">names</span>(t) &lt;-<span class="st"> </span><span class="kw">paste0</span>( <span class="st">&quot;GROUP.&quot;</span>, <span class="dv">1</span><span class="op">:</span>num.groups )</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">t &lt;-<span class="st"> </span>t[<span class="op">-</span><span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>num.groups )</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">{</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">  z &lt;-<span class="st"> </span>t[,i]</a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">  <span class="kw">plot</span>( <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">30</span>), <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">75</span>,<span class="dv">100</span>), </a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">        <span class="dt">type=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb34-12" data-line-number="12">        <span class="dt">xlab=</span><span class="st">&quot;Percentile&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">        <span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;GROUP&quot;</span>,i) )</a>
+<a class="sourceLine" id="cb34-14" data-line-number="14">  <span class="kw">abline</span>( <span class="dt">v=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">25</span>), <span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&quot;gray90&quot;</span> )</a>
+<a class="sourceLine" id="cb34-15" data-line-number="15">  <span class="kw">segments</span>( <span class="dt">y0=</span><span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">x1=</span><span class="dv">100</span>, <span class="dt">col=</span><span class="st">&quot;gray70&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb34-16" data-line-number="16">  <span class="kw">text</span>( <span class="fl">-0.2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, data.dictionary<span class="op">$</span>VARIABLE[<span class="op">-</span><span class="dv">1</span>], <span class="dt">cex=</span><span class="fl">0.85</span>, <span class="dt">pos=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb34-17" data-line-number="17">  <span class="kw">points</span>( z, <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">1.5</span> )</a>
+<a class="sourceLine" id="cb34-18" data-line-number="18">  <span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">at=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>), <span class="dt">col.axis=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb34-19" data-line-number="19">}</a></code></pre></div>
+<p><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-1.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-2.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-3.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-4.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-5.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-6.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-13-7.png" width="672" /></p>
+<p>You are now ready to identify meaningful labels for your clusters!</p>
+</div>
+</div>
+<div id="re-run-cluster-analysis-with-fewer-variables-3-variables" class="section level1">
+<h1>Re-run Cluster Analysis with fewer variables (3 variables)</h1>
+<div id="variable-selection-1" class="section level2">
+<h2>Variable selection</h2>
+<p>I arbitrarily selected three census variables to compare methods. Here we are using % of population 18 and under, % of female labor force participation, and household income.</p>
+<table style="width:57%;">
+<colgroup>
+<col width="15%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">LABEL</th>
+<th align="center">VARIABLE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">tractid</td>
+<td align="center">GEOID</td>
+</tr>
+<tr class="even">
+<td align="center">pnhwht12</td>
+<td align="center">Percent white, non-Hispanic</td>
+</tr>
+<tr class="odd">
+<td align="center">punemp12</td>
+<td align="center">Percent unemployed</td>
+</tr>
+<tr class="even">
+<td align="center">hinc12</td>
+<td align="center">Per capita income</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">keep.these &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pnhwht12&quot;</span>,  <span class="st">&quot;punemp12&quot;</span>,  <span class="st">&quot;hinc12&quot;</span>)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">d2 &lt;-<span class="st"> </span><span class="kw">select</span>( d1, keep.these )</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">d3 &lt;-<span class="st"> </span><span class="kw">apply</span>( d2, <span class="dv">2</span>, scale )</a></code></pre></div>
+</div>
+<div id="perform-cluster-analysis-1" class="section level2">
+<h2>Perform Cluster Analysis</h2>
+<p>For more details on cluster analysis visit the <a href="https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html"><strong>mclust</strong> tutorial</a>.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># library( mclust )</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw">set.seed</span>( <span class="dv">1234</span> )</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">fit2 &lt;-<span class="st"> </span><span class="kw">Mclust</span>( d3 )</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">msp_dorling<span class="op">$</span>cluster2 &lt;-<span class="st"> </span><span class="kw">as.factor</span>( fit2<span class="op">$</span>classification )</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="kw">summary</span>( fit2 )</a></code></pre></div>
+<pre><code>## ---------------------------------------------------- 
+## Gaussian finite mixture model fitted by EM algorithm 
+## ---------------------------------------------------- 
+## 
+## Mclust VVI (diagonal, varying volume and shape) model with 5 components: 
+## 
+##  log-likelihood   n df       BIC       ICL
+##       -2245.993 749 34 -4717.024 -5096.015
+## 
+## Clustering table:
+##   1   2   3   4   5 
+## 187 290 137 100  35</code></pre>
+</div>
+<div id="identifying-neighborhood-clusters-1" class="section level2">
+<h2>Identifying Neighborhood Clusters</h2>
+<p>Build the charts to compare census characteristics across the groups.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">df.pct &lt;-<span class="st"> </span><span class="kw">sapply</span>( d2, ntile, <span class="dv">100</span> )</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">d4 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>( df.pct )</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">d4<span class="op">$</span>cluster2 &lt;-<span class="st"> </span><span class="kw">as.factor</span>( <span class="kw">paste0</span>(<span class="st">&quot;GROUP-&quot;</span>,fit2<span class="op">$</span>classification) )</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">num.groups &lt;-<span class="st"> </span><span class="kw">length</span>( <span class="kw">unique</span>( fit2<span class="op">$</span>classification ) )</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">stats &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">d4 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>( cluster2 ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-10" data-line-number="10"><span class="st">  </span><span class="kw">summarise_each</span>( <span class="kw">funs</span>(mean) )</a>
+<a class="sourceLine" id="cb38-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb38-12" data-line-number="12">t &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="kw">t</span>(stats), <span class="dt">stringsAsFactors=</span>F )</a>
+<a class="sourceLine" id="cb38-13" data-line-number="13"><span class="kw">names</span>(t) &lt;-<span class="st"> </span><span class="kw">paste0</span>( <span class="st">&quot;GROUP.&quot;</span>, <span class="dv">1</span><span class="op">:</span>num.groups )</a>
+<a class="sourceLine" id="cb38-14" data-line-number="14">t &lt;-<span class="st"> </span>t[<span class="op">-</span><span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb38-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb38-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb38-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb38-18" data-line-number="18"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>num.groups )</a>
+<a class="sourceLine" id="cb38-19" data-line-number="19">{</a>
+<a class="sourceLine" id="cb38-20" data-line-number="20">  z &lt;-<span class="st"> </span>t[,i]</a>
+<a class="sourceLine" id="cb38-21" data-line-number="21">  <span class="kw">plot</span>( <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">75</span>,<span class="dv">100</span>), </a>
+<a class="sourceLine" id="cb38-22" data-line-number="22">        <span class="dt">type=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb38-23" data-line-number="23">        <span class="dt">xlab=</span><span class="st">&quot;Percentile&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb38-24" data-line-number="24">        <span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;GROUP&quot;</span>,i) )</a>
+<a class="sourceLine" id="cb38-25" data-line-number="25">  <span class="kw">abline</span>( <span class="dt">v=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">25</span>), <span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&quot;gray90&quot;</span> )</a>
+<a class="sourceLine" id="cb38-26" data-line-number="26">  <span class="kw">segments</span>( <span class="dt">y0=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">x0=</span><span class="dv">0</span>, <span class="dt">x1=</span><span class="dv">100</span>, <span class="dt">col=</span><span class="st">&quot;gray70&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb38-27" data-line-number="27">  <span class="kw">text</span>( <span class="fl">-0.2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, data.dictionary<span class="op">$</span>VARIABLE[<span class="op">-</span><span class="dv">1</span>], <span class="dt">cex=</span><span class="fl">0.85</span>, <span class="dt">pos=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb38-28" data-line-number="28">  <span class="kw">points</span>( z, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">1.5</span> )</a>
+<a class="sourceLine" id="cb38-29" data-line-number="29">  <span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">at=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>), <span class="dt">col.axis=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb38-30" data-line-number="30">}</a></code></pre></div>
+<p><img src="lab-04-solutions_files/figure-html/unnamed-chunk-17-1.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-17-2.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-17-3.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-17-4.png" width="672" /><img src="lab-04-solutions_files/figure-html/unnamed-chunk-17-5.png" width="672" /></p>
+</div>
+<div id="map-and-visually-compare-cluster-output" class="section level2">
+<h2>Map and visually compare cluster output</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
+<pre><code>## tmap mode set to plotting</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">tmap_style</span>(<span class="st">&quot;cobalt&quot;</span>)</a></code></pre></div>
+<pre><code>## tmap style set to &quot;cobalt&quot;</code></pre>
+<pre><code>## other available styles are: &quot;white&quot;, &quot;gray&quot;, &quot;natural&quot;, &quot;col_blind&quot;, &quot;albatross&quot;, &quot;beaver&quot;, &quot;bw&quot;, &quot;classic&quot;, &quot;watercolor&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co"># user-defined bounding box to move slocer to subjects </span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">bb &lt;-<span class="st"> </span><span class="kw">st_bbox</span>( <span class="kw">c</span>( <span class="dt">xmin =</span>  <span class="dv">-10451823</span>, <span class="dt">xmax =</span> <span class="dv">-10324525</span>, </a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">                  <span class="dt">ymax =</span> <span class="dv">5639769</span>, <span class="dt">ymin =</span> <span class="dv">5491665</span> ), </a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">               <span class="dt">crs =</span> <span class="kw">st_crs</span>(<span class="st">&quot;+init=epsg:3395&quot;</span>))</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">tm1 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb44-10" data-line-number="10">tm2 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb44-11" data-line-number="11"><span class="kw">tm_shape</span>( msp_dorling, <span class="dt">bbox=</span>bb ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb44-12" data-line-number="12"><span class="st">  </span><span class="kw">tm_polygons</span>( <span class="dt">col=</span><span class="st">&quot;cluster2&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Accent&quot;</span>  )</a>
+<a class="sourceLine" id="cb44-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb44-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb44-15" data-line-number="15"><span class="kw">tmap_arrange</span>( tm1, tm2)</a></code></pre></div>
+<p><img src="lab-04-solutions_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<hr />
+<p><br> <br></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

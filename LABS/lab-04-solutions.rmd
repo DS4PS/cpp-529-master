@@ -1,0 +1,380 @@
+---
+title: "Lab-04 Build a City Dataset"
+output:
+  html_document:
+    theme: readable
+    highlight: tango
+    toc: true
+    self_contained: false
+    number_sections: false
+    css: textbook.css
+---
+
+
+# Packages
+
+```{r}
+library( geojsonio )   # read shapefiles
+library( sp )          # work with shapefiles
+library( sf )          # work with shapefiles - simple features format
+library( mclust )      # cluster analysis 
+library( tmap )        # theme maps
+library( ggplot2 )     # graphing 
+library( ggthemes )    # nice formats for ggplots
+library( dplyr )       # data wrangling 
+library( pander )      # formatting RMD tables
+library( tidycensus )
+
+library( cartogram )  # spatial maps w/ tract size bias reduction
+library( maptools )   # spatial object manipulation 
+```
+
+
+
+
+## Step 1: Select Your MSA
+
+You can select a city from the list of [large MSAs](https://en.wikipedia.org/wiki/List_of_metropolitan_statistical_areas). 
+
+To get Census data on the city you will first need to identify all of the counties that comprise the MSA. You can look this information up through MSA to FIPS crosswalks provided by the National Bureau for Economic Research (NBER):  https://www.nber.org/data/cbsa-fips-county-crosswalk.html 
+
+I have added the file to GitHub for ease of access. 
+
+```{r}
+crosswalk <- read.csv( "https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/cbsatocountycrosswalk.csv",  stringsAsFactors=F, colClasses="character" )
+
+# search for citie names by strings, use the ^ anchor for "begins with" 
+
+grep( "^CHI", crosswalk$msaname, value=TRUE ) 
+grep( "^MIN", crosswalk$msaname, value=TRUE ) 
+```
+
+
+Select all of your county fips. To use them in the TidyCenss package you will need to split the state and county:
+
+```{r}
+these.msp <- crosswalk$msaname == "MINNEAPOLIS-ST. PAUL, MN-WI"
+these.fips <- crosswalk$fipscounty[ these.msp ]
+these.fips <- na.omit( these.fips )
+```
+
+
+## Step 2: Download a Shapefile with Population Data
+
+To create a Dorling cartogram we need a shapefile and a population count. We can get both through the Census download that includes simple features. 
+
+```{r, echo=F}
+key <- "b431c35dad89e2863681311677d12581e8f24c24"
+census_api_key( key )
+```
+
+
+```{r}
+library( tidycensus )
+
+# census_api_key("YOUR KEY GOES HERE")
+# key <- "abc123"
+# census_api_key( key )
+```
+
+
+```{r, results='hide'}
+these.msp <- crosswalk$msaname == "MINNEAPOLIS-ST. PAUL, MN-WI"
+these.fips <- crosswalk$fipscounty[ these.msp ]
+these.fips <- na.omit( these.fips )
+
+state.fips <- substr( these.fips, 1, 2 )
+county.fips <- substr( these.fips, 3, 5 )
+
+msp.pop <-
+get_acs( geography = "tract", variables = "B01003_001",
+         state = "27", county = county.fips[state.fips=="27"], geometry = TRUE ) %>% 
+         select( GEOID, estimate ) %>%
+         rename( POP=estimate )
+```
+
+
+## Step 3: Add Census Data
+
+```{r}
+URL <- "https://github.com/DS4PS/cpp-529-master/raw/master/data/ltdb_std_2010_sample.rds"
+census.dat <- readRDS(gzcon(url( URL )))
+
+# can merge an sf object and data.frame
+msp <- merge( msp.pop, census.dat, by.x="GEOID", by.y="tractid" )
+
+# make sure there are no empty polygons
+msp <- msp[ ! st_is_empty( msp ) , ]
+```
+
+
+**DATA DICTIONARY**
+
+
+```{r, echo=F}
+data.dictionary <- 
+structure(list(LABEL = c("tractid", "pnhwht12", "pnhblk12", "phisp12", 
+"pntv12", "pfb12", "polang12", "phs12", "pcol12", "punemp12", 
+"pflabf12", "pprof12", "pmanuf12", "pvet12", "psemp12", "hinc12", 
+"incpc12", "ppov12", "pown12", "pvac12", "pmulti12", "mrent12", 
+"mhmval12", "p30old12", "p10yrs12", "p18und12", "p60up12", "p75up12", 
+"pmar12", "pwds12", "pfhh12"), VARIABLE = c("GEOID", "Percent white, non-Hispanic", 
+"Percent black, non-Hispanic", "Percent Hispanic", "Percent Native American race", 
+"Percent foreign born", "Percent speaking other language at home, age 5 plus", 
+"Percent with high school degree or less", "Percent with 4-year college degree or more", 
+"Percent unemployed", "Percent female labor force participation", 
+"Percent professional employees", "Percent manufacturing employees", 
+"Percent veteran", "Percent self-employed", "Median HH income, total", 
+"Per capita income", "Percent in poverty, total", "Percent owner-occupied units", 
+"Percent vacant units", "Percent multi-family units", "Median rent", 
+"Median home value", "Percent structures more than 30 years old", 
+"Percent HH in neighborhood 10 years or less", "Percent 17 and under, total", 
+"Percent 60 and older, total", "Percent 75 and older, total", 
+"Percent currently married, not separated", "Percent widowed, divorced and separated", 
+"Percent female-headed families with children")), class = "data.frame", row.names = c(NA, 
+-31L))
+
+data.dictionary %>% pander()
+```
+
+
+
+
+
+
+## Step 4: Transform the Shapefile into A Dorling Cartogram
+
+```{r}
+# convert sf map object to an sp version
+msp.sp <- as_Spatial( msp )
+
+class( msp.sp )
+
+# project map and remove empty tracts
+msp.sp <- spTransform( msp.sp, CRS("+init=epsg:3395"))
+msp.sp <- msp.sp[ msp.sp$POP != 0 & (! is.na( msp.sp$POP )) , ]
+
+# convert census tract polygons to dorling cartogram
+# no idea why k=0.03 works, but it does - default is k=5
+msp.sp$pop.w <- msp.sp$POP / 9000 # max(msp.sp$POP)   # standardizes it to max of 1.5
+msp_dorling <- cartogram_dorling( x=msp.sp, weight="pop.w", k=0.05 )
+
+
+d1 <- msp_dorling@data
+
+```
+
+
+
+# Cluster analysis 
+
+## Variable selection 
+
+We will use the same set of variables as last week. The data is transformed into z-score so that they are all on similar scales. 
+
+```{r}
+
+keep.these <- c("pnhwht12", "pnhblk12", "phisp12", "pntv12", "pfb12", "polang12", 
+"phs12", "pcol12", "punemp12", "pflabf12", "pprof12", "pmanuf12", 
+"pvet12", "psemp12", "hinc12", "incpc12", "ppov12", "pown12", 
+"pvac12", "pmulti12", "mrent12", "mhmval12", "p30old12", "p10yrs12", 
+"p18und12", "p60up12", "p75up12", "pmar12", "pwds12", "pfhh12")
+
+d2 <- select( d1, keep.these )
+d3 <- apply( d2, 2, scale )
+head( d3[,1:6] ) %>% pander()
+```
+
+
+## Prepare Data for Clustering
+
+We transform all of the variables to z scorse so they are on the same scale while clustering. This ensures that each census variable has equal weight. Z-scores typically range from about -3 to +3 with a mean of zero.
+
+```{r}
+keep.these <- c("pnhwht12", "pnhblk12", "phisp12", "pntv12", "pfb12", "polang12", 
+"phs12", "pcol12", "punemp12", "pflabf12", "pprof12", "pmanuf12", 
+"pvet12", "psemp12", "hinc12", "incpc12", "ppov12", "pown12", 
+"pvac12", "pmulti12", "mrent12", "mhmval12", "p30old12", "p10yrs12", 
+"p18und12", "p60up12", "p75up12", "pmar12", "pwds12", "pfhh12")
+
+d2 <- select( d1, keep.these )
+d3 <- apply( d2, 2, scale )
+```
+
+
+## Perform Cluster Analysis
+
+For more details on cluster analysis visit the [**mclust** tutorial](https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html).
+
+
+```{r}
+# library( mclust )
+set.seed( 1234 )
+fit <- Mclust( d3 )
+msp_dorling$cluster <- as.factor( fit$classification )
+summary( fit )
+```
+
+
+## Identifying Neighborhood Clusters
+
+Build the charts to compare census characteristics across the groups. 
+
+```{r}
+df.pct <- sapply( d2, ntile, 100 )
+d4 <- as.data.frame( df.pct )
+d4$cluster <- as.factor( paste0("GROUP-",fit$classification) )
+
+num.groups <- length( unique( fit$classification ) )
+
+stats <- 
+d4 %>% 
+  group_by( cluster ) %>% 
+  summarise_each( funs(mean) )
+
+t <- data.frame( t(stats), stringsAsFactors=F )
+names(t) <- paste0( "GROUP.", 1:num.groups )
+t <- t[-1,]
+
+
+
+for( i in 1:num.groups )
+{
+  z <- t[,i]
+  plot( rep(1,30), 1:30, bty="n", xlim=c(-75,100), 
+        type="n", xaxt="n", yaxt="n",
+        xlab="Percentile", ylab="",
+        main=paste("GROUP",i) )
+  abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+  segments( y0=1:30, x0=0, x1=100, col="gray70", lwd=2 )
+  text( -0.2, 1:30, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
+  points( z, 1:30, pch=19, col="firebrick", cex=1.5 )
+  axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+}
+```
+
+
+
+
+You are now ready to identify meaningful labels for your clusters!
+
+
+
+
+
+# Re-run Cluster Analysis with fewer variables (3 variables)
+
+## Variable selection 
+
+
+I arbitrarily selected three census variables to compare methods. Here we are using % of population 18 and under, % of female labor force participation, and household income. 
+
+```{r, echo=F}
+data.dictionary <- 
+structure(list(LABEL = c("tractid", "pnhwht12",  "punemp12",  "hinc12"), VARIABLE = c("GEOID", "Percent white, non-Hispanic", "Percent unemployed", "Per capita income")), class = "data.frame", row.names = c(NA, 
+-4L))
+
+data.dictionary %>% pander()
+```
+
+
+```{r}
+keep.these <- c("pnhwht12",  "punemp12",  "hinc12")
+
+d2 <- select( d1, keep.these )
+d3 <- apply( d2, 2, scale )
+```
+
+
+## Perform Cluster Analysis
+
+For more details on cluster analysis visit the [**mclust** tutorial](https://cran.r-project.org/web/packages/mclust/vignettes/mclust.html).
+
+
+```{r}
+# library( mclust )
+set.seed( 1234 )
+fit2 <- Mclust( d3 )
+msp_dorling$cluster2 <- as.factor( fit2$classification )
+summary( fit2 )
+```
+
+
+## Identifying Neighborhood Clusters
+
+Build the charts to compare census characteristics across the groups. 
+
+```{r}
+df.pct <- sapply( d2, ntile, 100 )
+d4 <- as.data.frame( df.pct )
+d4$cluster2 <- as.factor( paste0("GROUP-",fit2$classification) )
+
+num.groups <- length( unique( fit2$classification ) )
+
+stats <- 
+d4 %>% 
+  group_by( cluster2 ) %>% 
+  summarise_each( funs(mean) )
+
+t <- data.frame( t(stats), stringsAsFactors=F )
+names(t) <- paste0( "GROUP.", 1:num.groups )
+t <- t[-1,]
+
+
+
+for( i in 1:num.groups )
+{
+  z <- t[,i]
+  plot( rep(1,3), 1:3, bty="n", xlim=c(-75,100), 
+        type="n", xaxt="n", yaxt="n",
+        xlab="Percentile", ylab="",
+        main=paste("GROUP",i) )
+  abline( v=seq(0,100,25), lty=3, lwd=1.5, col="gray90" )
+  segments( y0=1:3, x0=0, x1=100, col="gray70", lwd=2 )
+  text( -0.2, 1:3, data.dictionary$VARIABLE[-1], cex=0.85, pos=2 )
+  points( z, 1:3, pch=19, col="firebrick", cex=1.5 )
+  axis( side=1, at=c(0,50,100), col.axis="gray", col="gray" )
+}
+```
+
+
+
+
+
+
+
+## Map and visually compare cluster output
+```{r}
+
+
+tmap_mode("plot")
+tmap_style("cobalt")
+
+# user-defined bounding box to move slocer to subjects 
+bb <- st_bbox( c( xmin =  -10451823, xmax = -10324525, 
+                  ymax = 5639769, ymin = 5491665 ), 
+               crs = st_crs("+init=epsg:3395"))
+
+tm1 <- 
+tm_shape( msp_dorling, bbox=bb ) + 
+  tm_polygons( col="cluster", palette="Accent"  )
+
+tm2 <- 
+tm_shape( msp_dorling, bbox=bb ) + 
+  tm_polygons( col="cluster2", palette="Accent"  )
+
+
+tmap_arrange( tm1, tm2)
+
+```
+
+
+
+-------------------------------
+
+
+<br>
+<br>
+
+
+
