@@ -251,10 +251,6 @@ On your lab you will be practicing with index development using census data and 
 <br>
 
 
-*** { @unit = "", @title = "Lab 01 Solutions", @assignment  }
-
-Solutions to Lab 1 can be found here [(Lab 1 Solutions)](https://www.dropbox.com/s/ot5h10ucg9hm5m1/lab-02-solutions.docx?dl=1).
-
 
 <br>
 <br>
@@ -376,12 +372,7 @@ Please submit both the .RMD file and .Html file.
 
 
 
-*** { @unit = "", @title = "Lab 02 Solutions", @assignment  }
-
-Solutions to Lab 2 can be found here [(HTML)](https://ds4ps.org/cpp-529-master/labs/Lab2Solutions.html) [(RMD)](https://ds4ps.org/cpp-529-master/labs/Lab2Solutions.Rmd). 
-
 <br>
-
 <br> 
 --------------------------------------------------------------------------------------------------- 
 <br>
