@@ -38,9 +38,11 @@ phx <- geojson_read( x=github.url,  what="sp" )
 
 plot( phx )
 
-library( tmap ) 
+library( rgdal )
 
 phx <- spTransform( phx, CRS("+init=epsg:3395") )
+
+library( tmap ) 
 
 bb <- st_bbox( c( xmin = -12519146, xmax = -12421368, 
                   ymax = 3965924, ymin = 3899074 ), 
