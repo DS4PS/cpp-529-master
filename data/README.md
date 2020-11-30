@@ -130,6 +130,10 @@ geojson_write( phx, file="phx.geojson", geometry="polygon" )
 ```r
 tmap_mode("plot")
 
+bb <- st_bbox( c( xmin = -12519146, xmax = -12421368, 
+                  ymax = 3965924, ymin = 3899074 ), 
+               crs = st_crs("+init=epsg:3395"))
+               
 px1 <- tm_shape( phx_dorling, bbox=bb ) + 
   tm_polygons( size="POP", col="MHHI", n=10, style="quantile", palette="Spectral" ) +
   tm_legend( show=FALSE ) +
