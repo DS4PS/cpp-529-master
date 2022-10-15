@@ -28,7 +28,7 @@ instructor:
    email: Anthony.Howell@asu.edu
    office_location: UCENT 407
    website_url: www.tonyjhowell.com
-   github_url:  
+   github_url:  'https://github.com/AntJam-Howell'
    twitter_url: 
    scholar_url: 'https://scholar.google.com/citations?hl=en&user=am1zI6cAAAAJ'
    linked_in_url:
